@@ -1,3 +1,3 @@
-# puzzletest
+# Puzzletest
 
-Little project for testing the Puzzle library
+Little project for testing the Puzzle library.
