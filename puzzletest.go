@@ -15,8 +15,24 @@
  * limitations under the License.
  *
  */
-package puzzletest
+package main
+
+import (
+	"github.com/dvaumoron/puzzleweb"
+	"github.com/dvaumoron/puzzleweb/locale"
+	"github.com/dvaumoron/puzzleweb/login"
+	"github.com/dvaumoron/puzzleweb/wiki"
+	"golang.org/x/text/language"
+)
 
 func main() {
+	locale.Availables.Add(language.French)
+
+	site := puzzleweb.CreateSite()
+
+	login.AddLoginPage(site, "login")
+	site.AddPage(wiki.NewWikiPage("wiki", 2))
 	// TODO
+
+	site.Run()
 }
