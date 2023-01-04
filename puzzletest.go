@@ -18,9 +18,11 @@
 package main
 
 import (
+	"github.com/dvaumoron/indentlang/adapter"
 	"github.com/dvaumoron/puzzleweb"
 	"github.com/dvaumoron/puzzleweb/admin"
 	"github.com/dvaumoron/puzzleweb/admin/client"
+	"github.com/dvaumoron/puzzleweb/config"
 	"github.com/dvaumoron/puzzleweb/locale"
 	"github.com/dvaumoron/puzzleweb/login"
 	"github.com/dvaumoron/puzzleweb/wiki"
@@ -38,6 +40,8 @@ func main() {
 	client.RegisterGroup(wikiGroup2Id, "wiki.group2")
 
 	site := puzzleweb.CreateSite()
+
+	site.SetHTMLRender(adapter.LoadTemplates(config.TemplatesPath))
 
 	login.AddLoginPage(site, "login")
 	admin.AddAdminPage(site, "admin")
