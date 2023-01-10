@@ -39,7 +39,7 @@ func main() {
 	client.RegisterGroup(wikiGroup1Id, "wiki.group1")
 	client.RegisterGroup(wikiGroup2Id, "wiki.group2")
 
-	site := puzzleweb.CreateSite()
+	site := puzzleweb.NewSite()
 
 	site.SetHTMLRender(adapter.LoadTemplates(config.TemplatesPath))
 
