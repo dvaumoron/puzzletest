@@ -43,8 +43,8 @@ func main() {
 
 	site.SetHTMLRender(adapter.LoadTemplates(config.TemplatesPath))
 
-	login.AddLoginPage(site, "login")
-	admin.AddAdminPage(site, "admin")
+	login.AddLoginPage(site)
+	admin.AddAdminPage(site)
 	site.AddPage(wiki.NewWikiPage("wiki", wikiGroup1Id, 1))
 	site.AddPage(wiki.NewWikiPage("wiki2", wikiGroup1Id, 2))
 	site.AddPage(wiki.NewWikiPage("wiki3", wikiGroup2Id, 3))
