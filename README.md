@@ -1,3 +1,3 @@
-# Puzzletest
+# PuzzleTest
 
-Little project for testing the Puzzle library.
+Little project in order to demonstrate and test the [PuzzleWeb](https://github.com/dvaumoron/puzzleweb) library.
