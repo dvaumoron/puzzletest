@@ -33,9 +33,11 @@ const wikiGroup1Id = 2
 const wikiGroup2Id = 3
 
 func main() {
+	// init available language
 	locale.Availables.Add(language.French)
 	locale.Availables.Add(language.English)
 
+	// create group for permissions
 	client.RegisterGroup(wikiGroup1Id, "wiki.group1")
 	client.RegisterGroup(wikiGroup2Id, "wiki.group2")
 
