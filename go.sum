@@ -17,6 +17,8 @@ github.com/dvaumoron/puzzlesessionservice v1.1.0 h1:pQ9HDCaMcj+sFrtsswVkqJ47Pacq
 github.com/dvaumoron/puzzlesessionservice v1.1.0/go.mod h1:VB2EkzytHS7t6A6pCRl/Pu80VnwHcGlRNcXx9Zkmicg=
 github.com/dvaumoron/puzzleweb v0.0.0-20230118145839-76d0e5b4da48 h1:HcrD6YR7LehftpjjliLY6i1/Un44ktmh6+dvlYJKo0E=
 github.com/dvaumoron/puzzleweb v0.0.0-20230118145839-76d0e5b4da48/go.mod h1:102j+/lVjwBTFOjZaAk3Do9/DjSzBbbW3UQalgO0770=
+github.com/dvaumoron/puzzleweb v0.0.0-20230125110634-bf109b115312 h1:R/6cJOCr4WeXaf9bgr94Cfx+o6x8ns1zElgOqRUscSw=
+github.com/dvaumoron/puzzleweb v0.0.0-20230125110634-bf109b115312/go.mod h1:102j+/lVjwBTFOjZaAk3Do9/DjSzBbbW3UQalgO0770=
 github.com/dvaumoron/puzzlewikiservice v1.2.0 h1:pXanotFGnxPGEfT765v/6+OMn7I2yQ3vyzOutmHH350=
 github.com/dvaumoron/puzzlewikiservice v1.2.0/go.mod h1:tPX1ONQbE/Bz19M8JLPmm/6/l5YXQVc2okbS2N9P0ns=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=

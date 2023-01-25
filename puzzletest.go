@@ -22,15 +22,21 @@ import (
 	"github.com/dvaumoron/puzzleweb"
 	"github.com/dvaumoron/puzzleweb/admin"
 	"github.com/dvaumoron/puzzleweb/admin/client"
+	"github.com/dvaumoron/puzzleweb/blog"
 	"github.com/dvaumoron/puzzleweb/config"
+	"github.com/dvaumoron/puzzleweb/forum"
 	"github.com/dvaumoron/puzzleweb/locale"
 	"github.com/dvaumoron/puzzleweb/login"
+	"github.com/dvaumoron/puzzleweb/profile"
+	"github.com/dvaumoron/puzzleweb/settings"
 	"github.com/dvaumoron/puzzleweb/wiki"
 	"golang.org/x/text/language"
 )
 
 const wikiGroup1Id = 2
 const wikiGroup2Id = 3
+const blogGroupId = 4
+const forumGroupId = 5
 
 func main() {
 	// init available language
@@ -40,6 +46,8 @@ func main() {
 	// create group for permissions
 	client.RegisterGroup(wikiGroup1Id, "wiki.group1")
 	client.RegisterGroup(wikiGroup2Id, "wiki.group2")
+	client.RegisterGroup(blogGroupId, "blog.group")
+	client.RegisterGroup(forumGroupId, "forum.group")
 
 	site := puzzleweb.NewSite()
 
@@ -47,10 +55,19 @@ func main() {
 
 	login.AddLoginPage(site)
 	admin.AddAdminPage(site)
+	profile.AddProfilePage(site)
+	settings.AddSettingsPage(site)
+
+	site.AddPage(puzzleweb.NewStaticPage("about", client.PublicGroupId, "todo"))
+	site.AddPage(puzzleweb.NewStaticPage("faq", client.PublicGroupId, "todo"))
+
+	// Warning : the object id should be different even for different kind of dynamic page
+	// (currently blog use forum storage for comment)
 	site.AddPage(wiki.NewWikiPage("wiki", wikiGroup1Id, 1))
 	site.AddPage(wiki.NewWikiPage("wiki2", wikiGroup1Id, 2))
 	site.AddPage(wiki.NewWikiPage("wiki3", wikiGroup2Id, 3))
-	// TODO
+	site.AddPage(blog.NewBlogPage("blog", blogGroupId, 4))
+	site.AddPage(forum.NewForumPage("forum", forumGroupId, 5))
 
 	site.Run()
 }

@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.0.0
-	github.com/dvaumoron/puzzleweb v0.0.0-20230118145839-76d0e5b4da48
+	github.com/dvaumoron/puzzleweb v0.0.0-20230125110634-bf109b115312
 	golang.org/x/text v0.6.0
 )
 
