@@ -3,7 +3,7 @@ module github.com/dvaumoron/puzzletest
 go 1.19
 
 require (
-	github.com/dvaumoron/indentlang v1.0.0
+	github.com/dvaumoron/indentlang v1.0.1
 	github.com/dvaumoron/puzzleweb v0.0.0-20230125110634-bf109b115312
 	golang.org/x/text v0.6.0
 )
