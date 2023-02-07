@@ -51,11 +51,11 @@ func main() {
 
 	site := puzzleweb.NewSite()
 
-	site.SetHTMLRender(adapter.LoadTemplates(config.TemplatesPath))
+	site.SetHTMLRender(adapter.LoadTemplates(config.Shared.TemplatesPath))
 
 	login.AddLoginPage(site)
 	admin.AddAdminPage(site)
-	profile.AddProfilePage(site)
+	profile.AddProfilePage(site, client.PublicGroupId) // make profile page public
 	settings.AddSettingsPage(site)
 
 	site.AddPage(puzzleweb.NewStaticPage("about", client.PublicGroupId, "todo"))
