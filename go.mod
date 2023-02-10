@@ -4,11 +4,12 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.0.1
-	github.com/dvaumoron/puzzleweb v0.0.0-20230207133109-2fc0175bf125
-	golang.org/x/text v0.6.0
+	github.com/dvaumoron/puzzleweb v0.1.0
 )
 
 require (
+	github.com/dvaumoron/puzzleblogservice v1.1.0 // indirect
+	github.com/dvaumoron/puzzleforumservice v1.4.0 // indirect
 	github.com/dvaumoron/puzzleloginservice v1.7.0 // indirect
 	github.com/dvaumoron/puzzlemarkdownservice v1.0.1 // indirect
 	github.com/dvaumoron/puzzleprofileservice v1.2.0 // indirect
@@ -39,6 +40,7 @@ require (
 	golang.org/x/net v0.5.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/text v0.6.0 // indirect
 	google.golang.org/genproto v0.0.0-20221207170731-23e4bf6bdc37 // indirect
 	google.golang.org/grpc v1.52.3 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect

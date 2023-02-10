@@ -20,17 +20,11 @@ package main
 import (
 	"github.com/dvaumoron/indentlang/adapter"
 	"github.com/dvaumoron/puzzleweb"
-	"github.com/dvaumoron/puzzleweb/admin"
-	"github.com/dvaumoron/puzzleweb/admin/client"
+	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
-	"github.com/dvaumoron/puzzleweb/config"
+	"github.com/dvaumoron/puzzleweb/builder"
 	"github.com/dvaumoron/puzzleweb/forum"
-	"github.com/dvaumoron/puzzleweb/locale"
-	"github.com/dvaumoron/puzzleweb/login"
-	"github.com/dvaumoron/puzzleweb/profile"
-	"github.com/dvaumoron/puzzleweb/settings"
 	"github.com/dvaumoron/puzzleweb/wiki"
-	"golang.org/x/text/language"
 )
 
 const wikiGroup1Id = 2
@@ -39,35 +33,28 @@ const blogGroupId = 4
 const forumGroupId = 5
 
 func main() {
-	// init available language
-	locale.Availables.Add(language.French)
-	locale.Availables.Add(language.English)
+	site, globalConfig := builder.BuildDefaultSite()
+	rightClient := globalConfig.RightClient
 
 	// create group for permissions
-	client.RegisterGroup(wikiGroup1Id, "wiki.group1")
-	client.RegisterGroup(wikiGroup2Id, "wiki.group2")
-	client.RegisterGroup(blogGroupId, "blog.group")
-	client.RegisterGroup(forumGroupId, "forum.group")
+	rightClient.RegisterGroup(wikiGroup1Id, "wiki.group1")
+	rightClient.RegisterGroup(wikiGroup2Id, "wiki.group2")
+	rightClient.RegisterGroup(blogGroupId, "blog.group")
+	rightClient.RegisterGroup(forumGroupId, "forum.group")
 
-	site := puzzleweb.NewSite()
+	site.HTMLRender = adapter.LoadTemplates(globalConfig.TemplatesPath)
 
-	site.SetHTMLRender(adapter.LoadTemplates(config.Shared.TemplatesPath))
-
-	login.AddLoginPage(site)
-	admin.AddAdminPage(site)
-	profile.AddProfilePage(site, client.PublicGroupId) // make profile page public
-	settings.AddSettingsPage(site)
-
-	site.AddPage(puzzleweb.NewStaticPage("about", client.PublicGroupId, "todo"))
-	site.AddPage(puzzleweb.NewStaticPage("faq", client.PublicGroupId, "todo"))
+	authConfig := globalConfig.ExtractAuthConfig()
+	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "todo", authConfig))
+	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "todo", authConfig))
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
-	site.AddPage(wiki.NewWikiPage("wiki", wikiGroup1Id, 1))
-	site.AddPage(wiki.NewWikiPage("wiki2", wikiGroup1Id, 2))
-	site.AddPage(wiki.NewWikiPage("wiki3", wikiGroup2Id, 3))
-	site.AddPage(blog.NewBlogPage("blog", blogGroupId, 4))
-	site.AddPage(forum.NewForumPage("forum", forumGroupId, 5))
+	site.AddPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id)))
+	site.AddPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id)))
+	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id)))
+	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId)))
+	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId)))
 
-	site.Run()
+	site.Run(globalConfig.ExtractSiteConfig())
 }

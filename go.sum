@@ -5,6 +5,10 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dvaumoron/indentlang v1.0.1 h1:Qr387q+nnMjCpCovCtbb90iHJOsPbby99fpuOVLyTqE=
 github.com/dvaumoron/indentlang v1.0.1/go.mod h1:mIubzaRx3hq+WfwTE4WY5OSyZs5I4JDwdC1s5aq2HDQ=
+github.com/dvaumoron/puzzleblogservice v1.1.0 h1:EbV2WKZxmdPaXMsh78nDDZr/KVpJskMoMMlgoD1W84U=
+github.com/dvaumoron/puzzleblogservice v1.1.0/go.mod h1:G7aZYaJHItf4DM5kXehMXwOYTcUl75sH/k8fZ/QBj10=
+github.com/dvaumoron/puzzleforumservice v1.4.0 h1:39BTgVB7A6bev/Jo0V3O4RSusK/jlJ97fwmr1/iGsTE=
+github.com/dvaumoron/puzzleforumservice v1.4.0/go.mod h1:cCNSZOUMidXTNIrNjfTRYduK+A3oa4B6YEGEKbvwkPg=
 github.com/dvaumoron/puzzleloginservice v1.7.0 h1:o5W2j/rbUeSctEe8+yDc49/3R5vzfwtOVH9Lse5BFpc=
 github.com/dvaumoron/puzzleloginservice v1.7.0/go.mod h1:K/m2nN30p+uAJamWT85Vh1Mtea7+ahSz+fnIughCok0=
 github.com/dvaumoron/puzzlemarkdownservice v1.0.1 h1:82Iqn7YKrS51vyJJy3m4UMhyIPqo/LzSPxI0rMfZK7Y=
@@ -19,8 +23,8 @@ github.com/dvaumoron/puzzlesaltservice v1.0.0 h1:nuNN7cUVGv/kpb/bSAnTnKE7FS0WV86
 github.com/dvaumoron/puzzlesaltservice v1.0.0/go.mod h1:S95i9P8YgmzHpVEXiBIZhaBnlyhsfJD+UBsgFQIKkzc=
 github.com/dvaumoron/puzzlesessionservice v1.2.0 h1:SHAZnBgSyCtyLJI69lQIX+MbKoR3vv+/PO4m5hafymQ=
 github.com/dvaumoron/puzzlesessionservice v1.2.0/go.mod h1:VB2EkzytHS7t6A6pCRl/Pu80VnwHcGlRNcXx9Zkmicg=
-github.com/dvaumoron/puzzleweb v0.0.0-20230207133109-2fc0175bf125 h1:I6G5PrNMQzRleYw/pdv6rR553vPI8NaP9iP2AXJpChk=
-github.com/dvaumoron/puzzleweb v0.0.0-20230207133109-2fc0175bf125/go.mod h1:wtQwWe5XU/BbSwBSldWYIno+EpUCgYZMjtO6TktJAFs=
+github.com/dvaumoron/puzzleweb v0.1.0 h1:qVbPR4SCSE9zM4EhHCHcXhvOjFQSLRiPDa/2YNaDZsk=
+github.com/dvaumoron/puzzleweb v0.1.0/go.mod h1:wtQwWe5XU/BbSwBSldWYIno+EpUCgYZMjtO6TktJAFs=
 github.com/dvaumoron/puzzlewikiservice v1.3.0 h1:M2PQ5jFTcwJ8kB1FgiaUB9+PJHOIwzwNbejkYwPYpxI=
 github.com/dvaumoron/puzzlewikiservice v1.3.0/go.mod h1:tPX1ONQbE/Bz19M8JLPmm/6/l5YXQVc2okbS2N9P0ns=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
