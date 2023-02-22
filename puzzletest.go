@@ -42,19 +42,26 @@ func main() {
 	rightClient.RegisterGroup(blogGroupId, "blog.group")
 	rightClient.RegisterGroup(forumGroupId, "forum.group")
 
-	site.HTMLRender = adapter.LoadTemplates(globalConfig.TemplatesPath)
+	ext := globalConfig.TemplatesExt
+	if ext == ".il" {
+		site.HTMLRender = adapter.LoadTemplates(globalConfig.TemplatesPath)
+	} else {
+		site.HTMLRender = puzzleweb.LoadTemplates(globalConfig.TemplatesPath)
+	}
 
 	authConfig := globalConfig.ExtractAuthConfig()
-	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "todo", authConfig))
-	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "todo", authConfig))
+	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "about"+ext, authConfig))
+	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "faq"+ext, authConfig))
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
-	site.AddPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id)))
-	site.AddPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id)))
-	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id)))
-	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId)))
-	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId)))
+	wikiPagesLook := []string{"Welcome", "wiki/view" + ext, "wiki/edit" + ext, "wiki/list" + ext}
+	wikiPagesLook2 := []string{"Welcome", "wiki2/view" + ext, "wiki2/edit" + ext, "wiki2/list" + ext}
+	site.AddPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id, wikiPagesLook...)))
+	site.AddPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id, wikiPagesLook2...)))
+	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
+	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
+	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId, "forum/list"+ext, "forum/view"+ext, "forum/create"+ext)))
 
 	site.Run(globalConfig.ExtractSiteConfig())
 }

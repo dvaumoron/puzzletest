@@ -3,21 +3,25 @@ html
         meta @charset="utf-8"
         title "Title - " PageTitle
         link @rel="stylesheet" @type="text/css" @href="/static/main.css"
-        script @type="text/javascript" @src="/static/main.js"
+        script @type="text/javascript" @src="/static/js/wasm_exec.js"
+        script @type="text/javascript" @src="/static/js/main.js"
         WidgetHeader
     body
         header
             h1 PageTitle
             If LoginUrl
                 p
-                    If Login (Welcome "&nbsp;" Login "&nbsp;")
-                    a @href=LoginUrl LoginLinkName
+                    If Login
+                        List
+                            Messages.WelcomeLabel Login
+                            a @href=LoginUrl Messages.LoginLinkLabel
+                        a @href=LoginUrl Messages.LogoutLinkLabel
             If ErrorMsg
                 div @class="error" ErrorMsg
             p
                 For page Ariane
                     := url (. page Url)
-                    "/&nbsp;" (a @href=url (. page Name)) "&nbsp;"
+                    "/ " (a @href=url (. page Name)) " "
             ul
                 For page SubPages
                     := url (. page Url)
