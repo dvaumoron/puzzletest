@@ -46,37 +46,16 @@
             </ul>
         </header>
         <main>
-            <form id="loginForm" action="/login/submit" method="POST">
-                <div>
-                    <label>
-                        {{.Messages.LoginLabel}}
-                        <input type="text" name="Login"/>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        {{.Messages.PasswordLabel}}
-                        <input type="password" id="passwordField" name="Password"/>
-                    </label>
-                </div>
-                <div id="confirmPasswordBlock" class="hidden">
-                    <label>
-                        {{.Messages.ConfirmPasswordLabel}}
-                        <input type="password" id="confirmPasswordField" name="ConfirmPassword"/>
-                    </label>
-                </div>
+            <h2>
+                {{.Messages.EditLabel}} {{.WikiTitle}}
+                [<a href="{{.BaseUrl}}view/{{.WikiTitle}}">{{.Messages.CancelLinkLabel}}</a>]
+            </h2>
+            <form action="{{.BaseUrl}}save/{{.WikiTitle}}" method="POST">
+                <div><textarea name="content" rows="20" cols="80">{{.WikiContent}}</textarea></div>
                 <div class="hidden">
-                    <input type="text" id="loginRegisterField" name="Register"/>
-                    <input type="text" name="Redirect" value="{{.Redirect}}"/>
-                    <input type="text" name="PrevUrlWithError" value="{{.PrevUrlWithError}}"/>
-                    {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                    <span id="errorWrongConfimPasswordMessage">{{.Messages.WrongConfirmPassword}}</span>
+                    <input type="text" name="version" value="{{.WikiVersion}}"/>
                 </div>
-                <div><button type="submit">{{.Messages.LoginLinkLabel}}</button></div>
-                <div>
-                    <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
-                    <button type="button" id="loginRegisterButton2" class="hidden">{{.Messages.RegisterLinkLabel}}</button>
-                </div>
+                <div><button type="submit">{{.Messages.SaveLinkLabel}}</button></div>
             </form>
         </main>
         <footer>

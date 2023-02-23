@@ -46,37 +46,51 @@
             </ul>
         </header>
         <main>
-            <form id="loginForm" action="/login/submit" method="POST">
-                <div>
+            <h2>
+                {{if eq .RoleName "new"}}
+                    {{.Messages.NewRoleLabel}} {{.Group}}
+                {{else}}
+                    {{.Messages.EditLabel}} {{.Group}}/{{.RoleName}}
+                {{end}}
+                [<a href="/admin/role/list">{{.Messages.CancelLinkLabel}}</a>]
+            </h2>
+            <form id="editRoleForm" action="/admin/role/save" method="POST">
+                <div {{if ne .RoleName "new"}} class="hidden" {{end}}>
                     <label>
-                        {{.Messages.LoginLabel}}
-                        <input type="text" name="Login"/>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        {{.Messages.PasswordLabel}}
-                        <input type="password" id="passwordField" name="Password"/>
-                    </label>
-                </div>
-                <div id="confirmPasswordBlock" class="hidden">
-                    <label>
-                        {{.Messages.ConfirmPasswordLabel}}
-                        <input type="password" id="confirmPasswordField" name="ConfirmPassword"/>
+                        {{.Messages.NameLabel}}
+                        <input type="text" id="editRoleNameField" name="RoleName" value="{{.RoleName}}"/>
                     </label>
                 </div>
                 <div class="hidden">
-                    <input type="text" id="loginRegisterField" name="Register"/>
-                    <input type="text" name="Redirect" value="{{.Redirect}}"/>
-                    <input type="text" name="PrevUrlWithError" value="{{.PrevUrlWithError}}"/>
                     {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                    <span id="errorWrongConfimPasswordMessage">{{.Messages.WrongConfirmPassword}}</span>
+                    <span id="errorBadRoleNameMessage">{{.Messages.ErrorBadRoleName}}</span>
+                    <input type="text" name="Group" value="{{.Group}}"/>
                 </div>
-                <div><button type="submit">{{.Messages.LoginLinkLabel}}</button></div>
                 <div>
-                    <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
-                    <button type="button" id="loginRegisterButton2" class="hidden">{{.Messages.RegisterLinkLabel}}</button>
+                    <label>
+                        {{.Messages.AccessLabel}}
+                        <input type="checkbox" name="actions" value="access" checked="{{.Access}}"/>
+                    </label>
                 </div>
+                <div>
+                    <label>
+                        {{.Messages.CreateLabel}}
+                        <input type="checkbox" name="actions" value="create" checked="{{.Create}}"/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        {{.Messages.UpdateLabel}}
+                        <input type="checkbox" name="actions" value="update" checked="{{.Update}}"/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        {{.Messages.DeleteLabel}}
+                        <input type="checkbox" name="actions" value="delete" checked="{{.Delete}}"/>
+                    </label>
+                </div>
+                <div><button type="button" id="saveRoleButton">{{.Messages.SaveLinkLabel}}</button></div>
             </form>
         </main>
         <footer>

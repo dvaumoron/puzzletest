@@ -46,37 +46,19 @@
             </ul>
         </header>
         <main>
-            <form id="loginForm" action="/login/submit" method="POST">
+            <h2>
+                {{.Messages.CreateThreadTitle}}
+                [<a href="{{.BaseUrl}}">{{.Messages.CancelLinkLabel}}</a>]
+            </h2>
+            <form action="{{.BaseUrl}}save" method="POST">
                 <div>
                     <label>
-                        {{.Messages.LoginLabel}}
-                        <input type="text" name="Login"/>
+                        {{.Messages.TitleLabel}}
+                        <input type="text" name="title"/>
                     </label>
                 </div>
-                <div>
-                    <label>
-                        {{.Messages.PasswordLabel}}
-                        <input type="password" id="passwordField" name="Password"/>
-                    </label>
-                </div>
-                <div id="confirmPasswordBlock" class="hidden">
-                    <label>
-                        {{.Messages.ConfirmPasswordLabel}}
-                        <input type="password" id="confirmPasswordField" name="ConfirmPassword"/>
-                    </label>
-                </div>
-                <div class="hidden">
-                    <input type="text" id="loginRegisterField" name="Register"/>
-                    <input type="text" name="Redirect" value="{{.Redirect}}"/>
-                    <input type="text" name="PrevUrlWithError" value="{{.PrevUrlWithError}}"/>
-                    {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                    <span id="errorWrongConfimPasswordMessage">{{.Messages.WrongConfirmPassword}}</span>
-                </div>
-                <div><button type="submit">{{.Messages.LoginLinkLabel}}</button></div>
-                <div>
-                    <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
-                    <button type="button" id="loginRegisterButton2" class="hidden">{{.Messages.RegisterLinkLabel}}</button>
-                </div>
+                <div><textarea name="message" rows="20" cols="80"></textarea></div>
+                <div><button type="submit">{{.Messages.CreateLinkLabel}}</button></div>
             </form>
         </main>
         <footer>

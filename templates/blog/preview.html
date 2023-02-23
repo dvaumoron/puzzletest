@@ -46,37 +46,27 @@
             </ul>
         </header>
         <main>
-            <form id="loginForm" action="/login/submit" method="POST">
+            <h2>
+                {{.PreviewTitle}}
+                [<a href="{{.BaseUrl}}">{{.Messages.CancelLinkLabel}}</a>]
+            </h2>
+            <div>
+                {{.PreviewHTML}}
+            </div>
+            <form id="publishPostForm" action="{{.BaseUrl}}preview" method="POST">
                 <div>
                     <label>
-                        {{.Messages.LoginLabel}}
-                        <input type="text" name="Login"/>
+                        {{.Messages.TitleLabel}}
+                        <input type="text" id="postTitleField" name="title"/>
                     </label>
                 </div>
-                <div>
-                    <label>
-                        {{.Messages.PasswordLabel}}
-                        <input type="password" id="passwordField" name="Password"/>
-                    </label>
-                </div>
-                <div id="confirmPasswordBlock" class="hidden">
-                    <label>
-                        {{.Messages.ConfirmPasswordLabel}}
-                        <input type="password" id="confirmPasswordField" name="ConfirmPassword"/>
-                    </label>
-                </div>
+                <div><textarea id="postMarkdownField" name="markdown" rows="20" cols="80">{{.Markdown}}</textarea></div>
                 <div class="hidden">
-                    <input type="text" id="loginRegisterField" name="Register"/>
-                    <input type="text" name="Redirect" value="{{.Redirect}}"/>
-                    <input type="text" name="PrevUrlWithError" value="{{.PrevUrlWithError}}"/>
                     {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                    <span id="errorWrongConfimPasswordMessage">{{.Messages.WrongConfirmPassword}}</span>
+                    <span id="errorModifiedMarkdownMessage">{{.Messages.ModifiedMarkdown}}</span>
                 </div>
-                <div><button type="submit">{{.Messages.LoginLinkLabel}}</button></div>
-                <div>
-                    <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
-                    <button type="button" id="loginRegisterButton2" class="hidden">{{.Messages.RegisterLinkLabel}}</button>
-                </div>
+                <div><button type="submit">{{.Messages.UpdatePreviewLinkLabel}}</button></div>
+                <div><button type="button" id="publishPostButton">{{.Messages.PublishLinkLabel}}</button></div>
             </form>
         </main>
         <footer>

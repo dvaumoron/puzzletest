@@ -1,0 +1,84 @@
+# general
+WrongLang=
+NoElement=
+ErrorNotAuthorized=
+ErrorTechnicalProblem=
+ErrorUpdate=
+ErrorUnknownUser=
+WelcomeLabel=
+GroupLabelAdmin=
+GroupLabelPublic=
+TitleLabel=
+NameLabel=
+EditLabel=
+FilterLabel=
+RegistredAtLabel=
+ListLinkLabel=
+FilterLinkLabel=
+PreviousPageLinkLabel=
+NextPageLinkLabel=
+ViewLinkLabel=
+NewLinkLabel=
+CreateLinkLabel=
+EditLinkLabel=
+SaveLinkLabel=
+CancelLinkLabel=
+DeleteLinkLabel=
+
+# login
+PageTitleLogin=
+WrongLogin=
+ExistingLogin=
+WrongConfirmPassword=
+LoginLabel=
+PasswordLabel=
+ConfirmPasswordLabel=
+LoginLinkLabel=
+LogoutLinkLabel=
+RegisterLinkLabel=
+
+# admin
+PageTitleAdmin=
+UserListTitle=
+RoleListTitle=
+AccessLabel=
+CreateLabel=
+UpdateLabel=
+DeleteLabel=
+NewRoleLabel=
+ErrorBadRoleName=
+
+# profile
+PageTitleProfile=
+ChangeLoginLabel=
+NewLoginLabel=
+ChangePasswordLabel=
+OldPasswordLabel=
+NewPasswordLabel=
+EditProfileLabel=
+UserPicLabel=
+UserDescLabel=
+
+# settings
+PageTitleSettings=
+
+# wiki
+BaseVersionOutdated=
+
+# blog
+CreateBlogPostTitle=
+ViewMoreLinkLabel=
+PreviewLinkLabel=
+UpdatePreviewLinkLabel=
+PostAuthorLabel=
+PostDateLabel=
+PublishLinkLabel=
+LeaveCommentLabel=
+NoComment=
+UseMarkdownLabel=
+ModifiedMarkdown=
+
+# forum
+ThreadsLabel=
+CreateThreadTitle=
+ResponseMessageLabel=
