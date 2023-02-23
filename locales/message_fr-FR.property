@@ -1,5 +1,5 @@
 # general
-WrongLang=La langue demandée n'est pas reconnue
+WrongLang=La langue demandée n'est pas disponible
 NoElement=Il n'y a pas d'élément à afficher
 ErrorNotAuthorized=Action non autorisée
 ErrorTechnicalProblem=Un problème technique est survenu
@@ -11,7 +11,7 @@ GroupLabelPublic=Partie publique du site
 TitleLabel=Titre
 NameLabel=Nom
 EditLabel=Edition de
-FilterLabel=Requête
+FilterLabel=Filtre
 RegistredAtLabel=Enregistré le
 ListLinkLabel=Liste
 FilterLinkLabel=Rechercher
@@ -38,14 +38,14 @@ LogoutLinkLabel=Se déconnecter
 RegisterLinkLabel=Créer un compte
 
 # admin
-PageTitleAdmin=Administration
+PageTitleAdmin=Administration des rôles
 UserListTitle=Liste des utilisateurs
 RoleListTitle=Liste des rôles
 AccessLabel=Voir
 CreateLabel=Créer
 UpdateLabel=Modifier
 DeleteLabel=Effacer
-NewRoleLabel=Création d'un rôle
+NewRoleLabel=Création d'un rôle dans
 ErrorBadRoleName=Vous n'avez pas choisi de nom de rôle
 
 # profile
@@ -82,3 +82,13 @@ ModifiedMarkdown=L'aperçu n'est pas à jour
 ThreadsLabel=Discussions
 CreateThreadTitle=Création d'un fil de discussion
 ResponseMessageLabel=Répondre avec un message
+
+# custom page title
+PageTitleRoot=Page principale
+PageTitleAbout=A propos
+PageTitleFaq=Foire aux questions
+PageTitleWiki=Wiki
+PageTitleWiki2=Wiki 2
+PageTitleWiki3=Wiki 3
+PageTitleBlog=Blog
+PageTitleForum=Forum

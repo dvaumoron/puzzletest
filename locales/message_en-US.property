@@ -1,84 +1,94 @@
 # general
-WrongLang=
-NoElement=
-ErrorNotAuthorized=
-ErrorTechnicalProblem=
-ErrorUpdate=
-ErrorUnknownUser=
-WelcomeLabel=
-GroupLabelAdmin=
-GroupLabelPublic=
-TitleLabel=
-NameLabel=
-EditLabel=
-FilterLabel=
-RegistredAtLabel=
-ListLinkLabel=
-FilterLinkLabel=
+WrongLang=The asked language is not available
+NoElement=No element to display
+ErrorNotAuthorized=Not authorized action
+ErrorTechnicalProblem=A technical problem has occurred
+ErrorUpdate=Failed to update
+ErrorUnknownUser=Unknown user
+WelcomeLabel=Welcome
+GroupLabelAdmin=Role administration
+GroupLabelPublic=Public part of the site
+TitleLabel=Title
+NameLabel=Name
+EditLabel=Edition of
+FilterLabel=Filter
+RegistredAtLabel=Registred at
+ListLinkLabel=List
+FilterLinkLabel=Search
 PreviousPageLinkLabel=
 NextPageLinkLabel=
-ViewLinkLabel=
-NewLinkLabel=
-CreateLinkLabel=
-EditLinkLabel=
-SaveLinkLabel=
-CancelLinkLabel=
-DeleteLinkLabel=
+ViewLinkLabel=View
+NewLinkLabel=New
+CreateLinkLabel=Create
+EditLinkLabel=Edit
+SaveLinkLabel=Save
+CancelLinkLabel=Cancel
+DeleteLinkLabel=Delete
 
 # login
-PageTitleLogin=
-WrongLogin=
-ExistingLogin=
-WrongConfirmPassword=
-LoginLabel=
-PasswordLabel=
-ConfirmPasswordLabel=
-LoginLinkLabel=
-LogoutLinkLabel=
-RegisterLinkLabel=
+PageTitleLogin=Connection
+WrongLogin=Wrong login or password
+ExistingLogin=login already used
+WrongConfirmPassword=The password confirmation does not match
+LoginLabel=Login
+PasswordLabel=Password
+ConfirmPasswordLabel=Confirmation of the password
+LoginLinkLabel=Login
+LogoutLinkLabel=Logout
+RegisterLinkLabel=Register
 
 # admin
-PageTitleAdmin=
-UserListTitle=
-RoleListTitle=
-AccessLabel=
-CreateLabel=
-UpdateLabel=
-DeleteLabel=
-NewRoleLabel=
-ErrorBadRoleName=
+PageTitleAdmin=Role administration
+UserListTitle=List of users
+RoleListTitle=List of roles
+AccessLabel=Access
+CreateLabel=Create
+UpdateLabel=Update
+DeleteLabel=Delete
+NewRoleLabel=Role creation in
+ErrorBadRoleName=You have to choose a role name
 
 # profile
-PageTitleProfile=
-ChangeLoginLabel=
-NewLoginLabel=
-ChangePasswordLabel=
-OldPasswordLabel=
-NewPasswordLabel=
-EditProfileLabel=
+PageTitleProfile=User profile
+ChangeLoginLabel=Change login
+NewLoginLabel=New login
+ChangePasswordLabel=Change password
+OldPasswordLabel=Old password
+NewPasswordLabel=New password
+EditProfileLabel=Profile editing
 UserPicLabel=
 UserDescLabel=
 
 # settings
-PageTitleSettings=
+PageTitleSettings=Settings
 
 # wiki
-BaseVersionOutdated=
+BaseVersionOutdated=The page have been updated by another user
 
 # blog
-CreateBlogPostTitle=
-ViewMoreLinkLabel=
-PreviewLinkLabel=
-UpdatePreviewLinkLabel=
-PostAuthorLabel=
-PostDateLabel=
-PublishLinkLabel=
-LeaveCommentLabel=
-NoComment=
-UseMarkdownLabel=
-ModifiedMarkdown=
+CreateBlogPostTitle=Blog post creation
+ViewMoreLinkLabel=View more
+PreviewLinkLabel=Preview
+UpdatePreviewLinkLabel=Update preview
+PostAuthorLabel=Post author
+PostDateLabel=Publish date
+PublishLinkLabel=Publish
+LeaveCommentLabel=Leave a comment
+NoComment=No comment to display
+UseMarkdownLabel=You can use Markdown syntax
+ModifiedMarkdown=The preview was not updated
 
 # forum
-ThreadsLabel=
-CreateThreadTitle=
-ResponseMessageLabel=
+ThreadsLabel=Threads
+CreateThreadTitle=Thread creation
+ResponseMessageLabel=Respond with a message
+
+# custom page title
+PageTitleRoot=Main
+PageTitleAbout=About
+PageTitleFaq=Frequently asked questions
+PageTitleWiki=Wiki
+PageTitleWiki2=Wiki 2
+PageTitleWiki3=Wiki 3
+PageTitleBlog=Blog
+PageTitleForum=Forum

@@ -1,10 +1,10 @@
 html
     head
         meta @charset="utf-8"
-        title "Title - " PageTitle
+        title "Puzzletest - " PageTitle
         link @rel="stylesheet" @type="text/css" @href="/static/main.css"
-        script @type="text/javascript" @src="/static/js/wasm_exec.js"
-        script @type="text/javascript" @src="/static/js/main.js"
+        script @type="text/javascript" @src="/static/js/wasm_exec.js" ""
+        script @type="text/javascript" @src="/static/js/main.js" ""
         WidgetHeader
     body
         header
@@ -13,9 +13,9 @@ html
                 p
                     If Login
                         List
-                            Messages.WelcomeLabel Login
-                            a @href=LoginUrl Messages.LoginLinkLabel
-                        a @href=LoginUrl Messages.LogoutLinkLabel
+                            (. Messages WelcomeLabel) Login
+                            a @href=LoginUrl (. Messages LogoutLinkLabel)
+                        a @href=LoginUrl (. Messages LoginLinkLabel)
             If ErrorMsg
                 div @class="error" ErrorMsg
             p
