@@ -12,11 +12,12 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Title - {{.PageTitle}}</title>
+        <meta charset="utf-8"/>
+        <title>PuzzleTest - {{.PageTitle}}</title>
         <link rel="stylesheet" type="text/css" href="/static/main.css"/>
-        <script type="text/javascript" src="/static/js/wasm_exec.js"/>
-        <script type="text/javascript" src="/static/js/main.js"/>
+        <script type="text/javascript" src="/static/js/wasm_exec.js"></script>
+        <script type="text/javascript" src="/static/js/main.js"></script>
+        
     </head>
     <body>
         <header>
@@ -25,9 +26,9 @@
                 <p>
                     {{if .Login}}
                         {{.Messages.WelcomeLabel}} {{.Login}}
-                        <a href="{{.LoginUrl}}">{{.Messages.LoginLinkLabel}}</a>
-                    {{else}}
                         <a href="{{.LoginUrl}}">{{.Messages.LogoutLinkLabel}}</a>
+                    {{else}}
+                        <a href="{{.LoginUrl}}">{{.Messages.LoginLinkLabel}}</a>
                     {{end}}
                 </p>
             {{end}}
@@ -47,31 +48,32 @@
         </header>
         <main>
             <h2>
-                {{.ViewedUser.Login}} ({{.Messages.RegistredAtLabel}} {{.ViewedUser.RegistredAt}})
-                {{if .AllowedToUpdate}}
-                    [<a href="/admin/user/edit/{{.ViewedUser.Id}}">{{.Messages.EditLinkLabel}}</a>]
-                    [<a href="/admin/user/delete/{{.ViewedUser.Id}}">{{.Messages.DeleteLinkLabel}}</a>]
-                {{end}}
-            </h2>
-            <div>
-                {{range .Groups}}
-                    <div>
-                        <p>{{.DisplayName}}</p>
-                        <ul>
-                            {{range .Roles}}
-                                <li>
-                                    <span>
-                                        {{.Name}}
-                                        ({{range .Actions}}
-                                            {{.}}
-                                        {{end}})
-                                    </span>
-                                <li>
-                            {{end}}
-                        </ul>
-                    </div>
-                {{end}}
-            </div>
+{{.ViewedUser.Login}} ({{.Messages.RegistredAtLabel}} {{.ViewedUser.RegistredAt}})
+{{if .AllowedToUpdate}}
+[<a href="/admin/user/edit/{{.ViewedUser.Id}}">{{.Messages.EditLinkLabel}}</a>]
+[<a href="/admin/user/delete/{{.ViewedUser.Id}}">{{.Messages.DeleteLinkLabel}}</a>]
+{{end}}
+</h2>
+<div>
+{{range .Groups}}
+<div>
+<p>{{.DisplayName}}</p>
+<ul>
+{{range .Roles}}
+<li>
+<span>
+{{.Name}}
+({{range .Actions}}
+{{.}}
+{{end}})
+</span>
+<li>
+{{end}}
+</ul>
+</div>
+{{end}}
+</div>
+
         </main>
         <footer>
         </footer>
