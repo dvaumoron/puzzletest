@@ -1,0 +1,31 @@
+
+<h2>{{.WikiTitle}}</h2>
+
+<ul>
+    {{$baseUrl := .BaseUrl}}
+    {{$wikiTitle := .WikiTitle}}
+    {{$viewLinkLabel := .Messages.ViewLinkLabel}}
+    {{if .AllowedToDelete}}
+        {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
+        {{range .Versions}}
+            <li>
+                <ul>
+                    <li>{{.Number}}</li>
+                    <li>{{template "profileLink" .Creator}}</li>
+                    <li><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{$viewLinkLabel}}</a></li>
+                    <li><a href="{{$baseUrl}}delete/{{$wikiTitle}}?version={{.Number}}">{{$deleteLinkLabel}}</a></li>
+                </ul>
+            </li>
+        {{end}}
+    {{else}}
+        {{range .Versions}}
+            <li>
+                <ul>
+                    <li>{{.Number}}</li>
+                    <li>{{template "profileLink" .Creator}}</li>
+                    <li><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{$viewLinkLabel}}</a></li>
+                </ul>
+            </li>
+        {{end}}
+    {{end}}
+</ul>

@@ -95,7 +95,7 @@
 <div><button type="button" id="changePasswordButton">{{.Messages.SaveLinkLabel}}</button></div>
 </form>
 <h3>{{.Messages.EditProfileLabel}}</h3>
-<form action="/profile/save" method="POST">
+<form action="/profile/save" method="POST" enctype="multipart/form-data">
 <div>
 <label>
 {{.Messages.UserPicLabel}}
