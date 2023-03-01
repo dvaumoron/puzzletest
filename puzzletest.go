@@ -22,7 +22,6 @@ import (
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
-	"github.com/dvaumoron/puzzleweb/builder"
 	"github.com/dvaumoron/puzzleweb/forum"
 	"github.com/dvaumoron/puzzleweb/wiki"
 )
@@ -33,7 +32,7 @@ const blogGroupId = 4
 const forumGroupId = 5
 
 func main() {
-	site, globalConfig := builder.BuildDefaultSite()
+	site, globalConfig := puzzleweb.BuildDefaultSite()
 	rightClient := globalConfig.RightClient
 
 	// create group for permissions
@@ -49,9 +48,8 @@ func main() {
 		site.HTMLRender = puzzleweb.LoadTemplates(globalConfig.TemplatesPath)
 	}
 
-	authConfig := globalConfig.ExtractAuthConfig()
-	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "about"+ext, authConfig))
-	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "faq"+ext, authConfig))
+	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "about"+ext))
+	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "faq"+ext))
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)

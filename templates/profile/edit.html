@@ -2,7 +2,7 @@
     <a href="/profile/view/{{.Id}}">{{.Login}}</a>
 {{end}}
 {{define "profilePicture"}}
-    <img src="/profilePic/{{.Id}}" alt="{{.Login}}"/>
+    <img src="/profile/picture/{{.Id}}" alt="{{.Login}}"/>
 {{end}}
 {{define "profilePictureLink"}}
     <a href="/profile/view/{{.Id}}">
@@ -25,7 +25,7 @@
             {{if .LoginUrl}}
                 <p>
                     {{if .Login}}
-                        {{.Messages.WelcomeLabel}} {{.Login}}
+                        {{.Messages.WelcomeLabel}} {{template "profileLink" .}}
                         <a href="{{.LoginUrl}}">{{.Messages.LogoutLinkLabel}}</a>
                     {{else}}
                         <a href="{{.LoginUrl}}">{{.Messages.LoginLinkLabel}}</a>
@@ -69,7 +69,7 @@
 <div><button type="submit">{{.Messages.SaveLinkLabel}}</button></div>
 </form>
 <h3>{{.Messages.ChangePasswordLabel}}</h3>
-<form id="changePasswordForm" action="/profile/changePassword" method="POST">
+<form id="changePasswordForm" action="/profile/changePassword" method="POST" enctype="multipart/form-data">
 <div>
 <label>
 {{.Messages.OldPasswordLabel}}
@@ -95,7 +95,7 @@
 <div><button type="button" id="changePasswordButton">{{.Messages.SaveLinkLabel}}</button></div>
 </form>
 <h3>{{.Messages.EditProfileLabel}}</h3>
-<form action="/profile/save" method="POST" enctype="multipart/form-data">
+<form action="/profile/save" method="POST">
 <div>
 <label>
 {{.Messages.UserPicLabel}}
