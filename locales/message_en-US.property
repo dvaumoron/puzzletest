@@ -85,7 +85,8 @@ CreateThreadTitle=Thread creation
 ResponseMessageLabel=Respond with a message
 
 # custom page title
-PageTitleRoot=Main
+PageTitleRoot=Main page
+PageTitleNotFound=Page not found
 PageTitleAbout=About
 PageTitleFaq=Frequently asked questions
 PageTitleWiki=Wiki

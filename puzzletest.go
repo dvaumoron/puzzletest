@@ -48,6 +48,7 @@ func main() {
 		site.HTMLRender = puzzleweb.LoadTemplates(globalConfig.TemplatesPath)
 	}
 
+	site.AddPage(puzzleweb.MakeHiddenStaticPage("notFound", adminservice.PublicGroupId, "notFound"+ext))
 	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "about"+ext))
 	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "faq"+ext))
 
@@ -60,6 +61,8 @@ func main() {
 	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
 	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
 	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId, "forum/list"+ext, "forum/view"+ext, "forum/create"+ext)))
+
+	site.Page404Url = "/notFound"
 
 	site.Run(globalConfig.ExtractSiteConfig())
 }

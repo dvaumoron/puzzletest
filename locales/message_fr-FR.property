@@ -86,6 +86,7 @@ ResponseMessageLabel=Répondre avec un message
 
 # custom page title
 PageTitleRoot=Page principale
+PageTitleNotFound=Page non trouvée
 PageTitleAbout=A propos
 PageTitleFaq=Foire aux questions
 PageTitleWiki=Wiki
