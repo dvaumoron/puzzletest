@@ -84,6 +84,12 @@ ThreadsLabel=Threads
 CreateThreadTitle=Thread creation
 ResponseMessageLabel=Respond with a message
 
+# custom group label
+GroupLabelWikiGroup1=Wiki & Wiki 2
+GroupLabelWikiGroup2=Wiki 3
+GroupLabelBlogGroup=Blog
+GroupLabelForumGroup=Forum
+
 # custom page title
 PageTitleRoot=Main page
 PageTitleNotFound=Page not found

@@ -84,6 +84,12 @@ ThreadsLabel=Discussions
 CreateThreadTitle=Création d'un fil de discussion
 ResponseMessageLabel=Répondre avec un message
 
+# custom group label
+GroupLabelWikiGroup1=Wiki & Wiki 2
+GroupLabelWikiGroup2=Wiki 3
+GroupLabelBlogGroup=Blog
+GroupLabelForumGroup=Forum
+
 # custom page title
 PageTitleRoot=Page principale
 PageTitleNotFound=Page non trouvée

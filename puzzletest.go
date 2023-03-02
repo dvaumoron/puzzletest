@@ -36,10 +36,10 @@ func main() {
 	rightClient := globalConfig.RightClient
 
 	// create group for permissions
-	rightClient.RegisterGroup(wikiGroup1Id, "wiki.group1")
-	rightClient.RegisterGroup(wikiGroup2Id, "wiki.group2")
-	rightClient.RegisterGroup(blogGroupId, "blog.group")
-	rightClient.RegisterGroup(forumGroupId, "forum.group")
+	rightClient.RegisterGroup(wikiGroup1Id, "wikiGroup1")
+	rightClient.RegisterGroup(wikiGroup2Id, "wikiGroup2")
+	rightClient.RegisterGroup(blogGroupId, "blogGroup")
+	rightClient.RegisterGroup(forumGroupId, "forumGroup")
 
 	ext := globalConfig.TemplatesExt
 	if ext == ".il" {
