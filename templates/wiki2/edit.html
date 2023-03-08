@@ -55,7 +55,9 @@
         <main>
             <h2>
 {{.Messages.EditLabel}} {{.WikiTitle}}
+{{if ne .WikiVersion "0"}}
 [<a href="{{.BaseUrl}}view/{{.WikiTitle}}">{{.Messages.CancelLinkLabel}}</a>]
+{{end}}
 </h2>
 <form action="{{.BaseUrl}}save/{{.WikiTitle}}" method="POST">
 <div><textarea name="content" rows="20" cols="80">{{.WikiContent}}</textarea></div>

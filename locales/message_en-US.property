@@ -30,6 +30,7 @@ PageTitleLogin=Connection
 EmptyLogin=You have not entered the login
 WrongLogin=Wrong login or password
 ExistingLogin=login already used
+EmptyPassword=You have not entered the password
 WrongConfirmPassword=The password confirmation does not match
 LoginLabel=Login
 PasswordLabel=Password
@@ -78,11 +79,16 @@ LeaveCommentLabel=Leave a comment
 NoComment=No comment to display
 UseMarkdownLabel=You can use Markdown syntax
 ModifiedMarkdown=The preview was not updated
+EmptyPostTitle=You have not entered a title
+EmptyPostContent=You have not entered a content
+EmptyComment=You have not entered a comment
 
 # forum
 ThreadsLabel=Threads
 CreateThreadTitle=Thread creation
 ResponseMessageLabel=Respond with a message
+EmptyThreadTitle=You have not entered a title
+EmptyForumMessage=You have not entered a message
 
 # custom group label
 GroupLabelWikiGroup1=Wiki & Wiki 2

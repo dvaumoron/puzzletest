@@ -30,6 +30,7 @@ PageTitleLogin=Connexion
 EmptyLogin=Vous n'avez pas renseigné d'identifiant
 WrongLogin=Erreur d'identifiant ou de mot de passe
 ExistingLogin=Identifiant déjà utilisé
+EmptyPassword=Vous n'avez pas renseigné le mot de passe
 WrongConfirmPassword=La confirmation du mot de passe ne correspond pas
 LoginLabel=Identifiant
 PasswordLabel=Mot de passe
@@ -78,11 +79,16 @@ LeaveCommentLabel=Laisser un commentaire
 NoComment=Il n'y a pas de commentaires à afficher
 UseMarkdownLabel=Vous pouvez utiliser la syntaxe Markdown
 ModifiedMarkdown=L'aperçu n'est pas à jour
+EmptyPostTitle=Vous n'avez pas renseigné de titre
+EmptyPostContent=Vous n'avez pas renseigné de contenu
+EmptyComment=Vous n'avez pas renseigné de commentaire
 
 # forum
 ThreadsLabel=Discussions
 CreateThreadTitle=Création d'un fil de discussion
 ResponseMessageLabel=Répondre avec un message
+EmptyThreadTitle=Vous n'avez pas renseigné de titre
+EmptyForumMessage=Vous n'avez pas renseigné de message
 
 # custom group label
 GroupLabelWikiGroup1=Wiki & Wiki 2
