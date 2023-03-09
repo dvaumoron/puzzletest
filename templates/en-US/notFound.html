@@ -9,54 +9,88 @@
         {{template "profilePicture" .}}
     </a>
 {{end}}
+{{define "navListItem"}}
+    {{if .Login}}
+        <li>{{.Messages.WelcomeLabel}} {{template "profileLink" .}}</li>
+        <li><a href="/settings">{{.Messages.PageTitleSettings}}</a></li>
+        {{if .ViewAdmin}}
+            <li><a href="/admin">{{.Messages.PageTitleAdmin}}</a></li>
+        {{end}}
+        <li><a href="{{.LoginUrl}}">{{.Messages.LogoutLinkLabel}}</a></li>
+    {{else}}
+        <li><a href="{{.LoginUrl}}">{{.Messages.LoginLinkLabel}}</a></li>
+    {{end}}
+{{end}}
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>PuzzleTest - {{.PageTitle}}</title>
-        <link rel="stylesheet" type="text/css" href="/static/main.css"/>
-        <script type="text/javascript" src="/static/js/wasm_exec.js"></script>
-        <script type="text/javascript" src="/static/js/main.js"></script>
-        <script type="text/javascript" src="/static/js/wiki_link.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="/static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         
     </head>
     <body>
-        <header>
-            <h1>{{.PageTitle}}</h1>
-            {{if .LoginUrl}}
-                <ul class="user-tools">
-                    {{if .Login}}
-                        <li>{{.Messages.WelcomeLabel}} {{template "profileLink" .}}</li>
-                        <li><a href="/settings">{{.Messages.PageTitleSettings}}</a></li>
-                        {{if .ViewAdmin}}
-                            <li><a href="/admin">{{.Messages.PageTitleAdmin}}</a></li>
-                        {{end}}
-                        <li><a href="{{.LoginUrl}}">{{.Messages.LogoutLinkLabel}}</a></li>
-                    {{else}}
-                        <li><a href="{{.LoginUrl}}">{{.Messages.LoginLinkLabel}}</a></li>
+        <div class="navbar-fixed">
+            <nav class="nav-extended white" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="/" class="brand-logo">PuzzleTest</a>
+                    {{if .LoginUrl}}
+                        <ul class="right hide-on-med-and-down">
+                            {{template "navListItem" .}}
+                        </ul>
+                        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     {{end}}
-                </ul>
-            {{end}}
-            {{with .ErrorMsg}}
-                <div class="error">{{.}}</div>
-            {{end}}
-            <p class="ariane">
-                <a href="/">PuzzleTest</a>
-                {{range .Ariane}}
-                    / <a href="{{.Url}}">{{.Name}}</a>
-                {{end}}
-            </p>
-            <ul class="sub-pages">
-                {{range .SubPages}}
-                    <li><a href="{{.Url}}">{{.Name}}</a></li>
-                {{end}}
+                    <div class="col s12">
+                        <a href="/" class="breadcrumb">PuzzleTest</a>
+                        {{range .Ariane}}
+                            <a href="{{.Url}}" class="breadcrumb">{{.Name}}</a>
+                        {{end}}
+                    </div>
+                </div>
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        {{range .SubPages}}
+                            <li class="tab"><a href="{{.Url}}">{{.Name}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        {{if .LoginUrl}}
+            <ul id="nav-mobile" class="sidenav">
+                {{template "navListItem" .}}
             </ul>
-        </header>
-        <main>
-            <p>This page was not found.</p>
+        {{end}}
+        <div id="index-banner" class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2">{{.PageTitle}}</h1>
+                {{with .ErrorMsg}}
+                    <div class="row center">
+                        <h5 class="header col s12 light materialize-red-text">{{.}}</h5>
+                    </div>
+                {{end}}
+                <br><br>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <p>This page was not found.</p>
 
-        </main>
-        <footer>
+            </div>
+        </div>
+        <footer class="page-footer teal">
+            <div class="footer-copyright">
+                <div class="container">
+                    Made with <a class="brown-text text-lighten-3" href="https://github.com/dvaumoron/puzzleweb">PuzzleWeb</a> and <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                </div>
+            </div>
         </footer>
+        <script src="/static/js/wasm_exec.js"></script>
+        <script src="/static/js/wiki_link.js"></script>
+        <script src="/static/js/materialize.min.js"></script>
+        <script src="/static/js/main.js"></script>
     </body>
 </html>

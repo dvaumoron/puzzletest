@@ -4,3 +4,8 @@ WebAssembly.instantiateStreaming(fetch("/static/puzzlefront.wasm"), go.importObj
 
     initWikiLink();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems);
+});

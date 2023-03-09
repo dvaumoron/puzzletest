@@ -20,7 +20,7 @@
 <div class="pagination">
     {{if .PreviousPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hidden">
+            <div class="hiddendiv">
                 <input type="text" name="pageNumber" value="{{.PreviousPageNumber}}"/>
             </div>
             <div><button type="submit">{{.Messages.PreviousPageLinkLabel}}</button></div>
@@ -29,7 +29,7 @@
 
     {{if .NextPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hidden">
+            <div class="hiddendiv">
                 <input type="text" name="pageNumber" value="{{.NextPageNumber}}"/>
             </div>
             <div><button type="submit">{{.Messages.NextPageLinkLabel}}</button></div>
@@ -41,7 +41,7 @@
 {{if .AllowedToCreate}}
     <form id="commentForm" action="{{.BaseUrl}}comment/save/{{$postId}}" method="POST">
         <div><textarea id="commentField" name="comment" rows="20" cols="80">{{.Messages.LeaveCommentLabel}}</textarea></div>
-        <div class="hidden">
+        <div class="hiddendiv">
             {{/* to allow JavaScript or WebAssembly to detect unmodified localized comment */}}
             <span id="unmodifiedComment">{{.Messages.LeaveCommentLabel}}</span>
             {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
@@ -52,7 +52,7 @@
 {{end}}
 
 {{with .CommentMsg}}
-    <div class="error">{{.}}</div>
+    <div class="materialize-red-text">{{.}}</div>
 {{end}}
 
 <ul>

@@ -9,13 +9,13 @@
 </h2>
 
 <form id="editRoleForm" action="/admin/role/save" method="POST">
-    <div {{if ne .RoleName "new"}} class="hidden" {{end}}>
+    <div {{if ne .RoleName "new"}} class="hiddendiv" {{end}}>
         <label>
             {{.Messages.NameLabel}}
             <input type="text" id="editRoleNameField" name="RoleName" value="{{.RoleName}}"/>
         </label>
     </div>
-    <div class="hidden">
+    <div class="hiddendiv">
         {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
         <span id="errorBadRoleNameMessage">{{.Messages.ErrorBadRoleName}}</span>
         <input type="text" name="Group" value="{{.Group}}"/>

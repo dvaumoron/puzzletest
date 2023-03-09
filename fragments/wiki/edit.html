@@ -8,7 +8,7 @@
 
 <form action="{{.BaseUrl}}save/{{.WikiTitle}}" method="POST">
     <div><textarea name="content" rows="20" cols="80">{{.WikiContent}}</textarea></div>
-    <div class="hidden">
+    <div class="hiddendiv">
         <input type="text" name="version" value="{{.WikiVersion}}"/>
     </div>
     <div><button type="submit">{{.Messages.SaveLinkLabel}}</button></div>

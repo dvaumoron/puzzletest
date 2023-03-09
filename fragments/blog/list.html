@@ -7,7 +7,7 @@
                 <input type="text" name="filter"/>
             </label>
         </div>
-        <div class="hidden">
+        <div class="hiddendiv">
             <input type="text" name="pageNumber" value="1"/>
         </div>
         <div><button type="submit">{{.Messages.FilterLinkLabel}}</button></div>
@@ -17,7 +17,7 @@
 <div class="pagination">
     {{if .PreviousPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hidden">
+            <div class="hiddendiv">
                 <input type="text" name="pageNumber" value="{{.PreviousPageNumber}}"/>
                 {{if .Filter}}
                     <input type="text" name="filter" value="{{.Filter}}"/>
@@ -29,7 +29,7 @@
 
     {{if .NextPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hidden">
+            <div class="hiddendiv">
                 <input type="text" name="pageNumber" value="{{.NextPageNumber}}"/>
                 {{if .Filter}}
                     <input type="text" name="filter" value="{{.Filter}}"/>
