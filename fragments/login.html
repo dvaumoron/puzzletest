@@ -12,13 +12,13 @@
             <input type="password" id="passwordField" name="Password"/>
         </label>
     </div>
-    <div id="confirmPasswordBlock" class="hiddendiv">
+    <div id="confirmPasswordBlock" class="hide">
         <label>
             {{.Messages.ConfirmPasswordLabel}}
             <input type="password" id="confirmPasswordField" name="ConfirmPassword"/>
         </label>
     </div>
-    <div class="hiddendiv">
+    <div class="hide">
         <input type="text" id="loginRegisterField" name="Register"/>
         <input type="text" name="Redirect" value="{{.Redirect}}"/>
         <input type="text" name="PrevUrlWithError" value="{{.PrevUrlWithError}}"/>
@@ -30,6 +30,6 @@
     <div><button type="button" id="loginSubmitButton">{{.Messages.LoginLinkLabel}}</button></div>
     <div>
         <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
-        <button type="button" id="loginRegisterButton2" class="hiddendiv">{{.Messages.RegisterLinkLabel}}</button>
+        <button type="button" id="loginRegisterButton2" class="hide">{{.Messages.RegisterLinkLabel}}</button>
     </div>
 </form>

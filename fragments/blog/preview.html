@@ -16,9 +16,7 @@
         </label>
     </div>
     <div><textarea id="postMarkdownField" name="markdown" rows="20" cols="80">{{.Markdown}}</textarea></div>
-    <div class="hiddendiv">
-        {{/* to allow JavaScript or WebAssembly to detect unmodified localized message */}}
-        <span id="unmodifiedMessage">{{.Messages.UseMarkdownLabel}}</span>    
+    <div class="hide">
         {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
         <span id="errorEmptyPostTitleMessage">{{.Messages.EmptyPostTitle}}</span>
         <span id="errorEmptyPostContentMessage">{{.Messages.EmptyPostContent}}</span>

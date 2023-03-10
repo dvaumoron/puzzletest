@@ -13,7 +13,7 @@
                 <input type="text" name="filter"/>
             </label>
         </div>
-        <div class="hiddendiv">
+        <div class="hide">
             <input type="text" name="pageNumber" value="1"/>
         </div>
         <div><button type="submit">{{.Messages.FilterLinkLabel}}</button></div>
@@ -23,7 +23,7 @@
 <div class="pagination">
     {{if .PreviousPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hiddendiv">
+            <div class="hide">
                 <input type="text" name="pageNumber" value="{{.PreviousPageNumber}}"/>
                 {{if .Filter}}
                     <input type="text" name="filter" value="{{.Filter}}"/>
@@ -35,7 +35,7 @@
 
     {{if .NextPageNumber}}
         <form action="{{.CurrentUrl}}" method="GET">
-            <div class="hiddendiv">
+            <div class="hide">
                 <input type="text" name="pageNumber" value="{{.NextPageNumber}}"/>
                 {{if .Filter}}
                     <input type="text" name="filter" value="{{.Filter}}"/>
@@ -49,10 +49,8 @@
 {{$threadId := .Thread.Id}}
 {{if .AllowedToCreate}}
     <form id="createForumMessageForm" action="{{.BaseUrl}}message/save/{{$threadId}}" method="POST">
-        <div><textarea id="forumMessageField" name="message" rows="20" cols="80">{{.Messages.ResponseMessageLabel}}</textarea></div>
-        <div class="hiddendiv">
-            {{/* to allow JavaScript or WebAssembly to detect unmodified localized message */}}
-            <span id="unmodifiedMessage">{{.Messages.ResponseMessageLabel}}</span>
+        <div><textarea id="forumMessageField" name="message" rows="20" cols="80" placeholder="{{.Messages.ResponseMessageLabel}}"></textarea></div>
+        <div class="hide">
             {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
             <span id="errorEmptyForumMessageMessage">{{.Messages.EmptyForumMessage}}</span>
         </div>
