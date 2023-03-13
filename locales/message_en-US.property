@@ -1,5 +1,6 @@
 # general
 WrongLang=The asked language is not available
+SelectLangLabel=Language
 NoElement=No element to display
 ErrorNotAuthorized=Not authorized action
 ErrorTechnicalProblem=A technical problem has occurred
@@ -61,6 +62,7 @@ UserDescLabel=
 
 # settings
 PageTitleSettings=Settings
+lang=Display language
 
 # wiki
 BaseVersionOutdated=The page have been updated by another user
@@ -104,6 +106,3 @@ PageTitleWiki2=Wiki 2
 PageTitleWiki3=Wiki 3
 PageTitleBlog=Blog
 PageTitleForum=Forum
-
-# settings
-lang=Language

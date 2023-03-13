@@ -71,6 +71,19 @@
             <ul>
                 <li><a href="/"><img src="/favicon.ico"/></a></li>
                 <li>{{.PageTitle}}</li>
+                {{if .LangSelectorUrl}}
+                    <li>
+                        <details role="list">
+                            <summary>{{.Messages.SelectLangLabel}}</summary>
+                            {{$langSelectorUrl := .LangSelectorUrl}}
+                            <ul>
+                                {{range .AllLang}}
+                                    <li><a href="{{$langSelectorUrl}}&lang={{.}}">{{.}}</a></li>
+                                {{end}}
+                            </ul>
+                        </details>
+                    </li>
+                {{end}}
             </ul>
             {{if .LoginUrl}}
                 <ul>
