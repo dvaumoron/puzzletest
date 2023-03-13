@@ -1,12 +1,10 @@
 
 <h2>
     {{.Messages.EditLabel}} {{.ViewedUser.Login}}
-    [<a href="/profile/view/{{.ViewedUser.Id}}">{{.Messages.CancelLinkLabel}}</a>]
+    <a href="/profile/view/{{.ViewedUser.Id}}" role="button">{{.Messages.CancelLinkLabel}}</a>
 </h2>
 
-<div>{{template "profilePicture" .ViewedUser}}</div>
-
-<h3>{{.Messages.ChangeLoginLabel}}</h3>
+<p>{{template "profilePicture" .ViewedUser}}</p>
 
 <div class="hide">
     {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
@@ -16,62 +14,45 @@
 </div>
 
 <form id="changeLoginForm" action="/profile/changeLogin" method="POST">
-    <div>
-        <label>
-            {{.Messages.NewLoginLabel}}
-            <input type="text" id="loginField" name="Login"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            {{.Messages.PasswordLabel}}
-            <input type="password" id="passwordField" name="Password"/>
-        </label>
-    </div>
-    <div><button type="button" id="changeLoginButton">{{.Messages.SaveLinkLabel}}</button></div>
+    <h3>{{.Messages.ChangeLoginLabel}}</h3>
+    <label>
+        {{.Messages.NewLoginLabel}}
+        <input type="text" id="loginField" name="Login"/>
+    </label>
+    <label>
+        {{.Messages.PasswordLabel}}
+        <input type="password" id="passwordField" name="Password"/>
+    </label>
+    <button type="button" id="changeLoginButton">{{.Messages.SaveLinkLabel}}</button>
 </form>
 
-<h3>{{.Messages.ChangePasswordLabel}}</h3>
-
 <form id="changePasswordForm" action="/profile/changePassword" method="POST">
-    <div>
-        <label>
-            {{.Messages.OldPasswordLabel}}
-            <input type="password" name="oldPassword"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            {{.Messages.NewPasswordLabel}}
-            <input type="password" id="changePasswordField" name="newPassword"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            {{.Messages.ConfirmPasswordLabel}}
-            <input type="password" id="confirmChangePasswordField" name="ConfirmPassword"/>
-        </label>
-    </div>
+    <h3>{{.Messages.ChangePasswordLabel}}</h3>
+    <label>
+        {{.Messages.OldPasswordLabel}}
+        <input type="password" name="oldPassword"/>
+    </label>
+    <label>
+        {{.Messages.NewPasswordLabel}}
+        <input type="password" id="changePasswordField" name="newPassword"/>
+    </label>
+    <label>
+        {{.Messages.ConfirmPasswordLabel}}
+        <input type="password" id="confirmChangePasswordField" name="ConfirmPassword"/>
+    </label>
     <div><button type="button" id="changePasswordButton">{{.Messages.SaveLinkLabel}}</button></div>
 </form>
 
-<h3>{{.Messages.EditProfileLabel}}</h3>
-
 <form action="/profile/save" method="POST" enctype="multipart/form-data">
-    <div>
-        <label>
-            {{.Messages.UserPicLabel}}
-            <input type="file" name="picture" accept="image/png, image/jpeg"/>
-        </label>
-    </div>
-    
-    <div>
-        <label>
-            {{.Messages.UserDescLabel}}
-            <input type="text" name="userDesc" value="{{.ViewedUser.Desc}}"/>
-        </label>
-    </div>
-
+    <h3>{{.Messages.EditProfileLabel}}</h3>
+    <label>
+        {{.Messages.UserPicLabel}}
+        <input type="file" name="picture" accept="image/png, image/jpeg"/>
+    </label>
+    <label>
+        {{.Messages.UserDescLabel}}
+        <input type="text" name="userDesc" value="{{.ViewedUser.Desc}}"/>
+    </label>
     <ul>
         {{$messages := .Messages}}
         {{range $key, $value := .ViewedUser.Info}}
@@ -83,6 +64,5 @@
             </li>
         {{end}}
     </ul>
-
-    <div><button type="submit">{{.Messages.SaveLinkLabel}}</button></div>
+    <button type="submit">{{.Messages.SaveLinkLabel}}</button>
 </form>

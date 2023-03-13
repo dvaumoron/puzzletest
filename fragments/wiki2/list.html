@@ -1,31 +1,26 @@
 
-<h2>{{.WikiTitle}}</h2>
+{{$baseUrl := .BaseUrl}}
+{{$wikiTitle := .WikiTitle}}
+<h2>
+    {{$wikiTitle}}
+    <a href="{{$baseUrl}}view/{{$wikiTitle}}" role="button">{{.Messages.CancelLinkLabel}}</a>
+</h2>
 
-<ul>
-    {{$baseUrl := .BaseUrl}}
-    {{$wikiTitle := .WikiTitle}}
-    {{$viewLinkLabel := .Messages.ViewLinkLabel}}
-    {{if .AllowedToDelete}}
-        {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
-        {{range .Versions}}
-            <li>
-                <ul>
-                    <li>{{.Number}}</li>
-                    <li>{{template "profileLink" .Creator}}</li>
-                    <li><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{$viewLinkLabel}}</a></li>
-                    <li><a href="{{$baseUrl}}delete/{{$wikiTitle}}?version={{.Number}}">{{$deleteLinkLabel}}</a></li>
-                </ul>
-            </li>
-        {{end}}
-    {{else}}
-        {{range .Versions}}
-            <li>
-                <ul>
-                    <li>{{.Number}}</li>
-                    <li>{{template "profileLink" .Creator}}</li>
-                    <li><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{$viewLinkLabel}}</a></li>
-                </ul>
-            </li>
-        {{end}}
+{{$viewLinkLabel := .Messages.ViewLinkLabel}}
+{{if .AllowedToDelete}}
+    {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
+    {{range .Versions}}
+        <div class="grid">
+            <p><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{.Number}}</a></p>
+            <p>{{template "profileLink" .Creator}}</p>
+            <p><a href="{{$baseUrl}}delete/{{$wikiTitle}}?version={{.Number}}" class="contrast" role="button">{{$deleteLinkLabel}}</a></p>
+        </div>
     {{end}}
-</ul>
+{{else}}
+    {{range .Versions}}
+        <div class="grid">
+            <p><a href="{{$baseUrl}}view/{{$wikiTitle}}?version={{.Number}}">{{.Number}}</a></p>
+            <p>{{template "profileLink" .Creator}}</p>
+        </div>
+    {{end}}
+{{end}}

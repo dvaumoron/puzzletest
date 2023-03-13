@@ -9,7 +9,7 @@
         {{.Messages.TitleLabel}}
         <input type="text" id="postTitleField" name="title"/>
     </label>
-    <textarea id="postMarkdownField" name="markdown" rows="20" cols="80" placeholder="{{.Messages.UseMarkdownLabel}}"></textarea>
+    <textarea id="postMarkdownField" name="markdown" rows="20" placeholder="{{.Messages.UseMarkdownLabel}}"></textarea>
     <div class="hide">
         {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
         <span id="errorEmptyPostTitleMessage">{{.Messages.EmptyPostTitle}}</span>

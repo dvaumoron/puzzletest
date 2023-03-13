@@ -1,17 +1,13 @@
 
 <form id="loginForm" action="/login/submit" method="POST">
-    <div>
-        <label>
-            {{.Messages.LoginLabel}}
-            <input type="text" id="loginField" name="Login"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            {{.Messages.PasswordLabel}}
-            <input type="password" id="passwordField" name="Password"/>
-        </label>
-    </div>
+    <label>
+        {{.Messages.LoginLabel}}
+        <input type="text" id="loginField" name="Login"/>
+    </label>
+    <label>
+        {{.Messages.PasswordLabel}}
+        <input type="password" id="passwordField" name="Password"/>
+    </label>
     <div id="confirmPasswordBlock" class="hide">
         <label>
             {{.Messages.ConfirmPasswordLabel}}
@@ -27,7 +23,7 @@
         <span id="errorEmptyPasswordMessage">{{.Messages.EmptyPassword}}</span>
         <span id="errorWrongConfimPasswordMessage">{{.Messages.WrongConfirmPassword}}</span>
     </div>
-    <div><button type="button" id="loginSubmitButton">{{.Messages.LoginLinkLabel}}</button></div>
+    <button type="button" id="loginSubmitButton">{{.Messages.LoginLinkLabel}}</button>
     <div>
         <button type="button" id="loginRegisterButton">{{.Messages.RegisterLinkLabel}}</button>
         <button type="button" id="loginRegisterButton2" class="hide">{{.Messages.RegisterLinkLabel}}</button>

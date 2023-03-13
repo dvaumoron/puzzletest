@@ -8,6 +8,7 @@ ErrorUnknownUser=Unknown user
 WelcomeLabel=Welcome
 GroupLabelAdmin=Role administration
 GroupLabelPublic=Public part of the site
+GroupDescPublic=On public part, all is visible and all identified user can edit
 TitleLabel=Title
 NameLabel=Name
 EditLabel=Edition of

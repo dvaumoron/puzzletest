@@ -2,14 +2,14 @@
 <h2>
     {{.Messages.EditLabel}} {{.WikiTitle}}
     {{if ne .WikiVersion "0"}}
-        [<a href="{{.BaseUrl}}view/{{.WikiTitle}}">{{.Messages.CancelLinkLabel}}</a>]
+        <a href="{{.BaseUrl}}view/{{.WikiTitle}}" role="button">{{.Messages.CancelLinkLabel}}</a>
     {{end}}
 </h2>
 
 <form action="{{.BaseUrl}}save/{{.WikiTitle}}" method="POST">
-    <div><textarea name="content" rows="20" cols="80">{{.WikiContent}}</textarea></div>
+    <textarea name="content" rows="20">{{.WikiContent}}</textarea>
     <div class="hide">
         <input type="text" name="version" value="{{.WikiVersion}}"/>
     </div>
-    <div><button type="submit">{{.Messages.SaveLinkLabel}}</button></div>
+    <button type="submit">{{.Messages.SaveLinkLabel}}</button>
 </form>

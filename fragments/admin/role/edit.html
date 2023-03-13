@@ -23,19 +23,19 @@
     <fieldset>
         <label>
             {{.Messages.AccessLabel}}
-            <input type="checkbox" name="actions" value="access" {{with .Access}} checked="{{.}}" {{end}} role="switch"/>
+            <input type="checkbox" name="actions" value="access" {{with .Access}} checked {{end}} role="switch"/>
         </label>
         <label>
             {{.Messages.CreateLabel}}
-            <input type="checkbox" name="actions" value="create" {{with .Create}} checked="{{.}}" {{end}} role="switch"/>
+            <input type="checkbox" name="actions" value="create" {{with .Create}} checked {{end}} role="switch"/>
         </label>
         <label>
             {{.Messages.UpdateLabel}}
-            <input type="checkbox" name="actions" value="update" {{with .Update}} checked="{{.}}" {{end}} role="switch"/>
+            <input type="checkbox" name="actions" value="update" {{with .Update}} checked {{end}} role="switch"/>
         </label>
         <label>
             {{.Messages.DeleteLabel}}
-            <input type="checkbox" name="actions" value="delete" {{with .Delete}} checked="{{.}}" {{end}} role="switch"/>
+            <input type="checkbox" name="actions" value="delete" {{with .Delete}} checked {{end}} role="switch"/>
         </label>
     </fieldset>
     <button type="button" id="saveRoleButton">{{.Messages.SaveLinkLabel}}</button>
