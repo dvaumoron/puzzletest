@@ -5,16 +5,12 @@
 </h2>
 
 <form action="/settings/save" method="POST">
-    <ul>
-        {{$messages := .Messages}}
-        {{range $key, $value := .Settings}}
-            <li>
-                <label>
-                    {{index $messages $key}}
-                    <input type="text" name="settings[{{$key}}]" value="{{$value}}"/>
-                </label>
-            </li>
-        {{end}}
-    </ul>
+    {{$messages := .Messages}}
+    {{range $key, $value := .Settings}}
+        <label>
+            {{index $messages $key}}
+            <input type="text" name="settings[{{$key}}]" value="{{$value}}"/>
+        </label>
+    {{end}}
     <button type="submit">{{.Messages.SaveLinkLabel}}</button>
 </form>

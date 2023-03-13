@@ -5,8 +5,10 @@
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
 {{define "profilePictureLink"}}
-    <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
-    <p>{{template "profileLink" .}}</p>
+    <div>
+        <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
+        <p>{{template "profileLink" .}}</p>
+    </div>
 {{end}}
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET">
@@ -111,17 +113,13 @@
 <a href="/" role="button">{{.Messages.CancelLinkLabel}}</a>
 </h2>
 <form action="/settings/save" method="POST">
-<ul>
 {{$messages := .Messages}}
 {{range $key, $value := .Settings}}
-<li>
 <label>
 {{index $messages $key}}
 <input type="text" name="settings[{{$key}}]" value="{{$value}}"/>
 </label>
-</li>
 {{end}}
-</ul>
 <button type="submit">{{.Messages.SaveLinkLabel}}</button>
 </form>
 

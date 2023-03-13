@@ -5,8 +5,10 @@
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
 {{define "profilePictureLink"}}
-    <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
-    <p>{{template "profileLink" .}}</p>
+    <div>
+        <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
+        <p>{{template "profileLink" .}}</p>
+    </div>
 {{end}}
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET">

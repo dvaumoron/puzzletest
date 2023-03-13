@@ -14,22 +14,22 @@
     {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
     {{range .ForumMessages}}
         <div class="grid">
+            {{template "profilePictureLink" .Creator}}
             <div>
-                {{template "profilePictureLink" .Creator}}
                 <p>{{.Date}}</p>
+                <p>{{.Text}}</p>
             </div>
-            <p>{{.Text}}</p>
             <p><a href="{{$baseUrl}}message/delete/{{$threadId}}/{{.Id}}" class="contrast" role="button">{{$deleteLinkLabel}}</a></p>
         </div>
     {{end}}
 {{else}}
     {{range .ForumMessages}}
         <div class="grid">
+            {{template "profilePictureLink" .Creator}}
             <div>
-                {{template "profilePictureLink" .Creator}}
                 <p>{{.Date}}</p>
+                <p>{{.Text}}</p>
             </div>
-            <p>{{.Text}}</p>
         </div>
     {{end}}
 {{end}}
@@ -41,6 +41,6 @@
             {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
             <span id="errorEmptyForumMessageMessage">{{.Messages.EmptyForumMessage}}</span>
         </div>
-        <button type="button" id="createForumMessageButton" class="secondary">{{.Messages.CreateLinkLabel}}</button>
+        <button type="button" id="createForumMessageButton" class="secondary">{{.Messages.PublishLinkLabel}}</button>
     </form>
 {{end}}

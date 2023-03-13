@@ -5,8 +5,10 @@
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
 {{define "profilePictureLink"}}
-    <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
-    <p>{{template "profileLink" .}}</p>
+    <div>
+        <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
+        <p>{{template "profileLink" .}}</p>
+    </div>
 {{end}}
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET">
@@ -118,7 +120,6 @@
 </header>
 <div>{{.Post.Content}}</div>
 <br/>
-<section>
 {{template "paginate" .}}
 {{$postId := .Post.PostId}}
 {{if .AllowedToCreate}}
@@ -128,7 +129,7 @@
 {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
 <span id="errorEmptyCommentMessage">{{.Messages.EmptyComment}}</span>
 </div>
-<button type="button" id="commentButton" class="secondary">{{.Messages.CreateLinkLabel}}</button>
+<button type="button" id="commentButton" class="secondary">{{.Messages.PublishLinkLabel}}</button>
 </form>
 {{end}}
 {{with .CommentMsg}}
@@ -140,9 +141,7 @@
 {{range .Comments}}
 <article>
 <div class="grid">
-<div>
 {{template "profilePictureLink" .Creator}}
-</div>
 <div>
 <p>{{.Date}}</p>
 <p>{{.Text}}</p>
@@ -157,9 +156,7 @@
 {{range .Comments}}
 <article>
 <div class="grid">
-<div>
 {{template "profilePictureLink" .Creator}}
-</div>
 <div>
 <p>{{.Date}}</p>
 <p>{{.Text}}</p>
@@ -168,7 +165,6 @@
 </article>
 {{end}}
 {{end}}
-</section>
 
         </div>
         <footer class="container-fluid">

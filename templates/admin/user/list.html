@@ -5,8 +5,10 @@
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
 {{define "profilePictureLink"}}
-    <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
-    <p>{{template "profileLink" .}}</p>
+    <div>
+        <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
+        <p>{{template "profileLink" .}}</p>
+    </div>
 {{end}}
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET">
@@ -112,8 +114,8 @@
 {{$viewLinkLabel := .Messages.ViewLinkLabel}}
 {{range .Users}}
 <div class="grid">
-{{template "profileLink" .}}
-<a href="/admin/user/view/{{.Id}}" role="button">{{$viewLinkLabel}}</a>
+<p>{{template "profileLink" .}}</p>
+<p><a href="/admin/user/view/{{.Id}}" role="button">{{$viewLinkLabel}}</a></p>
 </div>
 {{end}}
 

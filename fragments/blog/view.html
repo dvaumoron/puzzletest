@@ -14,57 +14,51 @@
 
 <br/>
 
-<section>
-    {{template "paginate" .}}
+{{template "paginate" .}}
 
-    {{$postId := .Post.PostId}}
-    {{if .AllowedToCreate}}
-        <form id="commentForm" action="{{.BaseUrl}}comment/save/{{$postId}}" method="POST">
-            <textarea id="commentField" name="comment" rows="5" placeholder="{{.Messages.LeaveCommentLabel}}"></textarea>
-            <div class="hide">
-                {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                <span id="errorEmptyCommentMessage">{{.Messages.EmptyComment}}</span>
+{{$postId := .Post.PostId}}
+{{if .AllowedToCreate}}
+    <form id="commentForm" action="{{.BaseUrl}}comment/save/{{$postId}}" method="POST">
+        <textarea id="commentField" name="comment" rows="5" placeholder="{{.Messages.LeaveCommentLabel}}"></textarea>
+        <div class="hide">
+            {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
+            <span id="errorEmptyCommentMessage">{{.Messages.EmptyComment}}</span>
+        </div>
+        <button type="button" id="commentButton" class="secondary">{{.Messages.PublishLinkLabel}}</button>
+    </form>
+{{end}}
+
+{{with .CommentMsg}}
+    <h6 class="error">{{.}}</h6>
+{{end}}
+
+{{$baseUrl := .BaseUrl}}
+{{if .AllowedToDelete}}
+    {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
+    {{range .Comments}}
+        <article>
+            <div class="grid">
+                {{template "profilePictureLink" .Creator}}
+                <div>
+                    <p>{{.Date}}</p>
+                    <p>{{.Text}}</p>
+                </div>
             </div>
-            <button type="button" id="commentButton" class="secondary">{{.Messages.CreateLinkLabel}}</button>
-        </form>
+            <footer>
+                <a href="{{$baseUrl}}comment/delete/{{$postId}}/{{.Id}}" class="contrast" role="button">{{$deleteLinkLabel}}</a>
+            </footer>
+        </article>
     {{end}}
-
-    {{with .CommentMsg}}
-        <h6 class="error">{{.}}</h6>
-    {{end}}
-
-    {{$baseUrl := .BaseUrl}}
-    {{if .AllowedToDelete}}
-        {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
-        {{range .Comments}}
-            <article>
-                <div class="grid">
-                    <div>
-                        {{template "profilePictureLink" .Creator}}
-                    </div>
-                    <div>
-                        <p>{{.Date}}</p>
-                        <p>{{.Text}}</p>
-                    </div>
+{{else}}
+    {{range .Comments}}
+        <article>
+            <div class="grid">
+                {{template "profilePictureLink" .Creator}}
+                <div>
+                    <p>{{.Date}}</p>
+                    <p>{{.Text}}</p>
                 </div>
-                <footer>
-                    <a href="{{$baseUrl}}comment/delete/{{$postId}}/{{.Id}}" class="contrast" role="button">{{$deleteLinkLabel}}</a>
-                </footer>
-            </article>
-        {{end}}
-    {{else}}
-        {{range .Comments}}
-            <article>
-                <div class="grid">
-                    <div>
-                        {{template "profilePictureLink" .Creator}}
-                    </div>
-                    <div>
-                        <p>{{.Date}}</p>
-                        <p>{{.Text}}</p>
-                    </div>
-                </div>
-            </article>
-        {{end}}
+            </div>
+        </article>
     {{end}}
-</section>
+{{end}}

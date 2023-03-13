@@ -104,3 +104,6 @@ PageTitleWiki2=Wiki 2
 PageTitleWiki3=Wiki 3
 PageTitleBlog=Blog
 PageTitleForum=Forum
+
+# settings
+lang=Language

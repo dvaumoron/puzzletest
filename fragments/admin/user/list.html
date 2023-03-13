@@ -8,7 +8,7 @@
 {{$viewLinkLabel := .Messages.ViewLinkLabel}}
 {{range .Users}}
     <div class="grid">
-        {{template "profileLink" .}}
-        <a href="/admin/user/view/{{.Id}}" role="button">{{$viewLinkLabel}}</a>
+        <p>{{template "profileLink" .}}</p>
+        <p><a href="/admin/user/view/{{.Id}}" role="button">{{$viewLinkLabel}}</a></p>
     </div>
 {{end}}

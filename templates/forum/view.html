@@ -5,8 +5,10 @@
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
 {{define "profilePictureLink"}}
-    <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
-    <p>{{template "profileLink" .}}</p>
+    <div>
+        <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
+        <p>{{template "profileLink" .}}</p>
+    </div>
 {{end}}
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET">
@@ -118,22 +120,22 @@
 {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
 {{range .ForumMessages}}
 <div class="grid">
-<div>
 {{template "profilePictureLink" .Creator}}
+<div>
 <p>{{.Date}}</p>
-</div>
 <p>{{.Text}}</p>
+</div>
 <p><a href="{{$baseUrl}}message/delete/{{$threadId}}/{{.Id}}" class="contrast" role="button">{{$deleteLinkLabel}}</a></p>
 </div>
 {{end}}
 {{else}}
 {{range .ForumMessages}}
 <div class="grid">
-<div>
 {{template "profilePictureLink" .Creator}}
+<div>
 <p>{{.Date}}</p>
-</div>
 <p>{{.Text}}</p>
+</div>
 </div>
 {{end}}
 {{end}}
@@ -144,7 +146,7 @@
 {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
 <span id="errorEmptyForumMessageMessage">{{.Messages.EmptyForumMessage}}</span>
 </div>
-<button type="button" id="createForumMessageButton" class="secondary">{{.Messages.CreateLinkLabel}}</button>
+<button type="button" id="createForumMessageButton" class="secondary">{{.Messages.PublishLinkLabel}}</button>
 </form>
 {{end}}
 
