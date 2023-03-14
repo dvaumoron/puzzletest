@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.0.1
-	github.com/dvaumoron/puzzleweb v0.4.1
+	github.com/dvaumoron/puzzleweb v0.4.2
 )
 
 require (
@@ -14,7 +14,7 @@ require (
 	github.com/dvaumoron/puzzlemarkdownservice v1.0.1 // indirect
 	github.com/dvaumoron/puzzleprofileservice v1.2.0 // indirect
 	github.com/dvaumoron/puzzlerightservice v1.3.0 // indirect
-	github.com/dvaumoron/puzzlesaltclient v1.0.1 // indirect
+	github.com/dvaumoron/puzzlesaltclient v1.1.0 // indirect
 	github.com/dvaumoron/puzzlesaltservice v1.0.1 // indirect
 	github.com/dvaumoron/puzzlesessionservice v1.2.0 // indirect
 	github.com/dvaumoron/puzzlewikiservice v1.3.0 // indirect
