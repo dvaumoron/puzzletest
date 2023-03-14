@@ -62,7 +62,5 @@ func main() {
 	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
 	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId, "forum/list"+ext, "forum/view"+ext, "forum/create"+ext)))
 
-	site.Page404Url = "/notFound"
-
 	site.Run(globalConfig.ExtractSiteConfig())
 }
