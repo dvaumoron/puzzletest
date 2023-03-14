@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.0.1
-	github.com/dvaumoron/puzzleweb v0.3.17
+	github.com/dvaumoron/puzzleweb v0.4.0
 )
 
 require (
