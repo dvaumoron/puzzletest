@@ -126,9 +126,9 @@
 {{if .WikiVersion}}
 ({{.WikiVersion}})
 {{else}}
-<a href="{{.BaseUrl}}edit/{{.WikiTitle}}" role="button">{{.Messages.EditLinkLabel}}</a>
+<a href="{{.BaseUrl}}edit/{{.WikiTitle}}" class="outline" role="button">{{.Messages.EditLinkLabel}}</a>
 {{end}}
-<a href="{{.BaseUrl}}list/{{.WikiTitle}}" role="button">{{.Messages.ListLinkLabel}}</a>
+<a href="{{.BaseUrl}}list/{{.WikiTitle}}" class="outline" role="button">{{.Messages.ListLinkLabel}}</a>
 </h2>
 <div>{{.WikiContent}}</div>
 

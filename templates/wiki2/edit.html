@@ -124,7 +124,7 @@
             <h2>
 {{.Messages.EditLabel}} {{.WikiTitle}}
 {{if ne .WikiVersion "0"}}
-<a href="{{.BaseUrl}}view/{{.WikiTitle}}" role="button">{{.Messages.CancelLinkLabel}}</a>
+<a href="{{.BaseUrl}}view/{{.WikiTitle}}" class="outline" role="button">{{.Messages.CancelLinkLabel}}</a>
 {{end}}
 </h2>
 <form action="{{.BaseUrl}}save/{{.WikiTitle}}" method="POST">
@@ -132,7 +132,7 @@
 <div class="hide">
 <input type="text" name="version" value="{{.WikiVersion}}"/>
 </div>
-<button type="submit">{{.Messages.SaveLinkLabel}}</button>
+<button type="submit" class="outline">{{.Messages.SaveLinkLabel}}</button>
 </form>
 
         </div>
