@@ -23,6 +23,7 @@ import (
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
 	"github.com/dvaumoron/puzzleweb/forum"
+	"github.com/dvaumoron/puzzleweb/templates"
 	"github.com/dvaumoron/puzzleweb/wiki"
 )
 
@@ -45,7 +46,7 @@ func main() {
 	if ext == ".il" {
 		site.HTMLRender = adapter.LoadTemplates(globalConfig.TemplatesPath)
 	} else {
-		site.HTMLRender = puzzleweb.LoadTemplates(globalConfig.TemplatesPath)
+		site.HTMLRender = templates.Load(globalConfig.TemplatesPath)
 	}
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage("notFound", adminservice.PublicGroupId, "notFound"+ext))
