@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: puzzletest
+  namespace: default
+  labels:
+    app: puzzletest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzletest
+  template:
+    metadata:
+      labels:
+        app: puzzletest
+    spec:
+      containers:
+        - name: puzzletest
+          image: puzzletest:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+              name: http-web-service
+          env:
+            - name: AVAILABLE_LOCALES
+              valueFrom:
+                configMapRefKey:
+                  name: puzzletest-cm
+                  key: AVAILABLE_LOCALES
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: puzzletest-service
+spec:
+  selector:
+    app: puzzletest
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http-wen-service
