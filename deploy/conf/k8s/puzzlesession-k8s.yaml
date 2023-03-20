@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: puzzlesession
+  namespace: default
+  labels:
+    app: puzzlesession
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzlesession
+  template:
+    metadata:
+      labels:
+        app: puzzlesession
+    spec:
+      containers:
+        - name: puzzlesession
+          image: puzzlesessionserver:latest
+          resources:
+            limits:
+              memory: "32Mi"
+              cpu: "50m"
+          ports:
+            - containerPort: 50051
+              name: grpc-service
+          env:
+            - name: SESSION_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: puzzletest-cm
+                  key: SESSION_TIMEOUT
+            - name: RETRY_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: puzzletest-cm
+                  key: RETRY_NUMBER
+            - name: REDIS_SERVER_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  name: puzzletest-cm
+                  key: REDIS_SERVER_ADDR
+            - name: REDIS_SERVER_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: puzzletest-cm
+                  key: REDIS_SERVER_DB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: puzzlesession-service
+spec:
+  selector:
+    app: puzzlesession
+  ports:
+  - protocol: TCP
+    port: 50051
+    targetPort: grpc-service

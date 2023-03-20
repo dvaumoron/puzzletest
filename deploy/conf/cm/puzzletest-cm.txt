@@ -1,0 +1,17 @@
+AVAILABLE_LOCALES=fr-FR, en-US
+EXTRACT_SIZE=1000
+LOCALE_PICTURE_PATHS=images/Flag_of_France.webp, images/Flag_of_the_United_Kingdom.png
+TEMPLATES_EXT=.html
+#TEMPLATES_EXT=.il
+PAGE_404_URL=/notFound
+LOG_CONFIG_PATH=
+SESSION_SERVICE_ADDR=puzzlesession-service:50051
+SALT_SERVICE_ADDR=puzzlesalt-service:50051
+SETTINGS_SERVICE_ADDR=puzzlesettings-service:50051
+LOGIN_SERVICE_ADDR=puzzlelogin-service:50051
+RIGHT_SERVICE_ADDR=puzzlecachedright-service:50051
+PROFILE_SERVICE_ADDR=puzzleprofile-service:50051
+MARKDOWN_SERVICE_ADDR=puzzlemarkdown-service:50051
+WIKI_SERVICE_ADDR=puzzlewiki-service:50051
+FORUM_SERVICE_ADDR=puzzleforum-service:50051
+BLOG_SERVICE_ADDR=puzzleblog-service:50051
