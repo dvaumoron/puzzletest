@@ -18,6 +18,7 @@ spec:
       containers:
         - name: puzzletest
           image: puzzletest:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "128Mi"
@@ -33,142 +34,9 @@ spec:
             initialDelaySeconds: 1
             failureThreshold: 3
             successThreshold: 1
-          env:
-            - name: AVAILABLE_LOCALES
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: AVAILABLE_LOCALES
-            - name: SESSION_TIME_OUT
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: SESSION_TIME_OUT
-            - name: SERVICE_TIME_OUT
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: SERVICE_TIME_OUT
-            - name: MAX_MULTIPART_MEMORY
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: MAX_MULTIPART_MEMORY
-            - name: DATE_FORMAT
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: DATE_FORMAT
-            - name: PAGE_SIZE
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: PAGE_SIZE
-            - name: EXTRACT_SIZE
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: EXTRACT_SIZE
-            - name: STATIC_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: STATIC_PATH
-            - name: FAVICON_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: FAVICON_PATH
-            - name: LOCALES_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: LOCALES_PATH
-            - name: LOCALE_PICTURE_PATHS
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: LOCALE_PICTURE_PATHS
-            - name: TEMPLATES_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: TEMPLATES_PATH
-            - name: TEMPLATES_EXT
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: TEMPLATES_EXT
-            - name: PAGE_404_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: PAGE_404_URL
-            - name: LOG_CONFIG_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: LOG_CONFIG_PATH
-            - name: SESSION_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: SESSION_SERVICE_ADDR
-            - name: SALT_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: SALT_SERVICE_ADDR
-            - name: SETTINGS_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: SETTINGS_SERVICE_ADDR
-            - name: LOGIN_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: LOGIN_SERVICE_ADDR
-            - name: RIGHT_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: RIGHT_SERVICE_ADDR
-            - name: PROFILE_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: PROFILE_SERVICE_ADDR
-            - name: PROFILE_GROUP_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: PROFILE_GROUP_ID
-            - name: PROFILE_DEFAULT_PICTURE_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: PROFILE_DEFAULT_PICTURE_PATH
-            - name: MARKDOWN_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: MARKDOWN_SERVICE_ADDR
-            - name: WIKI_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: WIKI_SERVICE_ADDR
-            - name: FORUM_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: FORUM_SERVICE_ADDR
-            - name: BLOG_SERVICE_ADDR
-              valueFrom:
-                configMapKeyRef:
-                  name: puzzletest-cm
-                  key: BLOG_SERVICE_ADDR
+          envFrom:
+            - configMapRef:
+                name: puzzletest-cm
 ---
 apiVersion: v1
 kind: Service

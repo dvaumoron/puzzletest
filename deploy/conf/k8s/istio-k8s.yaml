@@ -7,26 +7,23 @@ spec:
     istio: istio-ingressgateway
   servers:
   - port:
-      number: 80
+      number: 8080
       name: http
       protocol: HTTP
     hosts:
-    - "localhost"
+    - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: http
+  name: puzzletest-service
 spec:
   hosts:
-  - "localhost"
+  - "*"
   gateways:
   - http-gateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
+  - route:
     - destination:
         port:
           number: 8080

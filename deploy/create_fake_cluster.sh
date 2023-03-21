@@ -4,7 +4,7 @@
 k3d cluster delete puzzlecluster
 
 # create fake cluster with k3d
-k3d cluster create puzzlecluster --servers 3 --api-port 6550 -p "9080:80@loadbalancer" --agents 1 --k3s-arg '--disable=traefik@server:*'
+k3d cluster create puzzlecluster --servers 3 --api-port 6550 -p "8080:8080@loadbalancer" --agents 1 --k3s-arg '--disable=traefik@server:*'
 
 # set up Istio
 kubectl create namespace istio-system
@@ -14,3 +14,5 @@ helm install istiod istio/istiod -n istio-system --wait
 # install ingress gateway
 kubectl label namespace istio-system istio-injection=enabled
 helm install istio-ingressgateway istio/gateway -n istio-system --wait
+
+./deploy/copy_images.sh

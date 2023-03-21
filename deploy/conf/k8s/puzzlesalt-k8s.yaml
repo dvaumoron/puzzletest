@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: puzzlesession
+  name: puzzlesalt
   namespace: default
   labels:
     app: puzzlesession
@@ -9,15 +9,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: puzzlesession
+      app: puzzlesalt
   template:
     metadata:
       labels:
-        app: puzzlesession
+        app: puzzlesalt
     spec:
       containers:
-        - name: puzzlesession
-          image: puzzlesessionserver:latest
+        - name: puzzlesalt
+          image: puzzlesaltserver:latest
           resources:
             limits:
               memory: "32Mi"
@@ -27,15 +27,15 @@ spec:
               name: grpc-service
           envFrom:
             - configMapRef:
-                name: puzzlesession-cm
+                name: puzzlesalt-cm
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: puzzlesession-service
+  name: puzzlesalt-service
 spec:
   selector:
-    app: puzzlesession
+    app: puzzlesalt
   ports:
   - protocol: TCP
     port: 50051
