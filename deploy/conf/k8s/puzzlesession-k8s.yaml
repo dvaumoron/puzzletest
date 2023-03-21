@@ -2,9 +2,6 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: puzzlesession
-  namespace: default
-  labels:
-    app: puzzlesession
 spec:
   replicas: 1
   selector:
