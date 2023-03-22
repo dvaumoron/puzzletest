@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: puzzlesalt
+  name: puzzleprofile
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: puzzlesalt
+      app: puzzleprofile
   template:
     metadata:
       labels:
-        app: puzzlesalt
+        app: puzzleprofile
     spec:
       containers:
-        - name: puzzlesalt
-          image: puzzlesaltserver:latest
+        - name: puzzleprofile
+          image: puzzleprofileserver:latest
           resources:
             limits:
               memory: "32Mi"
@@ -31,15 +31,15 @@ spec:
             successThreshold: 1
           envFrom:
             - configMapRef:
-                name: puzzlesalt-cm
+                name: puzzleprofile-cm
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: puzzlesalt-service
+  name: puzzleprofile-service
 spec:
   selector:
-    app: puzzlesalt
+    app: puzzleprofile
   ports:
   - protocol: TCP
     port: 50051

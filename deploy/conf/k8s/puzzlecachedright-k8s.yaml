@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: puzzlesalt
+  name: puzzlecachedright
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: puzzlesalt
+      app: puzzlecachedright
   template:
     metadata:
       labels:
-        app: puzzlesalt
+        app: puzzlecachedright
     spec:
       containers:
-        - name: puzzlesalt
-          image: puzzlesaltserver:latest
+        - name: puzzlecachedright
+          image: puzzlecachedrightserver:latest
           resources:
             limits:
               memory: "32Mi"
@@ -31,15 +31,15 @@ spec:
             successThreshold: 1
           envFrom:
             - configMapRef:
-                name: puzzlesalt-cm
+                name: puzzlecachedright-cm
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: puzzlesalt-service
+  name: puzzlecachedright-service
 spec:
   selector:
-    app: puzzlesalt
+    app: puzzlecachedright
   ports:
   - protocol: TCP
     port: 50051
