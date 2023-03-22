@@ -21,12 +21,12 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 8080
+            - containerPort: 9080
               name: http-service
           readinessProbe:
             httpGet:
               path: /favicon.ico
-              port: 8080
+              port: 9080
             periodSeconds: 5
             initialDelaySeconds: 1
             failureThreshold: 3
@@ -44,5 +44,5 @@ spec:
     app: puzzletest
   ports:
   - protocol: TCP
-    port: 8080
+    port: 9080
     targetPort: http-service
