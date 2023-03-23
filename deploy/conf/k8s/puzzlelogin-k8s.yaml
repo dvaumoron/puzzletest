@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlelogin
           image: puzzleloginserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "64Mi"

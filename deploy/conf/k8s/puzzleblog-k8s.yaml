@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzleblog
           image: puzzleblogserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"

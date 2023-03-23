@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlemarkdown
           image: puzzlemarkdownserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"

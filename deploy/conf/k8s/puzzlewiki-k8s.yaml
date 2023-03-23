@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlewiki
           image: puzzlewikiserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"

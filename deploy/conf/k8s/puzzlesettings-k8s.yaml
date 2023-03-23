@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlesettings
           image: puzzlesettingsserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"

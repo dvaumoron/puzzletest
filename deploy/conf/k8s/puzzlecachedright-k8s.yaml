@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlecachedright
           image: puzzlecachedrightserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"

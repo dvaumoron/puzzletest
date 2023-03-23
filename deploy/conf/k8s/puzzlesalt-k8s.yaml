@@ -15,6 +15,7 @@ spec:
       containers:
         - name: puzzlesalt
           image: puzzlesaltserver:latest
+          imagePullPolicy: Never
           resources:
             limits:
               memory: "32Mi"
