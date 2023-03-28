@@ -13,4 +13,5 @@ kubectl apply -f deploy/conf/k8s/puzzleprofile-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzleblog-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzlewiki-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzleforum-k8s.yaml
-kubectl apply -f deploy/conf/k8s/ingress-k8s.yaml
+
+kubectl port-forward service/puzzletest 8080:9080
