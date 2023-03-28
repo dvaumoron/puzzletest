@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+kubectl apply -f deploy/conf/k8s/external-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzletest-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzlesession-k8s.yaml
 kubectl apply -f deploy/conf/k8s/puzzleright-k8s.yaml

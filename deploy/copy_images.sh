@@ -13,15 +13,15 @@ buildah push puzzleblogserver docker-daemon:puzzleblogserver:latest
 buildah push puzzlewikiserver docker-daemon:puzzlewikiserver:latest
 buildah push puzzleforumserver docker-daemon:puzzleforumserver:latest
 
-k3d image import puzzletest -c puzzlecluster -t
-k3d image import puzzlesessionserver -c puzzlecluster -t
-k3d image import puzzlerightserver -c puzzlecluster -t
-k3d image import puzzlecachedrightserver -c puzzlecluster -t
-k3d image import puzzlesettingsserver -c puzzlecluster -t
-k3d image import puzzleloginserver -c puzzlecluster -t
-k3d image import puzzlesaltserver -c puzzlecluster -t
-k3d image import puzzlemarkdownserver -c puzzlecluster -t
-k3d image import puzzleprofileserver -c puzzlecluster -t
-k3d image import puzzleblogserver -c puzzlecluster -t
-k3d image import puzzlewikiserver -c puzzlecluster -t
-k3d image import puzzleforumserver -c puzzlecluster -t
+kind load docker-image puzzletest -n puzzlecluster
+kind load docker-image puzzlesessionserver -n puzzlecluster
+kind load docker-image puzzlerightserver -n puzzlecluster
+kind load docker-image puzzlecachedrightserver -n puzzlecluster
+kind load docker-image puzzlesettingsserver -n puzzlecluster
+kind load docker-image puzzleloginserver -n puzzlecluster
+kind load docker-image puzzlesaltserver -n puzzlecluster
+kind load docker-image puzzlemarkdownserver -n puzzlecluster
+kind load docker-image puzzleprofileserver -n puzzlecluster
+kind load docker-image puzzleblogserver -n puzzlecluster
+kind load docker-image puzzlewikiserver -n puzzlecluster
+kind load docker-image puzzleforumserver -n puzzlecluster

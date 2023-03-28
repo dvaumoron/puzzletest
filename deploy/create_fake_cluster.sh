@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-# ensure there is no remaining puzzlecluster in k3d
-k3d cluster delete puzzlecluster
+# ensure there is no remaining puzzlecluster in kind
+kind delete cluster -n puzzlecluster
 
-# create fake cluster with k3d
-export K3D_FIX_DNS=1
-k3d cluster create puzzlecluster --api-port 6550 --servers 3 --agents 1 -p "9080:80@loadbalancer:*"
+# create fake cluster with kind
+kind create cluster -n puzzlecluster --config deploy/conf/kind/cluster-kind.yaml --wait 30s
 
 ./deploy/copy_images.sh
