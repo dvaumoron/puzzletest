@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+kubectl delete configmap puzzleproxy-cm
 kubectl delete configmap puzzletest-cm
 kubectl delete configmap puzzlesession-cm
 kubectl delete configmap puzzlesalt-cm
@@ -13,6 +14,7 @@ kubectl delete configmap puzzlewiki-cm
 kubectl delete configmap puzzleforum-cm
 kubectl delete configmap puzzleblog-cm
 
+kubectl create configmap puzzleproxy-cm --from-env-file=deploy/conf/cm/puzzleproxy-cm.env
 kubectl create configmap puzzletest-cm --from-env-file=deploy/conf/cm/puzzletest-cm.env
 kubectl create configmap puzzlesession-cm --from-env-file=deploy/conf/cm/puzzlesession-cm.env
 kubectl create configmap puzzlesalt-cm --from-env-file=deploy/conf/cm/puzzlesalt-cm.env

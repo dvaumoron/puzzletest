@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: puzzleproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzleproxy
+  template:
+    metadata:
+      labels:
+        app: puzzleproxy
+    spec:
+      containers:
+        - name: puzzleproxy
+          image: puzzleproxy:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: "8Mi"
+              cpu: "50m"
+          ports:
+            - containerPort: 5432
+              name: postgres-service
+            - containerPort: 6379
+              name: redis-service
+            - containerPort: 27017
+              name: mongo-service
+          readinessProbe:
+            httpGet:
+              path: /favicon.ico
+              port: 9080
+            periodSeconds: 5
+            initialDelaySeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          envFrom:
+            - configMapRef:
+                name: puzzleproxy-cm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: externalhost
+spec:
+  selector:
+    app: puzzleproxy
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: postgres-service
+  - protocol: TCP
+    port: 6379
+    name: redis-service
+  - protocol: TCP
+    port: 27017
+    targetPort: mongo-service
