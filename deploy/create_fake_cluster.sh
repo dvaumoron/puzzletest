@@ -4,6 +4,6 @@
 kind delete cluster -n puzzlecluster
 
 # create fake cluster with kind
-kind create cluster -n puzzlecluster --config deploy/conf/kind/cluster-kind.yaml --wait 30s
+kind create cluster -n puzzlecluster --config deploy/conf/cluster-kind.yaml --wait 30s
 
 ./deploy/copy_images.sh
