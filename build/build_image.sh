@@ -13,3 +13,5 @@ buildah config --port 9080 puzzletest-working-container
 buildah config --entrypoint '["/bin/puzzletest"]' puzzletest-working-container
 buildah commit puzzletest-working-container puzzletest
 buildah rm puzzletest-working-container
+
+buildah push puzzletest docker-daemon:puzzletest:latest
