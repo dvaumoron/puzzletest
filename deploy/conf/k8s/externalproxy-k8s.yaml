@@ -47,12 +47,15 @@ spec:
   selector:
     app: puzzleproxy
   ports:
-  - protocol: TCP
+  - name: postgre
+    protocol: TCP
     port: 5432
-    name: postgre-service
-  - protocol: TCP
+    targetPort: postgre-service
+  - name: redis
+    protocol: TCP
     port: 6379
-    name: redis-service
-  - protocol: TCP
+    targetPort: redis-service
+  - name: mongo
+    protocol: TCP
     port: 27017
-    name: mongo-service
+    targetPort: mongo-service
