@@ -25,6 +25,8 @@ spec:
               name: postgre-service
             - containerPort: 6379
               name: redis-service
+            - containerPort: 9080
+              name: http-service
             - containerPort: 27017
               name: mongo-service
           readinessProbe:
@@ -55,6 +57,10 @@ spec:
     protocol: TCP
     port: 6379
     targetPort: redis-service
+  - name: http
+    protocol: TCP
+    port: 9080
+    targetPort: http-service
   - name: mongo
     protocol: TCP
     port: 27017
