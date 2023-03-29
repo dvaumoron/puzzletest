@@ -22,7 +22,7 @@ spec:
               cpu: "50m"
           ports:
             - containerPort: 5432
-              name: postgres-service
+              name: postgre-service
             - containerPort: 6379
               name: redis-service
             - containerPort: 27017
@@ -49,10 +49,10 @@ spec:
   ports:
   - protocol: TCP
     port: 5432
-    targetPort: postgres-service
+    name: postgre-service
   - protocol: TCP
     port: 6379
     name: redis-service
   - protocol: TCP
     port: 27017
-    targetPort: mongo-service
+    name: mongo-service
