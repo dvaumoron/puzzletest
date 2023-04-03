@@ -31,7 +31,7 @@ spec:
               name: mongo-service
           readinessProbe:
             httpGet:
-              path: /puzzlelogo.ico
+              path: /
               port: 9080
             periodSeconds: 5
             initialDelaySeconds: 1
