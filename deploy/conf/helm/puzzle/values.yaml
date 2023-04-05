@@ -1,0 +1,94 @@
+image:
+  pullPolicy: Never
+blogService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+cachedrightService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+externalhost:
+  ports:
+  - name: postgre
+    port: 5432
+    protocol: TCP
+    targetPort: postgre-service
+  - name: redis
+    port: 6379
+    protocol: TCP
+    targetPort: redis-service
+  - name: http
+    port: 9080
+    protocol: TCP
+    targetPort: http-service
+  - name: mongo
+    port: 27017
+    protocol: TCP
+    targetPort: mongo-service
+  type: ClusterIP
+forumService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+loginService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+markdownService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+profileService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+rightService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+saltService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+sessionService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+settingsService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP
+testService:
+  ports:
+  - port: 9080
+    protocol: TCP
+    targetPort: http-service
+  type: ClusterIP
+wikiService:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: grpc-service
+  type: ClusterIP

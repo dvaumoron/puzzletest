@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: {{ include "puzzle.fullname" . }}-profile
+  labels:
+  {{- include "puzzle.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzleprofile
+  template:
+    metadata:
+      labels:
+        app: puzzleprofile
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: puzzleprofile-cm
+        image: puzzleprofileserver:latest
+        imagePullPolicy: Never
+        name: puzzleprofile
+        ports:
+        - containerPort: 50051
+          name: grpc-service
+        readinessProbe:
+          failureThreshold: 3
+          grpc:
+            port: 50051
+          initialDelaySeconds: 1
+          periodSeconds: 5
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: 50m
+            memory: 32Mi

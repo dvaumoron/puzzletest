@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: {{ include "puzzle.fullname" . }}-proxy
+  labels:
+  {{- include "puzzle.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzleproxy
+  template:
+    metadata:
+      labels:
+        app: puzzleproxy
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: puzzleproxy-cm
+        image: puzzleproxy:latest
+        imagePullPolicy: Never
+        name: puzzleproxy
+        ports:
+        - containerPort: 5432
+          name: postgre-service
+        - containerPort: 6379
+          name: redis-service
+        - containerPort: 9080
+          name: http-service
+        - containerPort: 27017
+          name: mongo-service
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 9080
+          initialDelaySeconds: 1
+          periodSeconds: 5
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: 50m
+            memory: 8Mi

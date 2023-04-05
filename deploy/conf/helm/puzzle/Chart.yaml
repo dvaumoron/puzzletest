@@ -1,0 +1,24 @@
+apiVersion: v2
+name: puzzle
+description: An exemple of a puzzle project deployment
+type: application
+# chart version
+version: 0.1.0
+appVersion: "1.0.0"
+sources:
+  - github.com/dvaumoron/puzzletest
+  - github.com/dvaumoron/puzzleproxy
+  - github.com/dvaumoron/puzzlesessionserver
+  - github.com/dvaumoron/puzzlesaltserver
+  - github.com/dvaumoron/puzzleloginserver
+  - github.com/dvaumoron/puzzlerightserver
+  - github.com/dvaumoron/puzzlecachedrightserver
+  - github.com/dvaumoron/puzzlesettingsserver
+  - github.com/dvaumoron/puzzleprofileserver
+  - github.com/dvaumoron/puzzlemarkdownserver
+  - github.com/dvaumoron/puzzleblogserver
+  - github.com/dvaumoron/puzzlewikiserver
+  - github.com/dvaumoron/puzzleforumserver
+maintainers:
+  - name: Denis VAUMORON
+    url: linked.com/in/denis-vaumoron-92579187

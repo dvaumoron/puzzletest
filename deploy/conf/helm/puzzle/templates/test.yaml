@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: {{ include "puzzle.fullname" . }}-test
+  labels:
+  {{- include "puzzle.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzletest
+  template:
+    metadata:
+      labels:
+        app: puzzletest
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: puzzletest-cm
+        image: puzzletest:latest
+        imagePullPolicy: Never
+        name: puzzletest
+        ports:
+        - containerPort: 9080
+          name: http-service
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /favicon.ico
+            port: 9080
+          initialDelaySeconds: 1
+          periodSeconds: 5
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
