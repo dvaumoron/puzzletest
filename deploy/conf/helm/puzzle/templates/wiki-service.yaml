@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ include "puzzle.fullname" . }}-wiki-service
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.wikiService.type }}
+  type: {{ .Values.grpcService.type }}
   selector:
     app: puzzlewiki
-  {{- include "puzzle.selectorLabels" . | nindent 4 }}
+    {{- include "puzzle.selectorLabels" . | nindent 4 }}
   ports:
-	{{- .Values.wikiService.ports | toYaml | nindent 2 -}}
+  	{{- .Values.grpcService.ports | toYaml | nindent 2 -}}

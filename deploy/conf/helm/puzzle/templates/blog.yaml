@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-blog
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.blogServer.replicas }}
   selector:
     matchLabels:
       app: puzzleblog
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzleblog-cm
-        image: puzzleblogserver:latest
-        imagePullPolicy: Never
+        image: puzzleblogserver:{{ .Values.blogServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleblog
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 32Mi
+            {{- .Values.blogServer.resourcesLimits | toYaml | nindent 12 -}}

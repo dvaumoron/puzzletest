@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-right
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.rightServer.replicas }}
   selector:
     matchLabels:
       app: puzzleright
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzleright-cm
-        image: puzzlerightserver:latest
-        imagePullPolicy: Never
+        image: puzzlerightserver:{{ .Values.rightServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleright
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
+            {{- .Values.rightServer.resourcesLimits | toYaml | nindent 12 -}}

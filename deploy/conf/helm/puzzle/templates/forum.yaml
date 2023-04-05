@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-forum
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.forumServer.replicas }}
   selector:
     matchLabels:
       app: puzzleforum
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzleforum-cm
-        image: puzzleforumserver:latest
-        imagePullPolicy: Never
+        image: puzzleforumserver:{{ .Values.forumServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleforum
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
+            {{- .Values.forumServer.resourcesLimits | toYaml | nindent 12 -}}

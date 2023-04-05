@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-salt
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.saltServer.replicas }}
   selector:
     matchLabels:
       app: puzzlesalt
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzlesalt-cm
-        image: puzzlesaltserver:latest
-        imagePullPolicy: Never
+        image: puzzlesaltserver:{{ .Values.saltServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlesalt
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 32Mi
+            {{- .Values.saltServer.resourcesLimits | toYaml | nindent 12 -}}

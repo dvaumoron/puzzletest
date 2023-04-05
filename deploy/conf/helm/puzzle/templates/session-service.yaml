@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ include "puzzle.fullname" . }}-session-service
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.sessionService.type }}
+  type: {{ .Values.grpcService.type }}
   selector:
     app: puzzlesession
-  {{- include "puzzle.selectorLabels" . | nindent 4 }}
+    {{- include "puzzle.selectorLabels" . | nindent 4 }}
   ports:
-	{{- .Values.sessionService.ports | toYaml | nindent 2 -}}
+	  {{- .Values.grpcService.ports | toYaml | nindent 2 -}}

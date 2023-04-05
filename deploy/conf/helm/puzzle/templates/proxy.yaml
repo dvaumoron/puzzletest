@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-proxy
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.proxy.replicas }}
   selector:
     matchLabels:
       app: puzzleproxy
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzleproxy-cm
-        image: puzzleproxy:latest
-        imagePullPolicy: Never
+        image: puzzleproxy:{{ .Values.proxy.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleproxy
         ports:
         - containerPort: 5432
@@ -40,5 +40,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 8Mi
+            {{- .Values.proxy.resourcesLimits | toYaml | nindent 12 -}}

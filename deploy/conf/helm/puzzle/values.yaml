@@ -1,12 +1,12 @@
 image:
   pullPolicy: Never
-blogService:
+httpService:
   ports:
-  - port: 50051
+  - port: 9080
     protocol: TCP
-    targetPort: grpc-service
+    targetPort: http-service
   type: ClusterIP
-cachedrightService:
+grpcService:
   ports:
   - port: 50051
     protocol: TCP
@@ -31,64 +31,70 @@ externalhost:
     protocol: TCP
     targetPort: mongo-service
   type: ClusterIP
-forumService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
 kubernetesClusterDomain: cluster.local
-loginService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-markdownService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-profileService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-rightService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-saltService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-sessionService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-settingsService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
-testService:
-  ports:
-  - port: 9080
-    protocol: TCP
-    targetPort: http-service
-  type: ClusterIP
-wikiService:
-  ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
-  type: ClusterIP
+blogServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+cachedRightServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+forumServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 64Mi
+loginServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 64Mi
+markdownServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+proxy:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 8Mi
+rightServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 64Mi
+saltServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+sessionServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+wikiServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+appServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 500m
+    memory: 128Mi

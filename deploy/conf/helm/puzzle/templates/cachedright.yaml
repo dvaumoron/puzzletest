@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-cachedright
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.cachedRightServer.replicas }}
   selector:
     matchLabels:
       app: puzzlecachedright
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzlecachedright-cm
-        image: puzzlecachedrightserver:latest
-        imagePullPolicy: Never
+        image: puzzlecachedrightserver:{{ .Values.cachedRightServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlecachedright
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 32Mi
+            {{- .Values.cachedRightServer.resourcesLimits | toYaml | nindent 12 -}}

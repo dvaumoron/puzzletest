@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-profile
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.profileServer.replicas }}
   selector:
     matchLabels:
       app: puzzleprofile
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzleprofile-cm
-        image: puzzleprofileserver:latest
-        imagePullPolicy: Never
+        image: puzzleprofileserver:{{ .Values.profileServer.replicas }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleprofile
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 32Mi
+            {{- .Values.profileServer.resourcesLimits | toYaml | nindent 12 -}}

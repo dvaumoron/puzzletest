@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-markdown
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.markdownServer.replicas }}
   selector:
     matchLabels:
       app: puzzlemarkdown
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzlemarkdown-cm
-        image: puzzlemarkdownserver:latest
-        imagePullPolicy: Never
+        image: puzzlemarkdownserver:{{ .Values.markdownServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlemarkdown
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 32Mi
+            {{- .Values.markdownServer.resourcesLimits | toYaml | nindent 12 -}}

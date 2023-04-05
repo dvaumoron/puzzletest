@@ -3,9 +3,9 @@ kind: ReplicaSet
 metadata:
   name: {{ include "puzzle.fullname" . }}-login
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.loginServer.replicas }}
   selector:
     matchLabels:
       app: puzzlelogin
@@ -18,8 +18,8 @@ spec:
       - envFrom:
         - configMapRef:
             name: puzzlelogin-cm
-        image: puzzleloginserver:latest
-        imagePullPolicy: Never
+        image: puzzleloginserver:{{ .Values.loginServer.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlelogin
         ports:
         - containerPort: 50051
@@ -33,5 +33,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
+            {{- .Values.loginServer.resourcesLimits | toYaml | nindent 12 -}}

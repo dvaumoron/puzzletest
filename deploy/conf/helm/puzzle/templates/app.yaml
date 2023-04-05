@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: {{ include "puzzle.fullname" . }}-test
+  name: {{ include "puzzle.fullname" . }}-app
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.appServer.replicas }}
   selector:
     matchLabels:
-      app: puzzletest
+      app: puzzleapp
   template:
     metadata:
       labels:
-        app: puzzletest
+        app: puzzleapp
     spec:
       containers:
       - envFrom:
         - configMapRef:
             name: puzzletest-cm
-        image: puzzletest:latest
-        imagePullPolicy: Never
+        image: puzzletest:{{ .Values.appServer.replicas }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzletest
         ports:
         - containerPort: 9080
@@ -34,5 +34,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            cpu: 500m
-            memory: 128Mi
+            {{- .Values.appServer.resourcesLimits | toYaml | nindent 12 -}}

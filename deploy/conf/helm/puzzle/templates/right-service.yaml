@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ include "puzzle.fullname" . }}-right-service
   labels:
-  {{- include "puzzle.labels" . | nindent 4 }}
+    {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.rightService.type }}
+  type: {{ .Values.grpcService.type }}
   selector:
     app: puzzleright
-  {{- include "puzzle.selectorLabels" . | nindent 4 }}
+    {{- include "puzzle.selectorLabels" . | nindent 4 }}
   ports:
-	{{- .Values.rightService.ports | toYaml | nindent 2 -}}
+	  {{- .Values.grpcService.ports | toYaml | nindent 2 -}}
