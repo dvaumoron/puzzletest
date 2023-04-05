@@ -15,9 +15,11 @@ spec:
         app: puzzleright
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzleright-cm
+      - env:
+        - name: DB_SERVER_TYPE
+          value: "postgres"
+        - name: DB_SERVER_ADDR
+          value: "host={{ include "puzzle.fullname" . }}-externalhost user=postgres dbname=rightdb port=5432 sslmode=disable"
         image: puzzlerightserver:{{ .Values.rightServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleright

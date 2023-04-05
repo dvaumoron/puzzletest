@@ -15,9 +15,11 @@ spec:
         app: puzzleblog
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzleblog-cm
+      - env:
+        - name: MONGODB_SERVER_ADDR
+          value: "mongodb://{{ include "puzzle.fullname" . }}-externalhost:27017"
+        - name: MONGODB_SERVER_DB
+          value: "blogsDB"
         image: puzzleblogserver:{{ .Values.blogServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleblog

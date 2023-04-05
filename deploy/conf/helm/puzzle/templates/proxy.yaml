@@ -15,9 +15,13 @@ spec:
         app: puzzleproxy
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzleproxy-cm
+      - env:
+        - name: SERVICE_PORT
+          value: "9080"
+        - name: SERVICE_PORTS
+          value: "5432,6379,27017"
+        - name: FORWARD_HOSTS
+          value: "{{ .Values.proxy.postgresqlAddr }},{{ .Values.proxy.redisAddr }},{{ .Values.proxy.mongoAddr }}"
         image: puzzleproxy:{{ .Values.proxy.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleproxy

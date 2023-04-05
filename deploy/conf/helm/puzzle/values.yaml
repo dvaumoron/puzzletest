@@ -32,6 +32,16 @@ externalhost:
     targetPort: mongo-service
   type: ClusterIP
 kubernetesClusterDomain: cluster.local
+appServer:
+  dateFormat: ""
+  pageSize: ""
+  extractSize: "1000"
+  templatesExt: ".html"
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 500m
+    memory: 128Mi
 blogServer:
   replicas: 1
   imageVersion: latest
@@ -63,6 +73,9 @@ markdownServer:
     cpu: 50m
     memory: 32Mi
 proxy:
+  mongoAddr: ""
+  postgresqlAddr: ""
+  redisAddr: ""
   replicas: 1
   imageVersion: latest
   resourcesLimits:
@@ -92,9 +105,3 @@ wikiServer:
   resourcesLimits:
     cpu: 50m
     memory: 32Mi
-appServer:
-  replicas: 1
-  imageVersion: latest
-  resourcesLimits:
-    cpu: 500m
-    memory: 128Mi

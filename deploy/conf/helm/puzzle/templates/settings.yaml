@@ -15,9 +15,11 @@ spec:
         app: puzzlesettings
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzlesettings-cm
+      - env:
+        - name: MONGODB_SERVER_ADDR
+          value: "mongodb://{{ include "puzzle.fullname" . }}-externalhost:27017"
+        - name: MONGODB_SERVER_DB
+          value: "settingsDB"
         image: puzzlesettingsserver:{{ .Values.settingsServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlesettings

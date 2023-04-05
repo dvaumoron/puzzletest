@@ -15,9 +15,41 @@ spec:
         app: puzzleapp
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzletest-cm
+      - env:
+        - name: AVAILABLE_LOCALES
+          value: "fr-FR, en-US"
+        - name: DATE_FORMAT
+          value: "{{ .Values.appServer.dateFormat }}"
+        - name: PAGE_SIZE
+          value: "{{ .Values.appServer.pageSize }}"
+        - name: EXTRACT_SIZE
+          value: "{{ .Values.appServer.extractSize }}"
+        - name: LOCALE_PICTURE_PATHS
+          value: "images/Flag_of_France.webp, images/Flag_of_the_United_Kingdom.png"
+        - name: TEMPLATES_EXT
+          value: "{{ .Values.appServer.templatesExt }}"
+        - name: PAGE_404_URL
+          value: "/notFound"
+        - name: SESSION_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-session-service:50051"
+        - name: SALT_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-salt-service:50051"
+        - name: SETTINGS_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-settings-service:50051"
+        - name: LOGIN_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-login-service:50051"
+        - name: RIGHT_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-cachedright-service:50051"
+        - name: PROFILE_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-profile-service:50051"
+        - name: MARKDOWN_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-markdown-service:50051"
+        - name: WIKI_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-wiki-service:50051"
+        - name: FORUM_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-forum-service:50051"
+        - name: BLOG_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
         image: puzzletest:{{ .Values.appServer.replicas }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzletest

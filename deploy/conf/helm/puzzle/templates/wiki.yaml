@@ -15,9 +15,11 @@ spec:
         app: puzzlewiki
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzlewiki-cm
+      - env:
+        - name: MONGODB_SERVER_ADDR
+          value: "mongodb://{{ include "puzzle.fullname" . }}-externalhost:27017"
+        - name: MONGODB_SERVER_DB
+          value: "wikisDB"
         image: puzzlewikiserver:{{ .Values.wikiServer.replicas }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlewiki

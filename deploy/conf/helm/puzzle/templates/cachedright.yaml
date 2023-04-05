@@ -15,9 +15,15 @@ spec:
         app: puzzlecachedright
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzlecachedright-cm
+      - env:
+        - name: RIGHT_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-right-service:50051"
+        - name: UNUSED_DATA_TIMEOUT
+          value: "600"
+        - name: REDIS_SERVER_ADDR
+          value: "{{ include "puzzle.fullname" . }}-externalhost:6379"
+        - name: REDIS_SERVER_DB
+          value: "1"
         image: puzzlecachedrightserver:{{ .Values.cachedRightServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlecachedright
