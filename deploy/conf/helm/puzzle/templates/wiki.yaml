@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: puzzlewiki
+        {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -20,7 +21,7 @@ spec:
           value: "mongodb://{{ include "puzzle.fullname" . }}-externalhost:27017"
         - name: MONGODB_SERVER_DB
           value: "wikisDB"
-        image: puzzlewikiserver:{{ .Values.wikiServer.replicas }}
+        image: puzzlewikiserver:{{ .Values.wikiServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlewiki
         ports:

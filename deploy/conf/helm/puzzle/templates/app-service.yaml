@@ -5,9 +5,9 @@ metadata:
   labels:
     {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.grpcService.type }}
+  type: {{ .Values.httpService.type }}
   selector:
     app: puzzleapp
     {{- include "puzzle.selectorLabels" . | nindent 4 }}
   ports:
-	  {{- .Values.grpcService.ports | toYaml | nindent 2 -}}
+	  {{- .Values.httpService.ports | toYaml | nindent 2 -}}

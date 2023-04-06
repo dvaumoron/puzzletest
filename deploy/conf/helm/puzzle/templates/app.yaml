@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: puzzleapp
+        {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -50,7 +51,7 @@ spec:
           value: "{{ include "puzzle.fullname" . }}-forum-service:50051"
         - name: BLOG_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
-        image: puzzletest:{{ .Values.appServer.replicas }}
+        image: puzzletest:{{ .Values.appServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzletest
         ports:

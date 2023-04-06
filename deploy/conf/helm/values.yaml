@@ -1,0 +1,11 @@
+image:
+  pullPolicy: Never
+appServer:
+  dateFormat: ""
+  pageSize: ""
+  extractSize: "1000"
+  templatesExt: ".html"
+proxy:
+  mongoAddr: "4.tcp.eu.ngrok.io:10860"
+  postgresqlAddr: "6.tcp.eu.ngrok.io:19609"
+  redisAddr: "2.tcp.eu.ngrok.io:19960"

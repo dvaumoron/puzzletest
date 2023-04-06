@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: puzzlesession
+        {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:

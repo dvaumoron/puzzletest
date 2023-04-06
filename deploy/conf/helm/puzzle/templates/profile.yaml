@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: puzzleprofile
+        {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -20,7 +21,7 @@ spec:
           value: "mongodb://{{ include "puzzle.fullname" . }}-externalhost:27017"
         - name: MONGODB_SERVER_DB
           value: "profilesDB"
-        image: puzzleprofileserver:{{ .Values.profileServer.replicas }}
+        image: puzzleprofileserver:{{ .Values.profileServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleprofile
         ports:

@@ -1,5 +1,5 @@
 image:
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
 httpService:
   ports:
   - port: 9080
@@ -72,6 +72,12 @@ markdownServer:
   resourcesLimits:
     cpu: 50m
     memory: 32Mi
+profileServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
 proxy:
   mongoAddr: ""
   postgresqlAddr: ""
@@ -94,6 +100,12 @@ saltServer:
     cpu: 50m
     memory: 32Mi
 sessionServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
+settingsServer:
   replicas: 1
   imageVersion: latest
   resourcesLimits:
