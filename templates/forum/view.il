@@ -1,0 +1,40 @@
+Import "main.il"
+
+:= WidgetBody
+    Quote
+        List
+            h2
+                (. Thread Text)
+                a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
+
+            search
+            paginate
+
+            := threadId (. Thread Id)
+            If AllowedToDelete
+                List
+                    := deleteLinkLabel (. Messages DeleteLinkLabel)
+                    For message ForumMessages
+                        div @class="grid"
+                            profilePictureLink (. message Creator)
+                            div
+                                p (. message Date)
+                                p (. message Text)
+                            := id (. message Id)
+                            p (a @href=BaseUrl:"message/delete/":threadId:"/":id @class="contrast" @role="button" deleteLinkLabel)
+                List
+                    For message ForumMessages
+                        div @class="grid"
+                            profilePictureLink (. message Creator)
+                            div
+                                p (. message Date)
+                                p (. message Text)
+
+            If AllowedToCreate
+                form @id="createForumMessageForm" @action=BaseUrl:"message/save/":threadId @method="POST"
+                    := responseMessageLabel (. Messages ResponseMessageLabel)
+                    textarea @id="forumMessageField" @name="message" @rows="5" @placeholder=responseMessageLabel ""
+                    div @class="hide"
+                        # to allow JavaScript or WebAssembly to display a localized error message
+                        span @id="errorEmptyForumMessageMessage" (. Messages EmptyForumMessage)
+                    button @type="button" @id="createForumMessageButton" @class="secondary" (. Messages PublishLinkLabel)
