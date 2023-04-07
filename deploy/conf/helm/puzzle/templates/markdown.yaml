@@ -16,10 +16,7 @@ spec:
         {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: puzzlemarkdown-cm
-        image: puzzlemarkdownserver:{{ .Values.markdownServer.imageVersion }}
+      - image: puzzlemarkdownserver:{{ .Values.markdownServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlemarkdown
         ports:
