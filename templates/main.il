@@ -54,7 +54,7 @@ html
     head
         meta @http-equiv="Content-Type" @content="text/html; charset=UTF-8"
         meta @name="viewport" @content="width=device-width, initial-scale=1"
-        title "PuzzleTest -" PageTitle
+        title "PuzzleTest - " PageTitle
         link @href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" @rel="stylesheet"
         link @href="/static/css/pico.min.css" @type="text/css" @rel="stylesheet"
         link @href="/static/css/main.css" @type="text/css" @rel="stylesheet"
@@ -96,7 +96,7 @@ html
                 h6 @class="error" ErrorMsg
             Eval WidgetBody
         footer @class="container-fluid"
-            "Made with" (a @href="https://github.com/dvaumoron/puzzleweb" "PuzzleWeb") "and" (a @href="https://picocss.com/""Pico.css")
+            "Made with " (a @href="https://github.com/dvaumoron/puzzleweb" "PuzzleWeb") " and " (a @href="https://picocss.com/" "Pico.css")
         script @src="/static/js/wasm_exec.js" ""
         script @src="/static/js/wiki_link.js" ""
         script @src="/static/js/main.js" ""
