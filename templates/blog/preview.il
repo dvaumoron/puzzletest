@@ -5,7 +5,7 @@ Import "main.il"
         List
             header
                 h1
-                    PreviewTitle
+                    PreviewTitle " "
                     a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
             div PreviewHTML
@@ -14,7 +14,7 @@ Import "main.il"
                 label
                     . Messages TitleLabel
                     input @type="text" @id="postTitleField" @name="title" @value=PreviewTitle
-                textarea @id="postMarkdownField" @name="markdown" @rows="20" Markdown
+                textarea @id="postMarkdownField" @name="markdown" @rows="20" Markdown ""
                 div @class="hide"
                     # to allow JavaScript or WebAssembly to display a localized error message
                     span @id="errorEmptyPostTitleMessage" (. Messages EmptyPostTitle)

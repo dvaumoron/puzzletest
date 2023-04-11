@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                (. Messages EditLabel) " " Login
+                (. Messages EditLabel) " " Login " "
                 a @href="/" @role="button" (. Messages CancelLinkLabel)
 
             form @action="/settings/save" @method="POST"

@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                WikiTitle
+                WikiTitle " "
                 a @href=BaseUrl:"view/":WikiTitle @class="outline" @role="button" (. Messages CancelLinkLabel)
 
             := viewLinkLabel (. Messages ViewLinkLabel)

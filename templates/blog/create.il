@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                . Messages CreateBlogPostTitle
+                (. Messages CreateBlogPostTitle) " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
             form @id="previewPostForm" @action=BaseUrl:"preview" @method="POST"

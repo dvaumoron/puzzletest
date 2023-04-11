@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                (. Messages EditLabel) (. ViewedUser Login)
+                (. Messages EditLabel) " " (. ViewedUser Login)
                 := viewedUserId (. ViewedUser Id)
                 a @href="/profile/view/":viewedUserId @role="button" (. Messages CancelLinkLabel)
 

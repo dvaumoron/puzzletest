@@ -4,9 +4,9 @@ Import "main.il"
     Quote
         List
             h2
-                WikiTitle
+                WikiTitle " "
                 If WikiVersion
-                    "(" WikiVersion ")"
+                    "(" WikiVersion ") "
                     a @href=BaseUrl:"edit/":WikiTitle @role="button" (. Messages EditLinkLabel)
                 a @href=BaseUrl:"list/":WikiTitle @role="button" (. Messages ListLinkLabel)
 

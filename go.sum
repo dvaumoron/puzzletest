@@ -3,8 +3,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dvaumoron/indentlang v1.2.1 h1:W/E25KGk0P83jE8GDWLkcTpFbte5p+M0mzMO4yCwcqw=
-github.com/dvaumoron/indentlang v1.2.1/go.mod h1:HTnwtx1Qg9BpqQ5fP10cp0tA4h8AXJ6JO6C0dncFpDA=
+github.com/dvaumoron/indentlang v1.2.3 h1:f3X0QrFj0pPUG4GR42XS1EWCU1ohcUkIxwBggr1wVj8=
+github.com/dvaumoron/indentlang v1.2.3/go.mod h1:HTnwtx1Qg9BpqQ5fP10cp0tA4h8AXJ6JO6C0dncFpDA=
 github.com/dvaumoron/puzzleblogservice v1.1.0 h1:EbV2WKZxmdPaXMsh78nDDZr/KVpJskMoMMlgoD1W84U=
 github.com/dvaumoron/puzzleblogservice v1.1.0/go.mod h1:G7aZYaJHItf4DM5kXehMXwOYTcUl75sH/k8fZ/QBj10=
 github.com/dvaumoron/puzzleforumservice v1.4.0 h1:39BTgVB7A6bev/Jo0V3O4RSusK/jlJ97fwmr1/iGsTE=

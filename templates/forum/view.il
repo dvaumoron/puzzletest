@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                (. Thread Text)
+                (. Thread Text) " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
             search

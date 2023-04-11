@@ -4,7 +4,7 @@ Import "main.il"
     Quote
         List
             h2
-                (. Messages CreateThreadTitle)
+                (. Messages CreateThreadTitle) " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
             form @id="createThreadForm" @action="{{.BaseUrl}}save" @method="POST"

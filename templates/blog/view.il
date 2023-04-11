@@ -6,7 +6,7 @@ Import "main.il"
             header
                 hgroup
                     h1
-                        . Post Title
+                        (. Post Title) " "
                         a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
                     h3 (. Messages PostAuthorLabel) (profileLink (. Post Creator))
                     h3 (. Messages PostDateLabel) (. Post Date)
