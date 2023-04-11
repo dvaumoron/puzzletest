@@ -75,7 +75,7 @@ html
                 ul
                     If Login
                         List
-                            li (. Messages WelcomeLabel) (profileLink (GetEnv))
+                            li (. Messages WelcomeLabel) " " (profileLink (GetEnv))
                             li (a @href="/settings" @class="outline" @role="button" (. Messages PageTitleSettings))
                             If ViewAdmin
                                 li (a @href="/admin" @class="outline" @role="button" (. Messages PageTitleAdmin))

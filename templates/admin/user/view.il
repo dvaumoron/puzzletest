@@ -4,9 +4,9 @@ Import "main.il"
     Quote
         List
             h2
-                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) (. ViewedUser RegistredAt) ")"
+                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) (. ViewedUser RegistredAt) ") "
                 a @href="/admin/user/list" @role="button" (. Messages CancelLinkLabel)
-                If .AllowedToUpdate
+                If AllowedToUpdate
                     List
                         := viewedUserId (. ViewedUser Id)
                         a @href="/admin/user/edit/":viewedUserId @role="button" (. Messages EditLinkLabel)
@@ -16,7 +16,7 @@ Import "main.il"
                 details
                     summary (. group DisplayName)
                     ul
-                        For role Roles
+                        For role (. group Roles)
                             li
                                 (. role Name) " ("
                                 For action (. role Actions)

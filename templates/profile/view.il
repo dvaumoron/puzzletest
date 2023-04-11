@@ -25,6 +25,6 @@ Import "main.il"
                         For role (. right Roles)
                             li
                                 (. right Name) " ("
-                                For action (. right Actions)
+                                For action (. role Actions)
                                     action " "
                                 ")"

@@ -3,7 +3,7 @@ Import "main.il"
 := WidgetBody
     Quote
         List
-            h2 (. Messages UserListTitle) "(" Total ")"
+            h2 (. Messages UserListTitle) " (" Total ")"
             search
             paginate
 

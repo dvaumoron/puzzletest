@@ -31,4 +31,4 @@ Import "main.il"
                                             input @type="text" @name="RoleName" @value=roleName
                                             input @type="text" @name="Group" @value=groupName
                                         button @type="submit" @class="contrast" deleteLinkLabel
-                            p (a href="/admin/role/edit/new/":groupName class="secondary" role="button" newLinkLabel)
+                            p (a @href="/admin/role/edit/new/":groupName @class="secondary" @role="button" newLinkLabel)
