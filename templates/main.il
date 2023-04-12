@@ -5,7 +5,8 @@ Func profileLink (user)
 
 Func profilePicture (user)
     := id (. user Id)
-    Return (img @src="/profile/picture/":id @alt=Login @width=100)
+    := login (. user Login)
+    Return (img @src="/profile/picture/":id @alt=login @width=100)
 
 Func profilePictureLink (user)
     := id (. user Id)
@@ -14,35 +15,35 @@ Func profilePictureLink (user)
             p (a @href="/profile/view/":id (profilePicture user))
             p (profileLink user)
 
-Func search ()
+Func search (filterLabel)
     Return
         form @action=CurrentUrl @method="GET" @role="search"
             label
-                . Messages FilterLabel
+                filterLabel
                 input @type="search" @name="filter"
             div @class="hide"
                 input @type="text" @name="pageNumber" @value="1"
             button @type="submit" (span @class="material-symbols-outlined" "search")
 
-Func paginate ()
+Func paginate (previousPageNumber nextPageNumber filter)
     Return
-        If (Or PreviousPageNumber NextPageNumber)
+        If (Or previousPageNumber nextPageNumber)
             div @class="grid"
-                If PreviousPageNumber
+                If previousPageNumber
                     form @action=CurrentUrl @method="GET"
                         div @class="hide"
-                            input @type="text" @name="pageNumber" @value=PreviousPageNumber
-                            If Filter
-                                input @type="text" @name="filter" @value=Filter
+                            input @type="text" @name="pageNumber" @value=previousPageNumber
+                            If filter
+                                input @type="text" @name="filter" @value=filter
                         button @type="submit" (span @class="material-symbols-outlined" "chevron_left")
                     p (button @type="button" @disabled (span @class="material-symbols-outlined" "chevron_left"))
 
-                If NextPageNumber
+                If nextPageNumber
                     form @action=CurrentUrl @method="GET"
                         div @class="hide"
-                            input @type="text" @name="pageNumber" @value=NextPageNumber
-                            If Filter
-                                input @type="text" @name="filter" @value=Filter
+                            input @type="text" @name="pageNumber" @value=nextPageNumber
+                            If filter
+                                input @type="text" @name="filter" @value=filter
                         button @type="submit" (span @class="material-symbols-outlined" "chevron_right")
                     p (button @type="button" @disabled (span @class="material-symbols-outlined" "chevron_right"))
 

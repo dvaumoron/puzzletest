@@ -2,9 +2,9 @@ image:
   pullPolicy: Never
 appServer:
   dateFormat: ""
-  pageSize: ""
-  extractSize: "1000"
-  templatesExt: ".html"
+  pageSize: "2"
+  extractSize: ""
+  templatesExt: ".il"
 proxy:
   mongoAddr: ""
   postgresqlAddr: ""

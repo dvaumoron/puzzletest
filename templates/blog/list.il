@@ -3,8 +3,8 @@ Import "main.il"
 := WidgetBody
     Quote
         List
-            search
-            paginate
+            search (. Messages FilterLabel)
+            paginate PreviousPageNumber NextPageNumber Filter
 
             If AllowedToCreate
                 p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
@@ -23,7 +23,7 @@ Import "main.il"
                             footer
                                 := postId (. post PostId)
                                 a @href=CurrentUrl:"view/":postId @class="outline" @role="button" viewLinkLabel
-                                a @href=CurrentUrl:"delete/":postId @class="contrast" role="button" deleteLinkLabel
+                                a @href=CurrentUrl:"delete/":postId @class="contrast" @role="button" deleteLinkLabel
                 List
                     For post Posts
                         article

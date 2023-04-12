@@ -4,8 +4,8 @@ Import "main.il"
     Quote
         List
             h2 Total " " (. Messages ThreadsLabel)
-            search
-            paginate
+            search (. Messages FilterLabel)
+            paginate PreviousPageNumber NextPageNumber Filter
 
             If AllowedToCreate
                 p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
@@ -21,10 +21,9 @@ Import "main.il"
                             p (profileLink (. thread Creator))
                             p (. thread Date)
                             p (a @href=CurrentUrl:"delete/"id @class="contrast" @role="button" deleteLinkLabel)
-                List
-                    For thread Threads
-                        div @class="grid"
-                            := id (. thread Id)
-                            p (a @href=CurrentUrl:"view/":id (. thread Text))
-                            p (profileLink (. thread Creator))
-                            p (. thread Date)
+                For thread Threads
+                    div @class="grid"
+                        := id (. thread Id)
+                        p (a @href=CurrentUrl:"view/":id (. thread Text))
+                        p (profileLink (. thread Creator))
+                        p (. thread Date)

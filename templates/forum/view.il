@@ -7,8 +7,8 @@ Import "main.il"
                 (. Thread Text) " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
-            search
-            paginate
+            search (. Messages FilterLabel)
+            paginate PreviousPageNumber NextPageNumber Filter
 
             := threadId (. Thread Id)
             If AllowedToDelete
@@ -22,13 +22,12 @@ Import "main.il"
                                 p (. message Text)
                             := id (. message Id)
                             p (a @href=BaseUrl:"message/delete/":threadId:"/":id @class="contrast" @role="button" deleteLinkLabel)
-                List
-                    For message ForumMessages
-                        div @class="grid"
-                            profilePictureLink (. message Creator)
-                            div
-                                p (. message Date)
-                                p (. message Text)
+                For message ForumMessages
+                    div @class="grid"
+                        profilePictureLink (. message Creator)
+                        div
+                            p (. message Date)
+                            p (. message Text)
 
             If AllowedToCreate
                 form @id="createForumMessageForm" @action=BaseUrl:"message/save/":threadId @method="POST"

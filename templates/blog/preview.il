@@ -10,7 +10,7 @@ Import "main.il"
 
             div PreviewHTML
 
-            form @id="publishPostForm" @action=BaseUrl:"preview" method="POST"
+            form @id="publishPostForm" @action=BaseUrl:"preview" @method="POST"
                 label
                     . Messages TitleLabel
                     input @type="text" @id="postTitleField" @name="title" @value=PreviewTitle

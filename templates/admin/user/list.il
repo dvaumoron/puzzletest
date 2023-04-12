@@ -4,8 +4,8 @@ Import "main.il"
     Quote
         List
             h2 (. Messages UserListTitle) " (" Total ")"
-            search
-            paginate
+            search (. Messages FilterLabel)
+            paginate PreviousPageNumber NextPageNumber Filter
 
             := viewLinkLabel (. Messages ViewLinkLabel)
             For user Users

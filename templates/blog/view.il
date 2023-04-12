@@ -8,14 +8,14 @@ Import "main.il"
                     h1
                         (. Post Title) " "
                         a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
-                    h3 (. Messages PostAuthorLabel) (profileLink (. Post Creator))
-                    h3 (. Messages PostDateLabel) (. Post Date)
+                    h3 (. Messages PostAuthorLabel) " " (profileLink (. Post Creator))
+                    h3 (. Messages PostDateLabel) " " (. Post Date)
 
             div (. Post Content)
 
             br
 
-            paginate
+            paginate PreviousPageNumber NextPageNumber Filter
 
             := postId (. Post PostId)
             If AllowedToCreate
@@ -41,7 +41,7 @@ Import "main.il"
                                     p (. comment Date)
                                     p (. comment Text)
                             footer
-                                := id (. comment Id))
+                                := id (. comment Id)
                                 a @href=BaseUrl:"comment/delete/":postId:"/":id @class="contrast" @role="button" deleteLinkLabel
                 For comment Comments
                     article
