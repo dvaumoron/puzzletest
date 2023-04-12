@@ -39,7 +39,7 @@ Import "main.il"
                                 profilePictureLink (. comment Creator)
                                 div
                                     p (. comment Date)
-                                    p (. comment Text)
+                                    p (EscapeHtml (. comment Text))
                             footer
                                 := id (. comment Id)
                                 a @href=BaseUrl:"comment/delete/":postId:"/":id @class="contrast" @role="button" deleteLinkLabel
@@ -49,4 +49,4 @@ Import "main.il"
                             profilePictureLink (. comment Creator)
                             div
                                 p (. comment Date)
-                                p (. comment Text)
+                                p (EscapeHtml (. comment Text))

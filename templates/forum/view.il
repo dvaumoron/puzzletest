@@ -19,7 +19,7 @@ Import "main.il"
                             profilePictureLink (. message Creator)
                             div
                                 p (. message Date)
-                                p (. message Text)
+                                p (EscapeHtml (. message Text))
                             := id (. message Id)
                             p (a @href=BaseUrl:"message/delete/":threadId:"/":id @class="contrast" @role="button" deleteLinkLabel)
                 For message ForumMessages
@@ -27,7 +27,7 @@ Import "main.il"
                         profilePictureLink (. message Creator)
                         div
                             p (. message Date)
-                            p (. message Text)
+                            p (EscapeHtml (. message Text))
 
             If AllowedToCreate
                 form @id="createForumMessageForm" @action=BaseUrl:"message/save/":threadId @method="POST"
