@@ -42,22 +42,23 @@ func main() {
 	rightClient.RegisterGroup(blogGroupId, "blogGroup")
 	rightClient.RegisterGroup(forumGroupId, "forumGroup")
 
+	templatesPath := globalConfig.TemplatesPath
 	ext := globalConfig.TemplatesExt
 	if ext == ".il" {
-		site.HTMLRender = adapter.LoadTemplates(globalConfig.TemplatesPath)
+		site.HTMLRender = adapter.LoadTemplates(templatesPath)
 	} else {
-		site.HTMLRender = templates.Load(globalConfig.TemplatesPath)
+		site.HTMLRender = templates.Load(globalConfig.Logger, templatesPath)
 	}
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage("notFound", adminservice.PublicGroupId, "notFound"+ext))
-	site.AddPage(puzzleweb.MakeStaticPage("about", adminservice.PublicGroupId, "about"+ext))
-	site.AddPage(puzzleweb.MakeStaticPage("faq", adminservice.PublicGroupId, "faq"+ext))
+	site.AddStaticPagesFromFolder(adminservice.PublicGroupId, "basic", templatesPath, ext)
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
 	wikiPagesLook := []string{"Welcome", "wiki/view" + ext, "wiki/edit" + ext, "wiki/list" + ext}
 	wikiPagesLook2 := []string{"Welcome", "wiki2/view" + ext, "wiki2/edit" + ext, "wiki2/list" + ext}
-	site.AddPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id, wikiPagesLook...)))
+	aboutPage, _ := site.GetPage("faq")
+	aboutPage.AddSubPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id, wikiPagesLook...)))
 	site.AddPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id, wikiPagesLook2...)))
 	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
 	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
