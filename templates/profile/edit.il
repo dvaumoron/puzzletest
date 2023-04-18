@@ -15,6 +15,7 @@ Import "main.il"
                 span @id="errorEmptyLoginMessage" (. Messages EmptyLogin)
                 span @id="errorEmptyPasswordMessage" (. Messages EmptyPassword)
                 span @id="errorWrongConfimPasswordMessage" (. Messages WrongConfirmPassword)
+                span @id="passwordHelpMessage" (. Messages PasswordRules)
 
             details
                 summary (. Messages ChangeLoginLabel)
@@ -34,7 +35,7 @@ Import "main.il"
                         (. Messages OldPasswordLabel)
                         input @type="password" @name="oldPassword"
                     label
-                        (. Messages NewPasswordLabel)
+                        (. Messages NewPasswordLabel) " " (a @href @id="passwordHelp" (span  @class="material-symbols-outlined" "help"))
                         input @type="password" @id="changePasswordField" @name="newPassword"
                     label
                         (. Messages ConfirmPasswordLabel)
