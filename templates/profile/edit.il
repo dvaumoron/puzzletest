@@ -35,7 +35,8 @@ Import "main.il"
                         (. Messages OldPasswordLabel)
                         input @type="password" @name="oldPassword"
                     label
-                        (. Messages NewPasswordLabel) " " (a @href @id="passwordHelp" (span  @class="material-symbols-outlined" "help"))
+                        (. Messages NewPasswordLabel)
+                        a @href @id="passwordHelp" (span @class="material-symbols-outlined" "help")
                         input @type="password" @id="changePasswordField" @name="newPassword"
                     label
                         (. Messages ConfirmPasswordLabel)
