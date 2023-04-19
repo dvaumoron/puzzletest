@@ -57,7 +57,8 @@ func main() {
 	// (currently blog use forum storage for comment)
 	wikiPagesLook := []string{"Welcome", "wiki/view" + ext, "wiki/edit" + ext, "wiki/list" + ext}
 	wikiPagesLook2 := []string{"Welcome", "wiki2/view" + ext, "wiki2/edit" + ext, "wiki2/list" + ext}
-	faqPage, _ := site.GetPage("faq")
+	aboutPage, _ := site.GetPage("about")
+	faqPage, _ := aboutPage.GetSubPage("faq")
 	faqPage.AddSubPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id, wikiPagesLook...)))
 	site.AddPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id, wikiPagesLook2...)))
 	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
