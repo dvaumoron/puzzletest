@@ -5,7 +5,9 @@ appServer:
   pageSize: "2"
   extractSize: ""
   templatesExt: ".il"
-proxy:
+externalService:
   mongoAddr: ""
   postgresqlAddr: ""
   redisAddr: ""
+passstrengthserver:
+  defaultPassword: "Password@1234"

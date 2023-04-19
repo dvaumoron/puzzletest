@@ -33,6 +33,8 @@ spec:
           value: "/notFound"
         - name: SESSION_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-session-service:50051"
+        - name: PASSSTRENGTH_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-passstrength-service:50051"
         - name: SALT_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-salt-service:50051"
         - name: SETTINGS_SERVICE_ADDR

@@ -12,25 +12,10 @@ grpcService:
     protocol: TCP
     targetPort: grpc-service
   type: ClusterIP
-externalhost:
-  ports:
-  - name: postgre
-    port: 5432
-    protocol: TCP
-    targetPort: postgre-service
-  - name: redis
-    port: 6379
-    protocol: TCP
-    targetPort: redis-service
-  - name: http
-    port: 9080
-    protocol: TCP
-    targetPort: http-service
-  - name: mongo
-    port: 27017
-    protocol: TCP
-    targetPort: mongo-service
-  type: ClusterIP
+externalService:
+  mongoAddr: "mongodb://exemplehost:27017"
+  postgresqlAddr: "host=exemplehost user=postgres port=5432 sslmode=disable"
+  redisAddr: "exemplehost:6379"
 kubernetesClusterDomain: cluster.local
 appServer:
   dateFormat: ""
@@ -78,15 +63,13 @@ profileServer:
   resourcesLimits:
     cpu: 50m
     memory: 32Mi
-proxy:
-  mongoAddr: ""
-  postgresqlAddr: ""
-  redisAddr: ""
+passstrengthserver:
+  defaultPassword: ""
   replicas: 1
   imageVersion: latest
   resourcesLimits:
     cpu: 50m
-    memory: 8Mi
+    memory: 16Mi
 rightServer:
   replicas: 1
   imageVersion: latest

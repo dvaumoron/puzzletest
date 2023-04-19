@@ -1,31 +1,29 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: {{ include "puzzle.fullname" . }}-proxy
+  name: {{ include "puzzle.fullname" . }}-passstrength
   labels:
     {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.proxy.replicas }}
+  replicas: {{ .Values.passstrengthserver.replicas }}
   selector:
     matchLabels:
-      app: puzzleproxy
+      app: puzzlepassstrength
   template:
     metadata:
       labels:
-        app: puzzleproxy
+        app: puzzlepassstrength
         {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:
-        - name: SERVICE_PORT
-          value: "9080"
-        - name: SERVICE_PORTS
-          value: "5432,6379,27017"
-        - name: FORWARD_HOSTS
-          value: "{{ .Values.proxy.postgresqlAddr }},{{ .Values.proxy.redisAddr }},{{ .Values.proxy.mongoAddr }}"
-        image: puzzleproxy:{{ .Values.proxy.imageVersion }}
+        - name: DEFAULT_PASSWORD
+          value: "{{ .Values.passstrengthserver.defaultPassword }}"
+        - name: AVAILABLE_LOCALES
+          value: "fr-FR, en-US"
+        image: puzzlepassstrengthserver:{{ .Values.passstrengthserver.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: puzzleproxy
+        name: puzzlepassstrength
         ports:
         - containerPort: 5432
           name: postgre-service
@@ -45,4 +43,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            {{- .Values.proxy.resourcesLimits | toYaml | nindent 12 -}}
+            {{- .Values.passstrengthserver.resourcesLimits | toYaml | nindent 12 -}}

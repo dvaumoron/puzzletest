@@ -22,7 +22,7 @@ spec:
         - name: UNUSED_DATA_TIMEOUT
           value: "600"
         - name: REDIS_SERVER_ADDR
-          value: "{{ include "puzzle.fullname" . }}-externalhost:6379"
+          value: "{{ .Values.externalService.redisAddr }}"
         - name: REDIS_SERVER_DB
           value: "1"
         image: puzzlecachedrightserver:{{ .Values.cachedRightServer.imageVersion }}

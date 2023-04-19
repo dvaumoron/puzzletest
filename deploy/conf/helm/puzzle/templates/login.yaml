@@ -20,7 +20,7 @@ spec:
         - name: DB_SERVER_TYPE
           value: "postgres"
         - name: DB_SERVER_ADDR
-          value: "host={{ include "puzzle.fullname" . }}-externalhost user=postgres dbname=logindb port=5432 sslmode=disable"
+          value: "{{ .Values.externalService.postgresqlAddr }} dbname=logindb"
         image: puzzleloginserver:{{ .Values.loginServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlelogin
