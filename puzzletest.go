@@ -86,5 +86,9 @@ func main() {
 
 	initSpan.End()
 
-	site.Run(globalConfig.ExtractSiteConfig())
+	siteConfig := globalConfig.ExtractSiteConfig()
+	// emptying data no longer useful for GC cleaning
+	globalConfig = nil
+
+	site.Run(siteConfig)
 }
