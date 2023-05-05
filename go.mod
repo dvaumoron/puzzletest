@@ -4,8 +4,7 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.4.0
-	github.com/dvaumoron/puzzletelemetry v1.0.1
-	github.com/dvaumoron/puzzleweb v1.2.2
+	github.com/dvaumoron/puzzleweb v1.3.1
 	go.uber.org/zap v1.24.0
 )
 
@@ -24,6 +23,7 @@ require (
 	github.com/dvaumoron/puzzlesaltclient v1.2.0 // indirect
 	github.com/dvaumoron/puzzlesaltservice v1.0.1 // indirect
 	github.com/dvaumoron/puzzlesessionservice v1.2.0 // indirect
+	github.com/dvaumoron/puzzletelemetry v1.1.0 // indirect
 	github.com/dvaumoron/puzzlewikiservice v1.3.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.9.0 // indirect

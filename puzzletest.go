@@ -20,15 +20,13 @@ package main
 import (
 	"context"
 	_ "embed"
-	"os"
 
 	"github.com/dvaumoron/indentlang/adapter"
-	"github.com/dvaumoron/puzzletelemetry"
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
+	"github.com/dvaumoron/puzzleweb/config"
 	"github.com/dvaumoron/puzzleweb/forum"
-	"github.com/dvaumoron/puzzleweb/otel"
 	"github.com/dvaumoron/puzzleweb/templates"
 	"github.com/dvaumoron/puzzleweb/wiki"
 	"go.uber.org/zap"
@@ -43,16 +41,12 @@ const forumGroupId = 5
 var version string
 
 func main() {
-	site, globalConfig := puzzleweb.BuildDefaultSite()
-	logger := globalConfig.Logger
+	site, globalConfig, initSpan := puzzleweb.BuildDefaultSite(config.WebKey, version)
+	logger := globalConfig.CtxLogger
 	rightClient := globalConfig.RightClient
 
-	tp, err := puzzletelemetry.Init(otel.WebKey, version, os.Getenv("EXEC_ENV"))
-	if err != nil {
-		logger.Fatal("Failed to initialize trace provider", zap.Error(err))
-	}
 	defer func() {
-		if err = tp.Shutdown(context.Background()); err != nil {
+		if err := globalConfig.TracerProvider.Shutdown(context.Background()); err != nil {
 			logger.Fatal("Failed to shutdown trace provider", zap.Error(err))
 		}
 	}()
@@ -66,16 +60,17 @@ func main() {
 	templatesPath := globalConfig.TemplatesPath
 	ext := globalConfig.TemplatesExt
 	if ext == ".il" {
+		var err error
 		site.HTMLRender, err = adapter.LoadTemplates(templatesPath)
 		if err != nil {
 			logger.Fatal("Failed to load templates", zap.Error(err))
 		}
 	} else {
-		site.HTMLRender = templates.Load(logger, templatesPath)
+		site.HTMLRender = templates.Load(logger.Logger(), templatesPath)
 	}
 
-	site.AddPage(puzzleweb.MakeHiddenStaticPage("notFound", adminservice.PublicGroupId, "notFound"+ext))
-	site.AddStaticPagesFromFolder(adminservice.PublicGroupId, "basic", templatesPath, ext)
+	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, "notFound", adminservice.PublicGroupId, "notFound"+ext))
+	site.AddStaticPagesFromFolder(logger, adminservice.PublicGroupId, "basic", templatesPath, ext)
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
@@ -88,6 +83,8 @@ func main() {
 	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
 	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
 	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId, "forum/list"+ext, "forum/view"+ext, "forum/create"+ext)))
+
+	initSpan.End()
 
 	site.Run(globalConfig.ExtractSiteConfig())
 }
