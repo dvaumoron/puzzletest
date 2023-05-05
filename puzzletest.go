@@ -18,13 +18,17 @@
 package main
 
 import (
+	"context"
 	_ "embed"
+	"os"
 
 	"github.com/dvaumoron/indentlang/adapter"
+	"github.com/dvaumoron/puzzletelemetry"
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
 	"github.com/dvaumoron/puzzleweb/forum"
+	"github.com/dvaumoron/puzzleweb/otel"
 	"github.com/dvaumoron/puzzleweb/templates"
 	"github.com/dvaumoron/puzzleweb/wiki"
 	"go.uber.org/zap"
@@ -43,6 +47,16 @@ func main() {
 	logger := globalConfig.Logger
 	rightClient := globalConfig.RightClient
 
+	tp, err := puzzletelemetry.Init(otel.WebKey, version, os.Getenv("EXEC_ENV"))
+	if err != nil {
+		logger.Fatal("Failed to initialize trace provider", zap.Error(err))
+	}
+	defer func() {
+		if err = tp.Shutdown(context.Background()); err != nil {
+			logger.Fatal("Failed to shutdown trace provider", zap.Error(err))
+		}
+	}()
+
 	// create group for permissions
 	rightClient.RegisterGroup(wikiGroup1Id, "wikiGroup1")
 	rightClient.RegisterGroup(wikiGroup2Id, "wikiGroup2")
@@ -52,7 +66,6 @@ func main() {
 	templatesPath := globalConfig.TemplatesPath
 	ext := globalConfig.TemplatesExt
 	if ext == ".il" {
-		var err error
 		site.HTMLRender, err = adapter.LoadTemplates(templatesPath)
 		if err != nil {
 			logger.Fatal("Failed to load templates", zap.Error(err))
