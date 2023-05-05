@@ -42,14 +42,8 @@ var version string
 
 func main() {
 	site, globalConfig, initSpan := puzzleweb.BuildDefaultSite(config.WebKey, version)
-	logger := globalConfig.CtxLogger
+	logger := globalConfig.GetLogger()
 	rightClient := globalConfig.RightClient
-
-	defer func() {
-		if err := globalConfig.TracerProvider.Shutdown(context.Background()); err != nil {
-			logger.Fatal("Failed to shutdown trace provider", zap.Error(err))
-		}
-	}()
 
 	// create group for permissions
 	rightClient.RegisterGroup(wikiGroup1Id, "wikiGroup1")
@@ -66,11 +60,11 @@ func main() {
 			logger.Fatal("Failed to load templates", zap.Error(err))
 		}
 	} else {
-		site.HTMLRender = templates.Load(logger.Logger(), templatesPath)
+		site.HTMLRender = templates.Load(logger, templatesPath)
 	}
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, "notFound", adminservice.PublicGroupId, "notFound"+ext))
-	site.AddStaticPagesFromFolder(logger, adminservice.PublicGroupId, "basic", templatesPath, ext)
+	site.AddStaticPagesFromFolder(globalConfig.CtxLogger, adminservice.PublicGroupId, "basic", templatesPath, ext)
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
@@ -86,9 +80,19 @@ func main() {
 
 	initSpan.End()
 
+	tracerProvider := globalConfig.TracerProvider
+	tracer := globalConfig.Tracer
 	siteConfig := globalConfig.ExtractSiteConfig()
 	// emptying data no longer useful for GC cleaning
 	globalConfig = nil
 
-	site.Run(siteConfig)
+	err := site.Run(siteConfig)
+	if err2 := tracerProvider.Shutdown(context.Background()); err2 != nil {
+		ctx, stopSpan := tracer.Start(context.Background(), "shutdown")
+		logger.WarnContext(ctx, "Failed to shutdown trace provider", zap.Error(err2))
+		stopSpan.End()
+	}
+	if err != nil {
+		logger.Fatal("Failed to serve", zap.Error(err))
+	}
 }
