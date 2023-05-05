@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+./build/build.sh
+
 puzzletools prepare
-go install
 
 buildah from --name puzzletest-working-container scratch
 buildah copy puzzletest-working-container ./locales /locales

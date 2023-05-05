@@ -18,6 +18,8 @@
 package main
 
 import (
+	_ "embed"
+
 	"github.com/dvaumoron/indentlang/adapter"
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
@@ -25,6 +27,7 @@ import (
 	"github.com/dvaumoron/puzzleweb/forum"
 	"github.com/dvaumoron/puzzleweb/templates"
 	"github.com/dvaumoron/puzzleweb/wiki"
+	"go.uber.org/zap"
 )
 
 const wikiGroup1Id = 2
@@ -32,8 +35,12 @@ const wikiGroup2Id = 3
 const blogGroupId = 4
 const forumGroupId = 5
 
+//go:embed version.txt
+var version string
+
 func main() {
 	site, globalConfig := puzzleweb.BuildDefaultSite()
+	logger := globalConfig.Logger
 	rightClient := globalConfig.RightClient
 
 	// create group for permissions
@@ -45,9 +52,13 @@ func main() {
 	templatesPath := globalConfig.TemplatesPath
 	ext := globalConfig.TemplatesExt
 	if ext == ".il" {
-		site.HTMLRender = adapter.LoadTemplates(templatesPath)
+		var err error
+		site.HTMLRender, err = adapter.LoadTemplates(templatesPath)
+		if err != nil {
+			logger.Fatal("Failed to load templates", zap.Error(err))
+		}
 	} else {
-		site.HTMLRender = templates.Load(globalConfig.Logger, templatesPath)
+		site.HTMLRender = templates.Load(logger, templatesPath)
 	}
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage("notFound", adminservice.PublicGroupId, "notFound"+ext))
