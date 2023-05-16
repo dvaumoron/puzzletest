@@ -18,7 +18,6 @@
 package main
 
 import (
-	"context"
 	_ "embed"
 
 	"github.com/dvaumoron/indentlang/adapter"
@@ -80,19 +79,11 @@ func main() {
 
 	initSpan.End()
 
-	tracerProvider := globalConfig.TracerProvider
-	tracer := globalConfig.Tracer
 	siteConfig := globalConfig.ExtractSiteConfig()
 	// emptying data no longer useful for GC cleaning
 	globalConfig = nil
 
-	err := site.Run(siteConfig)
-	if err2 := tracerProvider.Shutdown(context.Background()); err2 != nil {
-		ctx, stopSpan := tracer.Start(context.Background(), "shutdown")
-		logger.WarnContext(ctx, "Failed to shutdown trace provider", zap.Error(err2))
-		stopSpan.End()
-	}
-	if err != nil {
+	if err := site.Run(siteConfig); err != nil {
 		logger.Fatal("Failed to serve", zap.Error(err))
 	}
 }

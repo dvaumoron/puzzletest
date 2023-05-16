@@ -92,6 +92,8 @@ github.com/dvaumoron/puzzletelemetry v1.1.0 h1:1KMOKBadHZ1vShpaXzF0fuP8B8GCm/jI2
 github.com/dvaumoron/puzzletelemetry v1.1.0/go.mod h1:OKAkWUV8OiGm04oNhhZ32yPTp4qoTVqx4lYA5AJR78A=
 github.com/dvaumoron/puzzleweb v1.3.1 h1:bvjg7tB7uyNBn/uuuchDJSCH07cUA4ld2M9w8azp3q8=
 github.com/dvaumoron/puzzleweb v1.3.1/go.mod h1:aZz4cCYEe95nIR55mvDMW+IAjNiCZJIr2J/HDIy8/Dk=
+github.com/dvaumoron/puzzleweb v1.3.2 h1:CvvhNgfx2JzdFouzx1sW2mAqMLVkMXXREBILDQeWCt0=
+github.com/dvaumoron/puzzleweb v1.3.2/go.mod h1:aZz4cCYEe95nIR55mvDMW+IAjNiCZJIr2J/HDIy8/Dk=
 github.com/dvaumoron/puzzlewikiservice v1.3.0 h1:M2PQ5jFTcwJ8kB1FgiaUB9+PJHOIwzwNbejkYwPYpxI=
 github.com/dvaumoron/puzzlewikiservice v1.3.0/go.mod h1:tPX1ONQbE/Bz19M8JLPmm/6/l5YXQVc2okbS2N9P0ns=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
