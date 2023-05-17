@@ -21,6 +21,12 @@ spec:
           value: "postgres"
         - name: DB_SERVER_ADDR
           value: "{{ .Values.externalService.postgresqlAddr }} dbname=forumdb"
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: "$(HOST_IP):4317"
         image: puzzleforumserver:{{ .Values.forumServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleforum

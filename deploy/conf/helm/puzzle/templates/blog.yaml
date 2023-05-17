@@ -21,6 +21,12 @@ spec:
           value: "{{ .Values.externalService.mongoAddr }}"
         - name: MONGODB_SERVER_DB
           value: "blogsDB"
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: "$(HOST_IP):4317"
         image: puzzleblogserver:{{ .Values.blogServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzleblog

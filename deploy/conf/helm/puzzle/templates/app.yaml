@@ -53,6 +53,12 @@ spec:
           value: "{{ include "puzzle.fullname" . }}-forum-service:50051"
         - name: BLOG_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: "$(HOST_IP):4317"
         image: puzzletest:{{ .Values.appServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzletest

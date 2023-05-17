@@ -94,6 +94,11 @@ settingsServer:
   resourcesLimits:
     cpu: 50m
     memory: 32Mi
+telemetryCollector:
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
 wikiServer:
   replicas: 1
   imageVersion: latest
