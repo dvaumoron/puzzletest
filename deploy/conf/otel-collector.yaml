@@ -9,7 +9,7 @@ processors:
 
 exporters:
   prometheus:
-    endpoint: localhost:8889
+    endpoint: 0.0.0.0:8889
     namespace: default
     metric_expiration: "1m"
     send_timestamps: true
