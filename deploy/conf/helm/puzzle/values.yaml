@@ -98,7 +98,7 @@ telemetryCollector:
   imageVersion: latest
   resourcesLimits:
     cpu: 50m
-    memory: 32Mi
+    memory: 128Mi
 wikiServer:
   replicas: 1
   imageVersion: latest
