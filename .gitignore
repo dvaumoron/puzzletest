@@ -2,3 +2,6 @@
 # vendor/
 
 version.txt
+
+# doesn't share symlink
+prometheus
