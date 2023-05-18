@@ -11,6 +11,8 @@ exporters:
   prometheus:
     endpoint: localhost:8889
     namespace: default
+    metric_expiration: "1m"
+    send_timestamps: true
 
 extensions:
   health_check:
