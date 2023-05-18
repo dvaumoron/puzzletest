@@ -19,6 +19,7 @@ sources:
   - github.com/dvaumoron/puzzleblogserver
   - github.com/dvaumoron/puzzlewikiserver
   - github.com/dvaumoron/puzzleforumserver
+  - github.com/dvaumoron/puzzlepassstrengthserver
 maintainers:
   - name: Denis VAUMORON
     url: linked.com/in/denis-vaumoron-92579187
