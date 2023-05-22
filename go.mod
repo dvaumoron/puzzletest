@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dvaumoron/indentlang v1.4.0
-	github.com/dvaumoron/puzzleweb v1.3.2
+	github.com/dvaumoron/puzzleweb v1.3.4
 	go.uber.org/zap v1.24.0
 )
 
