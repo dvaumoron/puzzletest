@@ -3,5 +3,6 @@
 
 version.txt
 
-# doesn't share symlink
+# doesn't share symlink and generated data
 prometheus
+data
