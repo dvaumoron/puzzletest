@@ -22,7 +22,7 @@ spec:
             fieldRef:
               fieldPath: status.hostIP
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-          value: "$(HOST_IP):4317"
+          value: "http://$(HOST_IP):4317"
         image: puzzlemarkdownserver:{{ .Values.markdownServer.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlemarkdown
