@@ -8,4 +8,4 @@
 # - 4317 isOTLP gRPC receiver
 # - 4318 is OTLP http receiver
 # - 55679 is zpages extension
-docker run -p 4317:4317 -p 8888:8888 -p 8889:8889 -v $(pwd)/config.yaml:$PWD/deploy/conf/otel-collector.yaml otel/opentelemetry-collector
+docker run -p 4317:4317 -p 8888:8888 -p 8889:8889 -v $PWD/deploy/conf/otel-collector.yaml:/etc/otelcol-contrib/config.yaml  otel/opentelemetry-collector
