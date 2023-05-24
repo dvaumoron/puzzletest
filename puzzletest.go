@@ -20,13 +20,11 @@ package main
 import (
 	_ "embed"
 
-	"github.com/dvaumoron/indentlang/adapter"
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
 	"github.com/dvaumoron/puzzleweb/config"
 	"github.com/dvaumoron/puzzleweb/forum"
-	"github.com/dvaumoron/puzzleweb/templates"
 	"github.com/dvaumoron/puzzleweb/wiki"
 	"go.uber.org/zap"
 )
@@ -35,6 +33,8 @@ const wikiGroup1Id = 2
 const wikiGroup2Id = 3
 const blogGroupId = 4
 const forumGroupId = 5
+
+const notFound = "notFound"
 
 //go:embed version.txt
 var version string
@@ -50,32 +50,18 @@ func main() {
 	rightClient.RegisterGroup(blogGroupId, "blogGroup")
 	rightClient.RegisterGroup(forumGroupId, "forumGroup")
 
-	templatesPath := globalConfig.TemplatesPath
-	ext := globalConfig.TemplatesExt
-	if ext == ".il" {
-		var err error
-		site.HTMLRender, err = adapter.LoadTemplates(templatesPath)
-		if err != nil {
-			logger.Fatal("Failed to load templates", zap.Error(err))
-		}
-	} else {
-		site.HTMLRender = templates.Load(logger, templatesPath)
-	}
-
-	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, "notFound", adminservice.PublicGroupId, "notFound"+ext))
-	site.AddStaticPagesFromFolder(globalConfig.CtxLogger, adminservice.PublicGroupId, "basic", templatesPath, ext)
+	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, notFound, adminservice.PublicGroupId, notFound))
+	site.AddStaticPages(globalConfig.CtxLogger, adminservice.PublicGroupId, loadStaticPagePaths())
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
-	wikiPagesLook := []string{"Welcome", "wiki/view" + ext, "wiki/edit" + ext, "wiki/list" + ext}
-	wikiPagesLook2 := []string{"Welcome", "wiki2/view" + ext, "wiki2/edit" + ext, "wiki2/list" + ext}
 	aboutPage, _ := site.GetPage("about")
 	faqPage, _ := aboutPage.GetSubPage("faq")
-	aboutPage.AddSubPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id, wikiPagesLook...)))
-	faqPage.AddSubPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id, wikiPagesLook2...)))
-	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id, wikiPagesLook...)))
-	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId, "blog/list"+ext, "blog/view"+ext, "blog/create"+ext, "blog/preview"+ext)))
-	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId, "forum/list"+ext, "forum/view"+ext, "forum/create"+ext)))
+	aboutPage.AddSubPage(wiki.MakeWikiPage("wiki", globalConfig.CreateWikiConfig(1, wikiGroup1Id)))
+	faqPage.AddSubPage(wiki.MakeWikiPage("wiki2", globalConfig.CreateWikiConfig(2, wikiGroup1Id, "Welcome", "wiki2/view", "wiki2/edit", "wiki2/list")))
+	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id)))
+	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId)))
+	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId)))
 
 	initSpan.End()
 
@@ -86,4 +72,9 @@ func main() {
 	if err := site.Run(siteConfig); err != nil {
 		logger.Fatal("Failed to serve", zap.Error(err))
 	}
+}
+
+func loadStaticPagePaths() []string {
+	// TODO
+	return nil
 }
