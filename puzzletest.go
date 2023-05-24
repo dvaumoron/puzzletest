@@ -51,7 +51,7 @@ func main() {
 	rightClient.RegisterGroup(forumGroupId, "forumGroup")
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, notFound, adminservice.PublicGroupId, notFound))
-	site.AddStaticPages(globalConfig.CtxLogger, adminservice.PublicGroupId, loadStaticPagePaths())
+	site.AddStaticPages(globalConfig.CtxLogger, adminservice.PublicGroupId, []string{"about/", "about/faq"})
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
@@ -72,9 +72,4 @@ func main() {
 	if err := site.Run(siteConfig); err != nil {
 		logger.Fatal("Failed to serve", zap.Error(err))
 	}
-}
-
-func loadStaticPagePaths() []string {
-	// TODO
-	return nil
 }
