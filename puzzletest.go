@@ -20,12 +20,14 @@ package main
 
 import (
 	_ "embed"
+	"os"
 
 	"github.com/dvaumoron/puzzleweb"
 	adminservice "github.com/dvaumoron/puzzleweb/admin/service"
 	"github.com/dvaumoron/puzzleweb/blog"
 	"github.com/dvaumoron/puzzleweb/config"
 	"github.com/dvaumoron/puzzleweb/forum"
+	"github.com/dvaumoron/puzzleweb/remotewidget"
 	"github.com/dvaumoron/puzzleweb/wiki"
 	"go.uber.org/zap"
 )
@@ -43,6 +45,7 @@ var version string
 func main() {
 	site, globalConfig, initSpan := puzzleweb.BuildDefaultSite(config.WebKey, version)
 	logger := globalConfig.GetLogger()
+	ctxLogger := globalConfig.CtxLogger
 	rightClient := globalConfig.RightClient
 
 	// create group for permissions
@@ -52,7 +55,7 @@ func main() {
 	rightClient.RegisterGroup(forumGroupId, "forumGroup")
 
 	site.AddPage(puzzleweb.MakeHiddenStaticPage(globalConfig.Tracer, notFound, adminservice.PublicGroupId, notFound))
-	site.AddStaticPages(globalConfig.CtxLogger, adminservice.PublicGroupId, []string{"about/", "about/faq"})
+	site.AddStaticPages(ctxLogger, adminservice.PublicGroupId, []string{"about/", "about/faq"})
 
 	// Warning : the object id should be different even for different kind of dynamic page
 	// (currently blog use forum storage for comment)
@@ -63,6 +66,8 @@ func main() {
 	site.AddPage(wiki.MakeWikiPage("wiki3", globalConfig.CreateWikiConfig(3, wikiGroup2Id)))
 	site.AddPage(blog.MakeBlogPage("blog", globalConfig.CreateBlogConfig(4, blogGroupId)))
 	site.AddPage(forum.MakeForumPage("forum", globalConfig.CreateForumConfig(5, forumGroupId)))
+	serviceAddr := os.Getenv("GALLERY_SERVICE_ADDR")
+	site.AddPage(remotewidget.MakeRemotePage("gallery", ctxLogger, "gallery", globalConfig.CreateWidgetConfig(serviceAddr, 6, adminservice.PublicGroupId)))
 
 	initSpan.End()
 
