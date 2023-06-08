@@ -44,7 +44,6 @@ var version string
 
 func main() {
 	site, globalConfig, initSpan := puzzleweb.BuildDefaultSite(config.WebKey, version)
-	logger := globalConfig.GetLogger()
 	ctxLogger := globalConfig.CtxLogger
 	rightClient := globalConfig.RightClient
 
@@ -76,6 +75,6 @@ func main() {
 	globalConfig = nil
 
 	if err := site.Run(siteConfig); err != nil {
-		logger.Fatal("Failed to serve", zap.Error(err))
+		siteConfig.Logger.Fatal("Failed to serve", zap.Error(err))
 	}
 }
