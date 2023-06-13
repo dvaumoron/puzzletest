@@ -1,5 +1,7 @@
 image:
   pullPolicy: IfNotPresent
+telemetry:
+  envName: ""
 httpService:
   ports:
   - port: 9080
@@ -45,6 +47,12 @@ forumServer:
   resourcesLimits:
     cpu: 50m
     memory: 64Mi
+galleryServer:
+  replicas: 1
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
 loginServer:
   replicas: 1
   imageVersion: latest
@@ -99,6 +107,14 @@ telemetryCollector:
   resourcesLimits:
     cpu: 50m
     memory: 128Mi
+templateServer:
+  replicas: 1
+  imageName: puzzleindentlangserver 
+  #imageName: puzzlegotemplateserver
+  imageVersion: latest
+  resourcesLimits:
+    cpu: 50m
+    memory: 32Mi
 wikiServer:
   replicas: 1
   imageVersion: latest

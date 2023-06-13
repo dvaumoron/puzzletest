@@ -53,6 +53,8 @@ spec:
           value: "{{ include "puzzle.fullname" . }}-forum-service:50051"
         - name: BLOG_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:

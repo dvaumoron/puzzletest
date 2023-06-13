@@ -21,6 +21,8 @@ spec:
           value: "{{ .Values.passstrengthserver.defaultPassword }}"
         - name: AVAILABLE_LOCALES
           value: "fr-FR, en-US"
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:

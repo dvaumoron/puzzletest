@@ -21,6 +21,8 @@ spec:
           value: "{{ .Values.externalService.mongoAddr }}"
         - name: MONGODB_SERVER_DB
           value: "profilesDB"
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:

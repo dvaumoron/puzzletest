@@ -23,6 +23,8 @@ spec:
           value: "{{ .Values.externalService.redisAddr }}"
         - name: REDIS_SERVER_DB
           value: "2"
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:

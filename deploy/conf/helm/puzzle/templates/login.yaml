@@ -21,6 +21,8 @@ spec:
           value: "postgres"
         - name: DB_SERVER_ADDR
           value: "{{ .Values.externalService.postgresqlAddr }} dbname=logindb"
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:

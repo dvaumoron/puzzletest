@@ -1,26 +1,24 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: {{ include "puzzle.fullname" . }}-wiki
+  name: {{ include "puzzle.fullname" . }}-template
   labels:
     {{- include "puzzle.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.wikiServer.replicas }}
+  replicas: {{ .Values.templateServer.replicas }}
   selector:
     matchLabels:
-      app: puzzlewiki
+      app: puzzletemplate
   template:
     metadata:
       labels:
-        app: puzzlewiki
+        app: puzzletemplate
         {{- include "puzzle.labels" . | nindent 8 }}
     spec:
       containers:
       - env:
-        - name: MONGODB_SERVER_ADDR
-          value: "{{ .Values.externalService.mongoAddr }}"
-        - name: MONGODB_SERVER_DB
-          value: "wikisDB"
+        - name: AVAILABLE_LOCALES
+          value: "fr-FR, en-US"
         - name: EXEC_ENV
           value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
@@ -29,9 +27,9 @@ spec:
               fieldPath: status.hostIP
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: "http://$(HOST_IP):4317"
-        image: puzzlewikiserver:{{ .Values.wikiServer.imageVersion }}
+        image: "{{ .Values.templateServer.imageName }}:{{ .Values.templateServer.imageVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: puzzlewiki
+        name: puzzleblog
         ports:
         - containerPort: 50051
           name: grpc-service
@@ -44,4 +42,4 @@ spec:
           successThreshold: 1
         resources:
           limits:
-            {{- .Values.wikiServer.resourcesLimits | toYaml | nindent 12 -}}
+            {{- .Values.templateServer.resourcesLimits | toYaml | nindent 12 -}}

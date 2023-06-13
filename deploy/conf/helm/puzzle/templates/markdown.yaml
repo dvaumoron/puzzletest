@@ -17,6 +17,8 @@ spec:
     spec:
       containers:
       - env:
+        - name: EXEC_ENV
+          value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
           valueFrom:
             fieldRef:
