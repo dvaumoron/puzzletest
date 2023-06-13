@@ -47,13 +47,12 @@ Func paginate (previousPageNumber nextPageNumber filter)
                         button @type="submit" (span @class="material-symbols-outlined" "chevron_right")
                     p (button @type="button" @disabled (span @class="material-symbols-outlined" "chevron_right"))
 
-Func liPageLink (page)
+Func liPageLink (messages page)
     := url (. page Url)
-    Return (li (a @href=url ([] Messages (. page Name))))
-
-:= pageTitle ([] Messages PageTitle)
+    Return (li (a @href=url ([] messages (. page Name))))
 
 html
+    := pageTitle ([] Messages PageTitle)
     head
         meta @http-equiv="Content-Type" @content="text/html; charset=UTF-8"
         meta @name="viewport" @content="width=device-width, initial-scale=1"
@@ -88,12 +87,12 @@ html
             nav @class="container-fluid"
                 ul
                     For page SubPages
-                        liPageLink page
+                        liPageLink Messages page
         nav @class="container-fluid" @aria-label="breadcrumb"
             ul
                 li (a @href="/" (span @class="material-symbols-outlined" "home"))
                 For page Ariane
-                    liPageLink page
+                    liPageLink Messages page
         div @class="container-fluid"
             If ErrorMsg
                 h6 @class="error" ([] Messages ErrorMsg)
