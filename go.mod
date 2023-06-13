@@ -3,7 +3,7 @@ module github.com/dvaumoron/puzzletest
 go 1.19
 
 require (
-	github.com/dvaumoron/puzzleweb v1.6.1
+	github.com/dvaumoron/puzzleweb v1.7.0
 	go.uber.org/zap v1.24.0
 )
 
