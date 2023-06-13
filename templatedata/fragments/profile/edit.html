@@ -59,7 +59,6 @@
         {{.Messages.UserDescLabel}}
         <input type="text" name="userDesc" value="{{.ViewedUser.Desc}}"/>
     </label>
-    {{$messages := .Messages}}
     {{range $key, $value := .ViewedUser.Info}}
         <label>
             {{index $messages $key}}
