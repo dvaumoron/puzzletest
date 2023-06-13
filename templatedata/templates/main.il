@@ -71,8 +71,8 @@ html
                         details @role="list"
                             summary (. Messages SelectLangLabel)
                             ul
-                                For lang AllLang
-                                    li (a @href=LangSelectorUrl:"&lang=":lang (img @src="/langPicture/":lang @alt=lang))
+                                For targetLang AllLang
+                                    li (a @href=LangSelectorUrl:"&lang=":targetLang (img @src="/langPicture/":targetLang @alt=targetLang))
             If LoginUrl
                 ul
                     If Login
