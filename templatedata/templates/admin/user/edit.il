@@ -19,7 +19,7 @@ Import "main"
                                 label
                                     roleName " ("
                                     For action (. role Actions)
-                                        action " "
+                                        ([] Messages action) " "
                                     ")"
                                     input @type="checkbox" @name="roles" @value=roleName:"/":groupName @checked @role="switch"
                             For role (. group AddableRoles)
@@ -27,7 +27,7 @@ Import "main"
                                 label
                                     roleName " ("
                                     For action (. role Actions)
-                                        action " "
+                                        ([] Messages action) " "
                                     ")"
                                     input @type="checkbox" @name="roles" @value=roleName:"/":groupName @role="switch"
                 button @type="submit" (. Messages SaveLinkLabel)

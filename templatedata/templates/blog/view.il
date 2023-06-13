@@ -28,7 +28,7 @@ Import "main"
                     button @type="button" @id="commentButton" @class="secondary" (. Messages PublishLinkLabel)
 
             If CommentMsg
-                h6 @class="error" CommentMsg
+                h6 @class="error" ([] Messages CommentMsg)
 
             If AllowedToDelete
                 List

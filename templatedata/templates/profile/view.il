@@ -20,11 +20,11 @@ Import "main"
 
             For right UserRight
                 div
-                    p (. right DisplayName)
+                    p ([] Messages (. right DisplayName))
                     ul
                         For role (. right Roles)
                             li
                                 (. role Name) " ("
                                 For action (. role Actions)
-                                    action " "
+                                    ([] Messages action) " "
                                 ")"

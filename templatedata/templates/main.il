@@ -49,13 +49,15 @@ Func paginate (previousPageNumber nextPageNumber filter)
 
 Func liPageLink (page)
     := url (. page Url)
-    Return (li (a @href=url (. page Name)))
+    Return (li (a @href=url ([] Messages (. page Name))))
+
+:= pageTitle ([] Messages PageTitle)
 
 html
     head
         meta @http-equiv="Content-Type" @content="text/html; charset=UTF-8"
         meta @name="viewport" @content="width=device-width, initial-scale=1"
-        title "PuzzleTest - " PageTitle
+        title "PuzzleTest - " pageTitle
         link @href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" @rel="stylesheet"
         link @href="/static/css/pico.min.css" @type="text/css" @rel="stylesheet"
         link @href="/static/css/main.css" @type="text/css" @rel="stylesheet"
@@ -64,7 +66,7 @@ html
         nav @class="container-fluid"
             ul
                 li (a @href="/" (img @src="/favicon.ico"))
-                li PageTitle
+                li pageTitle
                 If LangSelectorUrl
                     li
                         details @role="list"
@@ -94,7 +96,7 @@ html
                     liPageLink page
         div @class="container-fluid"
             If ErrorMsg
-                h6 @class="error" ErrorMsg
+                h6 @class="error" ([] Messages ErrorMsg)
             Eval WidgetBody
         footer @class="container-fluid"
             "Made with " (a @href="https://github.com/dvaumoron/puzzleweb" "PuzzleWeb") " and " (a @href="https://picocss.com/" "Pico.css")

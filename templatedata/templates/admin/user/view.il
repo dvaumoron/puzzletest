@@ -14,11 +14,11 @@ Import "main"
 
             For group Groups
                 details
-                    summary (. group DisplayName)
+                    summary ([] Messages (. group DisplayName))
                     ul
                         For role (. group Roles)
                             li
                                 (. role Name) " ("
                                 For action (. role Actions)
-                                    action " "
+                                    ([] Messages action) " "
                                 ")"

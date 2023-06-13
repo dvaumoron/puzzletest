@@ -11,7 +11,7 @@ Import "main"
             := newLinkLabel (. Messages NewLinkLabel)
             For group Groups
                 details
-                    summary (. group DisplayName)
+                    summary ([] Messages (. group DisplayName))
                     := groupName (. group Name)
                     If (== groupName "public")
                         p groupDescPublic
@@ -22,7 +22,7 @@ Import "main"
                                     p
                                         roleName " ("
                                         For action (. role Actions)
-                                            action " "
+                                            ([] Messages action) " "
                                         ")"
                                     p (a @href="/admin/role/edit/":roleName:"/":groupName @role="button" editLinkLabel)
                                     # delete role link (use an empty action form)

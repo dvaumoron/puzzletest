@@ -5,8 +5,8 @@ Import "main"
         List
             h2
                 If (== RoleName "new")
-                    (. Messages NewRoleLabel) " " GroupDisplayName
-                    (. Messages EditLabel) " " GroupDisplayName "/" RoleName
+                    (. Messages NewRoleLabel) " " ([] Messages GroupDisplayName)
+                    (. Messages EditLabel) " " ([] Messages GroupDisplayName) "/" RoleName
                 " " (a @href="/admin/role/list" @role="button" (. Messages CancelLinkLabel))
 
             form @id="editRoleForm" @action="/admin/role/save" @method="POST"
