@@ -7,7 +7,7 @@ Import "main"
                 (. Messages CreateThreadTitle) " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
-            form @id="createThreadForm" @action="{{.BaseUrl}}save" @method="POST"
+            form @id="createThreadForm" @action=BaseUrl:"save" @method="POST"
                 label
                     (. Messages TitleLabel)
                     input @type="text" @id="threadTitleField" @name="title"
