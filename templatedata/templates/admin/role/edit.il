@@ -13,7 +13,7 @@ Import "main"
                 div (If (!= RoleName "new") @class="hide")
                     label
                         . Messages NameLabel
-                        input t@ype="text" @id="editRoleNameField" @name="RoleName" @value=RoleName
+                        input @type="text" @id="editRoleNameField" @name="RoleName" @value=RoleName
                 div @class="hide"
                     # to allow JavaScript or WebAssembly to display a localized error message
                     span @id="errorBadRoleNameMessage" (. Messages ErrorBadRoleName)

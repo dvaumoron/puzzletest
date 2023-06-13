@@ -15,7 +15,7 @@ Import "main"
                 := imageDesc (. Image Desc)
                 img @src=BaseUrl:"retrieve/":imageId @alt=imageDesc
 
-            form @action=BaseUrl:"save" @method="POST" @enctype="multipart/form-data"
+            form @id="editImageForm" @action=BaseUrl:"save" @method="POST" @enctype="multipart/form-data"
                 div @class="hide"
                     # to allow JavaScript or WebAssembly to display a localized error message
                     span @id="errorBadImageTitleMessage" (. Messages ErrorBadImageTitle)
@@ -23,11 +23,11 @@ Import "main"
                     input @type="text" @name="formData[ImageId]" @value=imageId
                 label
                     (. Messages TitleLabel)
-                    input @type="text" @name="formData[Title]" @value=imageTitle
+                    input @type="text" @id="editImageTitleField"  @name="formData[Title]" @value=imageTitle
                 label
                     (. Messages ImageFileLabel)
                     input @type="file" @name="image" @accept="image/png, image/jpeg"
                 label
                     (. Messages ImageDescLabel)
                     input @type="text" @name="formData[Desc]" @value=imageDesc
-                button @type="submit" (. Messages SaveLinkLabel)
+                button @type="button" @id="saveImageButton" (. Messages SaveLinkLabel)
