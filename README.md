@@ -6,6 +6,6 @@ The [deploy](deploy) folder contains scripts and a [Helm chart](https://helm.sh)
 
 ## Screenshots
 
-<img src="https://github.com/dvaumoron/puzzletest/raw/main/screen/puzzlescreenshot1.png">
+<img src="https://github.com/dvaumoron/puzzletest/raw/main/screenshot/puzzlescreenshot1.png">
 
-<img src="https://github.com/dvaumoron/puzzletest/raw/main/screen/puzzlescreenshot2.png">
+<img src="https://github.com/dvaumoron/puzzletest/raw/main/screenshot/puzzlescreenshot2.png">
