@@ -11,7 +11,7 @@ Import "main"
             form @action="/admin/user/save/":viewedUserId @method="POST"
                 For group Groups
                     details
-                        summary (. group DisplayName)
+                        summary ([] Messages (. group DisplayName))
                         fieldset
                             := groupName (. group Name)
                             For role (. group Roles)
