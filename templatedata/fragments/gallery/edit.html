@@ -24,7 +24,7 @@
     </div>
     <label>
         {{.Messages.TitleLabel}}
-        <input type="text" id="editImageTitleField" name="formData[Title]" value="{{$imageTitle}}"/>
+        <input type="text" name="formData[Title]" value="{{$imageTitle}}"  forbidden-values="new" required-message="errorBadImageTitleMessage"/>
     </label>
     <label>
         {{.Messages.ImageFileLabel}}
@@ -34,5 +34,5 @@
         {{.Messages.ImageDescLabel}}
         <input type="text" name="formData[Desc]" value="{{$imageDesc}}"/>
     </label>
-    <button type="button" id="saveImageButton">{{.Messages.SaveLinkLabel}}</button>
+    <button type="button" validate-form="editImageForm">{{.Messages.SaveLinkLabel}}</button>
 </form>
