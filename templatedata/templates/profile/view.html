@@ -124,7 +124,7 @@
                 <h6 class="error">{{index $messages .}}</h6>
             {{end}}
             <h2>
-{{.ViewedUser.Login}} ({{.Messages.RegistredAtLabel}} {{.ViewedUser.RegistredAt}})
+{{.ViewedUser.Login}} ({{.Messages.RegistredAtLabel}} {{date .ViewedUser.RegistredAt .Messages.DateFormat}})
 {{if .AllowedToUpdate}}
 <a href="/profile/edit" role="button">{{.Messages.EditLinkLabel}}</a>
 {{end}}
