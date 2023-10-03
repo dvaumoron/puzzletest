@@ -130,6 +130,7 @@
 <p><a href="{{.CurrentUrl}}create" class="secondary" role="button">{{.Messages.NewLinkLabel}}</a></p>
 {{end}}
 {{$baseUrl := .CurrentUrl}}
+{{$dateFormat := .Messages.DateFormat}}
 {{$viewLinkLabel := .Messages.ViewLinkLabel}}
 {{if .AllowedToDelete}}
 {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
@@ -137,7 +138,7 @@
 <div class="grid">
 <p><a href="{{$baseUrl}}view/{{.Id}}">{{.Text}}</a></p>
 <p>{{template "profileLink" .Creator}}</p>
-<p>{{date .Date .Messages.DateFormat}}</p>
+<p>{{date .Date $dateFormat}}</p>
 <p><a href="{{$baseUrl}}delete/{{.Id}}" class="contrast" role="button">{{$deleteLinkLabel}}</a></p>
 </div>
 {{end}}
@@ -146,7 +147,7 @@
 <div class="grid">
 <p><a href="{{$baseUrl}}view/{{.Id}}">{{.Text}}</a></p>
 <p>{{template "profileLink" .Creator}}</p>
-<p>{{date .Date .Messages.DateFormat}}</p>
+<p>{{date .Date $dateFormat}}</p>
 </div>
 {{end}}
 {{end}}
