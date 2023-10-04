@@ -1,9 +1,11 @@
 module github.com/dvaumoron/puzzletest
 
-go 1.19
+go 1.21
+
+toolchain go1.21.1
 
 require (
-	github.com/dvaumoron/puzzleweb v1.8.5
+	github.com/dvaumoron/puzzleweb v1.8.6
 	go.uber.org/zap v1.24.0
 )
 
