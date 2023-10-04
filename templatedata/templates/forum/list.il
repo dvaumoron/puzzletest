@@ -10,6 +10,7 @@ Import "main"
             If AllowedToCreate
                 p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
 
+            := dateFormat (. Messages DateFormat)
             := viewLinkLabel (. Messages ViewLinkLabel)
             If AllowedToDelete
                 List
@@ -19,11 +20,11 @@ Import "main"
                             := id (. thread Id)
                             p (a @href=CurrentUrl:"view/":id (. thread Text))
                             p (profileLink (. thread Creator))
-                            p (. thread Date)
+                            p (date (. thread Date) dateFormat)
                             p (a @href=CurrentUrl:"delete/"id @class="contrast" @role="button" deleteLinkLabel)
                 For thread Threads
                     div @class="grid"
                         := id (. thread Id)
                         p (a @href=CurrentUrl:"view/":id (. thread Text))
                         p (profileLink (. thread Creator))
-                        p (. thread Date)
+                        p (date (. thread Date) dateFormat)

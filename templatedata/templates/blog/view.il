@@ -9,7 +9,7 @@ Import "main"
                         (. Post Title) " "
                         a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
                     h3 (. Messages PostAuthorLabel) " " (profileLink (. Post Creator))
-                    h3 (. Messages PostDateLabel) " " (. Post Date)
+                    h3 (. Messages PostDateLabel) " " (date (. Post Date) (. Messages DateFormat))
 
             div (. Post Content)
 
@@ -30,6 +30,7 @@ Import "main"
             If CommentMsg
                 h6 @class="error" ([] Messages CommentMsg)
 
+            := dateFormat (. Messages DateFormat)
             If AllowedToDelete
                 List
                     := deleteLinkLabel (. Messages DeleteLinkLabel)
@@ -38,7 +39,7 @@ Import "main"
                             div @class="grid"
                                 profilePictureLink (. comment Creator)
                                 div
-                                    p (. comment Date)
+                                    p (date (. comment Date) dateFormat)
                                     p (EscapeHtml (. comment Text))
                             footer
                                 := id (. comment Id)
@@ -48,5 +49,5 @@ Import "main"
                         div @class="grid"
                             profilePictureLink (. comment Creator)
                             div
-                                p (. comment Date)
+                                p (date (. comment Date) dateFormat)
                                 p (EscapeHtml (. comment Text))

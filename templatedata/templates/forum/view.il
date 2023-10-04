@@ -11,6 +11,7 @@ Import "main"
             paginate PreviousPageNumber NextPageNumber Filter
 
             := threadId (. Thread Id)
+            := dateFormat (. Messages DateFormat)
             If AllowedToDelete
                 List
                     := deleteLinkLabel (. Messages DeleteLinkLabel)
@@ -18,7 +19,7 @@ Import "main"
                         div @class="grid"
                             profilePictureLink (. message Creator)
                             div
-                                p (. message Date)
+                                p (date (. message Date) dateFormat)
                                 p (EscapeHtml (. message Text))
                             := id (. message Id)
                             p (a @href=BaseUrl:"message/delete/":threadId:"/":id @class="contrast" @role="button" deleteLinkLabel)
@@ -26,7 +27,7 @@ Import "main"
                     div @class="grid"
                         profilePictureLink (. message Creator)
                         div
-                            p (. message Date)
+                            p (date (. message Date) dateFormat)
                             p (EscapeHtml (. message Text))
 
             If AllowedToCreate

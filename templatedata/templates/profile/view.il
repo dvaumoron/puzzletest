@@ -4,7 +4,7 @@ Import "main"
     Quote
         List
             h2
-                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) " " (. ViewedUser RegistredAt) ") "
+                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) " " (date (. ViewedUser RegistredAt) (. Messages DateFormat)) ") "
                 If AllowedToUpdate
                     a @href="/profile/edit" @role="button" (. Messages EditLinkLabel)
 

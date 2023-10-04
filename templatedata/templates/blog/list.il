@@ -9,6 +9,7 @@ Import "main"
             If AllowedToCreate
                 p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
 
+            := dateFormat (. Messages DateFormat)
             := viewLinkLabel (. Messages ViewMoreLinkLabel)
             If AllowedToDelete
                 List
@@ -18,7 +19,7 @@ Import "main"
                             header
                                 hgroup
                                     h2 (. post Title)
-                                    h3 (profileLink (. post Creator)) " " (. post Date)
+                                    h3 (profileLink (. post Creator)) " " (date (. post Date) dateFormat)
                             p (. post Content)
                             footer
                                 := postId (. post PostId)
@@ -30,7 +31,7 @@ Import "main"
                             header
                                 hgroup
                                     h2 (. post Title)
-                                    h3 (profileLink (. post Creator)) " " (. post Date)
+                                    h3 (profileLink (. post Creator)) " " (date (. post Date) dateFormat)
                             p (. post Content)
                             footer
                                 := postId (. post PostId)

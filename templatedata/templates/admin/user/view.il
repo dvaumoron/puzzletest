@@ -4,7 +4,7 @@ Import "main"
     Quote
         List
             h2
-                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) (. ViewedUser RegistredAt) ") "
+                (. ViewedUser Login) " (" (. Messages RegistredAtLabel) (date (. ViewedUser RegistredAt) (. Messages DateFormat)) ") "
                 a @href="/admin/user/list" @role="button" (. Messages CancelLinkLabel)
                 If AllowedToUpdate
                     List
