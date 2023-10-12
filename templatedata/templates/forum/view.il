@@ -33,8 +33,8 @@ Import "main"
             If AllowedToCreate
                 form @id="createForumMessageForm" @action=BaseUrl:"message/save/":threadId @method="POST"
                     := responseMessageLabel (. Messages ResponseMessageLabel)
-                    textarea @id="forumMessageField" @name="message" @rows="5" @placeholder=responseMessageLabel ""
+                    textarea @name="message" @rows="5" @placeholder=responseMessageLabel @required-message="errorEmptyForumMessageMessage" ""
                     div @class="hide"
                         # to allow JavaScript or WebAssembly to display a localized error message
                         span @id="errorEmptyForumMessageMessage" (. Messages EmptyForumMessage)
-                    button @type="button" @id="createForumMessageButton" @class="secondary" (. Messages PublishLinkLabel)
+                    button @type="button" @validate-form="createForumMessageForm" @class="secondary" (. Messages PublishLinkLabel)

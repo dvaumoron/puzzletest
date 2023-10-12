@@ -21,11 +21,11 @@ Import "main"
             If AllowedToCreate
                 form @id="commentForm" @action=BaseUrl:"comment/save/":postId @method="POST"
                     := leaveCommentLabel (. Messages LeaveCommentLabel)
-                    textarea @id="commentField" @name="comment" @rows="5" @placeholder=leaveCommentLabel ""
+                    textarea @name="comment" @rows="5" @placeholder=leaveCommentLabel @required-message="errorEmptyCommentMessage" ""
                     div @class="hide"
                         # to allow JavaScript or WebAssembly to display a localized error message
                         span @id="errorEmptyCommentMessage" (. Messages EmptyComment)
-                    button @type="button" @id="commentButton" @class="secondary" (. Messages PublishLinkLabel)
+                    button @type="button" @validate-form="commentForm" @class="secondary" (. Messages PublishLinkLabel)
 
             If CommentMsg
                 h6 @class="error" ([] Messages CommentMsg)

@@ -22,26 +22,26 @@ Import "main"
                 form @id="changeLoginForm" @action="/profile/changeLogin" @method="POST"
                     label
                         (. Messages NewLoginLabel)
-                        input @type="text" @id="loginField" @name="Login"
+                        input @type="text" @name="Login" @required-message="errorEmptyLoginMessage"
                     label
                         (. Messages PasswordLabel)
-                        input @type="password" @id="passwordField" @name="Password"
-                    button @type="button" @id="changeLoginButton" (. Messages SaveLinkLabel)
+                        input @type="password" @name="Password" @required-message="errorEmptyPasswordMessage"
+                    button @type="button" @validate-form="changeLoginForm" (. Messages SaveLinkLabel)
 
             details
                 summary (. Messages ChangePasswordLabel)
                 form @id="changePasswordForm" @action="/profile/changePassword" @method="POST"
                     label
                         (. Messages OldPasswordLabel)
-                        input @type="password" @name="oldPassword"
+                        input @type="password" @name="oldPassword" @required-message="errorEmptyPasswordMessage"
                     label
                         (. Messages NewPasswordLabel)
-                        a @href @id="passwordHelp" (span @class="material-symbols-outlined" "help")
-                        input @type="password" @id="changePasswordField" @name="newPassword"
+                        a @href="#" @display-message="passwordHelpMessage" (span @class="material-symbols-outlined" "help")
+                        input @type="password" @id="changePasswordField" @name="newPassword" @required-message="errorEmptyPasswordMessage"
                     label
                         (. Messages ConfirmPasswordLabel)
-                        input @type="password" @id="confirmChangePasswordField" @name="ConfirmPassword"
-                    button @type="button" @id="changePasswordButton" (. Messages SaveLinkLabel)
+                        input @type="password" @name="ConfirmPassword" @confirm-field="changePasswordField" @confirm-message="errorWrongConfimPasswordMessage"
+                    button @type="button" @validate-form="changePasswordForm" (. Messages SaveLinkLabel)
 
             form @action="/profile/save" @method="POST" @enctype="multipart/form-data"
                 h3 (. Messages EditProfileLabel)

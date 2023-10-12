@@ -5,10 +5,10 @@ Import "main"
         form @id="loginForm" @action="/login/submit" @method="POST"
             label
                 . Messages LoginLabel
-                input @type="text" @id="loginField" @name="Login"
+                input @type="text" @id="loginField" @name="Login" @required-message="errorEmptyLoginMessage"
             label
                 . Messages PasswordLabel
-                input @type="password" @id="passwordField" @name="Password"
+                input @type="password" @id="passwordField" @name="Password" @required-message="errorEmptyPasswordMessage"
             div @id="confirmPasswordBlock" @class="hide"
                 label
                     . Messages ConfirmPasswordLabel
@@ -21,7 +21,7 @@ Import "main"
                 span @id="errorEmptyLoginMessage" (. Messages EmptyLogin)
                 span @id="errorEmptyPasswordMessage" (. Messages EmptyPassword)
                 span @id="errorWrongConfimPasswordMessage" (. Messages WrongConfirmPassword)
-            button @type="button" @id="loginSubmitButton" (. Messages LoginLinkLabel)
+            button @type="button" @validate-form="loginForm" (. Messages LoginLinkLabel)
             div
                 := registerLinkLabel (. Messages RegisterLinkLabel)
                 button @type="button" @id="loginRegisterButton" registerLinkLabel

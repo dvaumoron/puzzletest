@@ -13,7 +13,7 @@ Import "main"
                 div (If (!= RoleName "new") @class="hide")
                     label
                         . Messages NameLabel
-                        input @type="text" @id="editRoleNameField" @name="RoleName" @value=RoleName
+                        input @type="text" @name="RoleName" @value=RoleName @forbidden-values="new" @required-message="errorBadRoleNameMessage"
                 div @class="hide"
                     # to allow JavaScript or WebAssembly to display a localized error message
                     span @id="errorBadRoleNameMessage" (. Messages ErrorBadRoleName)
@@ -31,4 +31,4 @@ Import "main"
                     label
                         . Messages DeleteLabel
                         input @type="checkbox" @name="actions" @value="delete" (If Delete @checked) @role="switch"
-                button @type="button" @id="saveRoleButton" (. Messages SaveLinkLabel)
+                button @type="button" @validate-form="editRoleForm" (. Messages SaveLinkLabel)

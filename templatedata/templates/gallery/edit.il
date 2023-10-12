@@ -23,11 +23,11 @@ Import "main"
                     input @type="text" @name="formData[ImageId]" @value=imageId
                 label
                     (. Messages TitleLabel)
-                    input @type="text" @id="editImageTitleField"  @name="formData[Title]" @value=imageTitle
+                    input @type="text" @name="formData[Title]" @value=imageTitle @forbidden-values="new" @required-message="errorBadImageTitleMessage"
                 label
                     (. Messages ImageFileLabel)
                     input @type="file" @name="image" @accept="image/png, image/jpeg"
                 label
                     (. Messages ImageDescLabel)
                     input @type="text" @name="formData[Desc]" @value=imageDesc
-                button @type="button" @id="saveImageButton" (. Messages SaveLinkLabel)
+                button @type="button" @validate-form="editImageForm" (. Messages SaveLinkLabel)
