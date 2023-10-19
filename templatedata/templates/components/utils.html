@@ -1,15 +1,18 @@
 {{define "profileLink"}}
     <a href="/profile/view/{{.Id}}">{{.Login}}</a>
 {{end}}
+
 {{define "profilePicture"}}
     <img src="/profile/picture/{{.Id}}" alt="{{.Login}}" width=100/>
 {{end}}
+
 {{define "profilePictureLink"}}
     <div>
         <p><a href="/profile/view/{{.Id}}">{{template "profilePicture" .}}</a></p>
         <p>{{template "profileLink" .}}</p>
     </div>
 {{end}}
+
 {{define "search"}}
     <form action="{{.CurrentUrl}}" method="GET" role="search">
         <label>
@@ -22,6 +25,7 @@
         <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>
 {{end}}
+
 {{define "paginate"}}
     {{if or .PreviousPageNumber .NextPageNumber}}
         <div class="grid">
