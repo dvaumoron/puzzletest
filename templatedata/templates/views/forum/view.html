@@ -37,7 +37,8 @@
         {{end}}
     {{end}}
 
-    {{if .AllowedToCreate}}
+    {{$lastPage := not .NextPageNumber}}
+    {{if and .AllowedToCreate $lastPage}}
         <form id="createForumMessageForm" action="{{.BaseUrl}}message/save/{{$threadId}}" method="POST">
             <textarea name="message" rows="5" placeholder="{{.Messages.ResponseMessageLabel}}" required-message="errorEmptyForumMessageMessage"></textarea>
             <div class="hide">

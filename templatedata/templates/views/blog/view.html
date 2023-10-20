@@ -17,24 +17,13 @@
 
     {{template "paginate" .}}
 
-    {{$postId := .Post.PostId}}
-    {{if .AllowedToCreate}}
-        <form id="commentForm" action="{{.BaseUrl}}comment/save/{{$postId}}" method="POST">
-            <textarea name="comment" rows="5" placeholder="{{.Messages.LeaveCommentLabel}}" required-message="errorEmptyCommentMessage"></textarea>
-            <div class="hide">
-                {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
-                <span id="errorEmptyCommentMessage">{{.Messages.EmptyComment}}</span>
-            </div>
-            <button type="button" class="secondary" validate-form="commentForm">{{.Messages.PublishLinkLabel}}</button>
-        </form>
-    {{end}}
-
     {{$messages := .Messages}}
     {{with .CommentMsg}}
         <h6 class="error">{{index $messages .}}</h6>
     {{end}}
 
     {{$baseUrl := .BaseUrl}}
+    {{$postId := .Post.PostId}}
     {{$dateFormat := .Messages.DateFormat}}
     {{if .AllowedToDelete}}
         {{$deleteLinkLabel := .Messages.DeleteLinkLabel}}
@@ -64,5 +53,17 @@
                 </div>
             </article>
         {{end}}
+    {{end}}
+
+    {{$lastPage := not .NextPageNumber}}
+    {{if and .AllowedToCreate $lastPage}}
+        <form id="commentForm" action="{{.BaseUrl}}comment/save/{{$postId}}" method="POST">
+            <textarea name="comment" rows="5" placeholder="{{.Messages.LeaveCommentLabel}}" required-message="errorEmptyCommentMessage"></textarea>
+            <div class="hide">
+                {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
+                <span id="errorEmptyCommentMessage">{{.Messages.EmptyComment}}</span>
+            </div>
+            <button type="button" class="secondary" validate-form="commentForm">{{.Messages.PublishLinkLabel}}</button>
+        </form>
     {{end}}
 {{end}}
