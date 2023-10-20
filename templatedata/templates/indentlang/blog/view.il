@@ -17,19 +17,10 @@ Import "main"
 
             paginate PreviousPageNumber NextPageNumber Filter
 
-            := postId (. Post PostId)
-            If AllowedToCreate
-                form @id="commentForm" @action=BaseUrl:"comment/save/":postId @method="POST"
-                    := leaveCommentLabel (. Messages LeaveCommentLabel)
-                    textarea @name="comment" @rows="5" @placeholder=leaveCommentLabel @required-message="errorEmptyCommentMessage" ""
-                    div @class="hide"
-                        # to allow JavaScript or WebAssembly to display a localized error message
-                        span @id="errorEmptyCommentMessage" (. Messages EmptyComment)
-                    button @type="button" @validate-form="commentForm" @class="secondary" (. Messages PublishLinkLabel)
-
             If CommentMsg
                 h6 @class="error" ([] Messages CommentMsg)
 
+            := postId (. Post PostId)
             := dateFormat (. Messages DateFormat)
             If AllowedToDelete
                 List
@@ -51,3 +42,12 @@ Import "main"
                             div
                                 p (date (. comment Date) dateFormat)
                                 p (EscapeHtml (. comment Text))
+
+            If (And AllowedToCreate (Not nextPageNumber))
+                form @id="commentForm" @action=BaseUrl:"comment/save/":postId @method="POST"
+                    := leaveCommentLabel (. Messages LeaveCommentLabel)
+                    textarea @name="comment" @rows="5" @placeholder=leaveCommentLabel @required-message="errorEmptyCommentMessage" ""
+                    div @class="hide"
+                        # to allow JavaScript or WebAssembly to display a localized error message
+                        span @id="errorEmptyCommentMessage" (. Messages EmptyComment)
+                    button @type="button" @validate-form="commentForm" @class="secondary" (. Messages PublishLinkLabel)

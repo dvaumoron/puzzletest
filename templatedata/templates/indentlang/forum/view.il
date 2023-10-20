@@ -30,7 +30,7 @@ Import "main"
                             p (date (. message Date) dateFormat)
                             p (EscapeHtml (. message Text))
 
-            If AllowedToCreate
+            If (And AllowedToCreate (Not nextPageNumber))
                 form @id="createForumMessageForm" @action=BaseUrl:"message/save/":threadId @method="POST"
                     := responseMessageLabel (. Messages ResponseMessageLabel)
                     textarea @name="message" @rows="5" @placeholder=responseMessageLabel @required-message="errorEmptyForumMessageMessage" ""
