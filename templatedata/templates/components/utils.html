@@ -15,10 +15,7 @@
 
 {{define "search"}}
     <form hx-get="{{.CurrentUrl}}" hx-target="#paginationResults" role="search">
-        <label>
-            {{.Messages.FilterLabel}}
-            <input type="search" name="filter" {{with .Filter}} value="{{.}}" {{end}}/>
-        </label>
+        <input type="search" name="filter" {{with .Filter}} value="{{.}}" {{end}} placeholder="{{.Messages.FilterLabel}}"/>
         <div class="hide">
             <input type="text" name="pageNumber" value="1"/>
             <input type="text" name="pagePart" value="paginatedList"/>
