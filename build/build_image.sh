@@ -2,13 +2,13 @@
 
 ./build/build.sh
 
-buildah from --name puzzletest-working-container scratch
-buildah copy puzzletest-working-container ./static /static
-buildah copy puzzletest-working-container $HOME/go/bin/puzzletest /bin/puzzletest
-buildah config --env SITE_PORT=9080 puzzletest-working-container
-buildah config --port 9080 puzzletest-working-container
-buildah config --entrypoint '["/bin/puzzletest"]' puzzletest-working-container
-buildah commit puzzletest-working-container puzzletest
-buildah rm puzzletest-working-container
+buildah from --name puzzleweb-working-container scratch
+buildah copy puzzleweb-working-container ./static /static
+buildah copy puzzleweb-working-container $HOME/go/bin/puzzleweb /bin/puzzleweb
+buildah config --env SITE_PORT=9080 puzzleweb-working-container
+buildah config --port 9080 puzzleweb-working-container
+buildah config --entrypoint '["/bin/puzzleweb"]' puzzleweb-working-container
+buildah commit puzzleweb-working-container puzzleweb
+buildah rm puzzleweb-working-container
 
-buildah push puzzletest docker-daemon:puzzletest:latest
+buildah push puzzleweb docker-daemon:puzzleweb:latest

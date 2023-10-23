@@ -1,0 +1,60 @@
+# this file is used to configure permission groups and pages with their widget
+
+permissionGroups:
+  - id: 2
+    name: wikiGroup1
+  - id: 3
+    name: wikiGroup2
+  - id: 4
+    name: blogGroup
+  - id: 5
+    name: forumGroup
+
+pageGroups:
+  - id: 0
+    pages: ["about/", "about/faq"]
+
+widgets:
+  wiki1:
+    kind: wiki
+    wikiId: 1
+    groupId: 2
+  wiki2:
+    kind: wiki
+    wikiId: 2
+    groupId: 2
+    templates: ["Welcome", "wiki2/view", "wiki2/edit", "wiki2/list"]
+  wiki3:
+    kind: wiki
+    wikiId: 3
+    groupId: 3
+  blog:
+    kind: blog
+    blogId: 4
+    groupId: 4
+  forum:
+    kind: forum
+    forumId: 5
+    groupId: 5
+  gallery:
+    kind: remote
+    serviceAddr: localhost:51351
+    widgetName: gallery
+    objectId: 6
+    groupId: 0
+
+widgetPages:
+  - emplacement: "about"
+    name: wiki
+    widgetRef: wiki1
+  - emplacement: "about/faq"
+    name: wiki2
+    widgetRef: wiki2
+  - name: wiki3
+    widgetRef: wiki3
+  - name: blog
+    widgetRef: blog
+  - name: forum
+    widgetRef: forum
+  - name: gallery
+    widgetRef: gallery
