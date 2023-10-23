@@ -14,13 +14,14 @@
 {{end}}
 
 {{define "search"}}
-    <form action="{{.CurrentUrl}}" method="GET" role="search">
+    <form hx-get="{{.CurrentUrl}}" hx-target="#paginationResults" role="search">
         <label>
             {{.Messages.FilterLabel}}
-            <input type="search" name="filter"/>
+            <input type="search" name="filter" {{with .Filter}} value="{{.}}" {{end}}/>
         </label>
         <div class="hide">
             <input type="text" name="pageNumber" value="1"/>
+            <input type="text" name="pagePart" value="paginatedList"/>
         </div>
         <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>
@@ -30,12 +31,13 @@
     {{if or .PreviousPageNumber .NextPageNumber}}
         <div class="grid">
             {{if .PreviousPageNumber}}
-                <form action="{{.CurrentUrl}}" method="GET">
+                <form hx-get="{{.CurrentUrl}}" hx-target="#paginationResults">
                     <div class="hide">
                         <input type="text" name="pageNumber" value="{{.PreviousPageNumber}}"/>
-                        {{if .Filter}}
-                            <input type="text" name="filter" value="{{.Filter}}"/>
+                        {{with .Filter}}
+                            <input type="text" name="filter" value="{{.}}"/>
                         {{end}}
+                        <input type="text" name="pagePart" value="paginatedList"/>
                     </div>
                     <button type="submit"><span class="material-symbols-outlined">chevron_left</span></button>
                 </form>
@@ -44,12 +46,13 @@
             {{end}}
 
             {{if .NextPageNumber}}
-                <form action="{{.CurrentUrl}}" method="GET">
+                <form hx-get="{{.CurrentUrl}}" hx-target="#paginationResults">
                     <div class="hide">
                         <input type="text" name="pageNumber" value="{{.NextPageNumber}}"/>
-                        {{if .Filter}}
-                            <input type="text" name="filter" value="{{.Filter}}"/>
+                        {{with .Filter}}
+                            <input type="text" name="filter" value="{{.}}"/>
                         {{end}}
+                        <input type="text" name="pagePart" value="paginatedList"/>
                     </div>
                     <button type="submit"><span class="material-symbols-outlined">chevron_right</span></button>
                 </form>

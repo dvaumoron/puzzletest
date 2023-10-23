@@ -1,7 +1,12 @@
 {{define "header"}}
-    
+    <script src="/static/js/htmx.min.js"></script>
 {{end}}
 {{define "body"}}
+    <div id="paginationResults">
+        {{template "paginatedList" .}}
+    </div>
+{{end}}
+{{define "paginatedList"}}
     {{template "paginate" .}}
 
     {{$baseUrl := .CurrentUrl}}

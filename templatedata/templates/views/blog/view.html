@@ -1,5 +1,5 @@
 {{define "header"}}
-    
+    <script src="/static/js/htmx.min.js"></script>
 {{end}}
 {{define "body"}}
     <header>
@@ -15,6 +15,11 @@
 
     <div>{{.Post.Content}}</div><br/>
 
+    <div id="paginationResults">
+        {{template "paginatedList" .}}
+    </div>
+{{end}}
+{{define "paginatedList"}}
     {{template "paginate" .}}
 
     {{$messages := .Messages}}

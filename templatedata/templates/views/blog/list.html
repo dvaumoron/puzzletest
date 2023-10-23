@@ -1,9 +1,15 @@
 {{define "header"}}
-    
+    <script src="/static/js/htmx.min.js"></script>
 {{end}}
 {{define "body"}}
+    <div id="paginationResults">
+        {{template "paginatedList" .}}
+    </div>
+{{end}}
+{{define "paginatedList"}}
     {{template "search" .}}
     {{template "paginate" .}}
+
     {{if .AllowedToCreate}}
         <p><a href="{{.CurrentUrl}}create" class="secondary" role="button">{{.Messages.NewLinkLabel}}</a></p>
     {{end}}

@@ -1,9 +1,14 @@
 {{define "header"}}
-    
+    <script src="/static/js/htmx.min.js"></script>
 {{end}}
 {{define "body"}}
     <h2>{{.Messages.UserListTitle}} ({{.Total}})</h2>
 
+    <div id="paginationResults">
+        {{template "paginatedList" .}}
+    </div>
+{{end}}
+{{define "paginatedList"}}
     {{template "search" .}}
     {{template "paginate" .}}
 
