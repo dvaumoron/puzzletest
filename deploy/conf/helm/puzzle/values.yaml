@@ -4,15 +4,15 @@ telemetry:
   envName: ""
 httpService:
   ports:
-  - port: 9080
-    protocol: TCP
-    targetPort: http-service
+    - port: 9080
+      protocol: TCP
+      targetPort: http-service
   type: ClusterIP
 grpcService:
   ports:
-  - port: 50051
-    protocol: TCP
-    targetPort: grpc-service
+    - port: 50051
+      protocol: TCP
+      targetPort: grpc-service
   type: ClusterIP
 externalService:
   mongoAddr: "mongodb://exemplehost:27017"
@@ -109,8 +109,7 @@ telemetryCollector:
     memory: 128Mi
 templateServer:
   replicas: 1
-  imageName: puzzleindentlangserver 
-  #imageName: puzzlegotemplateserver
+  imageName: puzzlegotemplateserver
   imageVersion: latest
   resourcesLimits:
     cpu: 50m

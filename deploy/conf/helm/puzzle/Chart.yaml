@@ -6,8 +6,8 @@ type: application
 version: 0.1.3
 appVersion: "latest"
 sources:
+  - github.com/dvaumoron/puzzleweb
   - github.com/dvaumoron/puzzletest
-  - github.com/dvaumoron/puzzleproxy
   - github.com/dvaumoron/puzzlesessionserver
   - github.com/dvaumoron/puzzlesaltserver
   - github.com/dvaumoron/puzzleloginserver
@@ -20,6 +20,8 @@ sources:
   - github.com/dvaumoron/puzzlewikiserver
   - github.com/dvaumoron/puzzleforumserver
   - github.com/dvaumoron/puzzlepassstrengthserver
+  - github.com/dvaumoron/puzzlegalleryserver
+  - github.com/dvaumoron/puzzlegotemplateserver
 maintainers:
   - name: Denis VAUMORON
     url: linked.com/in/denis-vaumoron-92579187

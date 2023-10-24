@@ -29,7 +29,7 @@ spec:
           value: "http://$(HOST_IP):4317"
         image: "{{ .Values.templateServer.imageName }}:{{ .Values.templateServer.imageVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: puzzleblog
+        name: puzzletemplate
         ports:
         - containerPort: 50051
           name: grpc-service
