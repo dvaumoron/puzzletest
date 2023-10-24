@@ -33,19 +33,12 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: puzzlepassstrength
         ports:
-        - containerPort: 5432
-          name: postgre-service
-        - containerPort: 6379
-          name: redis-service
-        - containerPort: 9080
-          name: http-service
-        - containerPort: 27017
-          name: mongo-service
+        - containerPort: 50051
+          name: grpc-service
         readinessProbe:
           failureThreshold: 3
-          httpGet:
-            path: /
-            port: 9080
+          grpc:
+            port: 50051
           initialDelaySeconds: 1
           periodSeconds: 5
           successThreshold: 1
