@@ -6,7 +6,6 @@ appServer:
   dateFormat: ""
   pageSize: "2"
   extractSize: ""
-  templatesExt: ".il"
 externalService:
   mongoAddr: ""
   postgresqlAddr: ""

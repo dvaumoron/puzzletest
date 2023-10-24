@@ -4,6 +4,7 @@
 
 buildah from --name puzzleweb-working-container scratch
 buildah copy puzzleweb-working-container ./static /static
+buildah copy puzzleweb-working-container ./frame.yaml /frame.yaml
 buildah copy puzzleweb-working-container $HOME/go/bin/puzzleweb /bin/puzzleweb
 buildah config --env SITE_PORT=9080 puzzleweb-working-container
 buildah config --port 9080 puzzleweb-working-container
