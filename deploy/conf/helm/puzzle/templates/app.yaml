@@ -53,8 +53,6 @@ spec:
           value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
         - name: WIKI_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-wiki-service:50051"
-        - name: FRAME_CONFIG_PATH
-          value: "frame.yaml"
         - name: EXEC_ENV
           value: {{ .Values.telemetry.envName }}
         - name: HOST_IP
