@@ -2,25 +2,23 @@
     
 {{end}}
 {{define "body"}}
-    <h2>
-        {{$imageTitle := .Image.Title}}
-        {{if eq $imageTitle "new"}}
-            {{.Messages.NewImageLabel}}
-        {{else}}
+    {{$imageId := .Image.ImageId}}        
+    {{$imageTitle := .Image.Title}}
+    {{$imageDesc := .Image.Desc}}
+    {{if eq $imageTitle "new"}}
+        <h2>{{.Messages.NewImageLabel}}</h2>
+    {{else}}
+        <h2>
             {{.Messages.EditLabel}} {{$imageTitle}}
-        {{end}}
-        <a href="{{.BaseUrl}}" role="button">{{.Messages.CancelLinkLabel}}</a>
-    </h2>
+            <a href="{{.BaseUrl}}" role="button">{{.Messages.CancelLinkLabel}}</a>
+        </h2>
 
-    <div>
-        {{$imageId := .Image.ImageId}}
-        {{$imageDesc := .Image.Desc}}
-        <img src="{{.BaseUrl}}retrieve/{{$imageId}}" alt="{{$imageDesc}}"/>
-    </div>
+        <div><img src="{{.BaseUrl}}retrieve/{{$imageId}}" alt="{{$imageDesc}}"/></div>
+    {{end}}
 
     <form id="editImageForm" action="{{.BaseUrl}}save" method="POST" enctype="multipart/form-data">
         <div class="hide">
-            <!-- to allow JavaScript or WebAssembly to display a localized error message -->
+            {{/* to allow JavaScript or WebAssembly to display a localized error message */}}
             <span id="errorBadImageTitleMessage">{{.Messages.ErrorBadImageTitle}}</span>
             <input type="text" name="fileList" value="image"/>
             <input type="text" name="formData[ImageId]" value="{{$imageId}}"/>
