@@ -11,30 +11,30 @@ permissionGroups:
     name: forumGroup
 
 pageGroups:
-  - id: 0
+  - groupId: 0
     pages: ["about/", "about/faq"]
 
 widgets:
   wiki1:
     kind: wiki
-    wikiId: 1
+    objectId: 1
     groupId: 2
   wiki2:
     kind: wiki
-    wikiId: 2
+    objectId: 2
     groupId: 2
     templates: ["Welcome", "wiki2/view", "wiki2/edit", "wiki2/list"]
   wiki3:
     kind: wiki
-    wikiId: 3
+    objectId: 3
     groupId: 3
   blog:
     kind: blog
-    blogId: 4
+    objectId: 4
     groupId: 4
   forum:
     kind: forum
-    forumId: 5
+    objectId: 5
     groupId: 5
   gallery:
     kind: remote
