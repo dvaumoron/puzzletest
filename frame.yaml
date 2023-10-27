@@ -15,28 +15,28 @@ pageGroups:
     pages: ["about/", "about/faq"]
 
 widgets:
-  wiki1:
+  - name: wiki1
     kind: wiki
     objectId: 1
     groupId: 2
-  wiki2:
+  - name: wiki2
     kind: wiki
     objectId: 2
     groupId: 2
     templates: ["Welcome", "wiki2/view", "wiki2/edit", "wiki2/list"]
-  wiki3:
+  - name: wiki3
     kind: wiki
     objectId: 3
     groupId: 3
-  blog:
+  - name: blog
     kind: blog
     objectId: 4
     groupId: 4
-  forum:
+  - name: forum
     kind: forum
     objectId: 5
     groupId: 5
-  gallery:
+  - name: gallery
     kind: remote
     serviceAddr: localhost:51351
     widgetName: gallery
