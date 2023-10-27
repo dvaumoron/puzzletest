@@ -1,19 +1,19 @@
 # this file is used to configure permission groups and pages with their widget
 
-permissionGroup "wikiGroup1" {
-  id = 2
+permission "wikiGroup1" {
+  groupId = 2
 }
 
-permissionGroup "wikiGroup2" {
-  id = 3
+permission "wikiGroup2" {
+  groupId = 3
 }
 
-permissionGroup "blogGroup" {
-  id = 4
+permission "blogGroup" {
+  groupId = 4
 }
 
-permissionGroup "forumGroup" {
-  id = 5
+permission "forumGroup" {
+  groupId = 5
 }
 
 pageGroup {
