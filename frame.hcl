@@ -1,5 +1,26 @@
 # this file is used to configure permission groups and pages with their widget
 
+availableLocales = ["fr-FR", "en-US"]
+pageSize         = 3
+feedFormat       = "rss"
+
+page404Url = "/notFound"
+
+localePicturePaths = ["images/Flag_of_France.webp", "images/Flag_of_the_United_Kingdom.png"]
+
+sessionServiceAddr          = "localhost:50051"
+templateServiceAddr         = "localhost:51251"
+passwordStrengthServiceAddr = "localhost:51151"
+saltServiceAddr             = "localhost:50351"
+loginServiceAddr            = "localhost:50451"
+rightServiceAddr            = "localhost:50251"
+settingsServiceAddr         = "localhost:50551"
+profileServiceAddr          = "localhost:50651"
+forumServiceAddr            = "localhost:50951"
+markdownServiceAddr         = "localhost:50851"
+blogServiceAddr             = "localhost:51051"
+wikiServiceAddr             = "localhost:50751"
+
 permission "wikiGroup1" {
   groupId = 2
 }
@@ -55,17 +76,17 @@ widget "forum" {
 
 widget "gallery" {
   kind        = "remote/gallery"
-  serviceAddr = env("GALLERY_SERVICE_ADDR")
+  serviceAddr = "localhost:51351"
   objectId    = 6
   groupId     = 0
 }
 
 widgetPage "about/wiki" {
-  widgetRef   = "wiki1"
+  widgetRef = "wiki1"
 }
 
 widgetPage "about/faq/wiki2" {
-  widgetRef   = "wiki2"
+  widgetRef = "wiki2"
 }
 
 widgetPage "wiki3" {
