@@ -2,10 +2,6 @@ image:
   pullPolicy: Never
 telemetry:
   envName: "fakeCluster"
-appServer:
-  dateFormat: ""
-  pageSize: "2"
-  extractSize: ""
 externalService:
   mongoAddr: ""
   postgresqlAddr: ""

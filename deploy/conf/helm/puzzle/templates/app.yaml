@@ -17,18 +17,6 @@ spec:
     spec:
       containers:
       - env:
-        - name: AVAILABLE_LOCALES
-          value: "fr-FR, en-US"
-        - name: DATE_FORMAT
-          value: "{{ .Values.appServer.dateFormat }}"
-        - name: PAGE_SIZE
-          value: "{{ .Values.appServer.pageSize }}"
-        - name: EXTRACT_SIZE
-          value: "{{ .Values.appServer.extractSize }}"
-        - name: LOCALE_PICTURE_PATHS
-          value: "images/Flag_of_France.webp, images/Flag_of_the_United_Kingdom.png"
-        - name: PAGE_404_URL
-          value: "/notFound"
         - name: SESSION_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-session-service:50051"
         - name: TEMPLATE_SERVICE_ADDR
@@ -53,6 +41,8 @@ spec:
           value: "{{ include "puzzle.fullname" . }}-blog-service:50051"
         - name: WIKI_SERVICE_ADDR
           value: "{{ include "puzzle.fullname" . }}-wiki-service:50051"
+        - name: GALLERY_SERVICE_ADDR
+          value: "{{ include "puzzle.fullname" . }}-gallery-service:50051"
         - name: EXEC_ENV
           value: {{ .Values.telemetry.envName }}
         - name: HOST_IP

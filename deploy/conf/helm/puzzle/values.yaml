@@ -20,10 +20,6 @@ externalService:
   redisAddr: "exemplehost:6379"
 kubernetesClusterDomain: cluster.local
 appServer:
-  dateFormat: ""
-  pageSize: ""
-  extractSize: "1000"
-  templatesExt: ".html"
   replicas: 1
   imageVersion: latest
   resourcesLimits:
