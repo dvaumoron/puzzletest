@@ -10,9 +10,10 @@ permissionGroups:
   - id: 5
     name: forumGroup
 
-pageGroups:
+# page location ending with / denote a folder (will use the index template)
+staticPages:
   - groupId: 0
-    pages: ["about/", "about/faq"]
+    locations: ["about/", "about/faq"]
 
 widgets:
   - name: wiki1
@@ -37,24 +38,21 @@ widgets:
     objectId: 5
     groupId: 5
   - name: gallery
-    kind: remote
+    kind: remote/gallery
     serviceAddr: localhost:51351
-    widgetName: gallery
     objectId: 6
     groupId: 0
 
 widgetPages:
-  - emplacement: "about"
-    name: wiki
+  - path: about/wiki
     widgetRef: wiki1
-  - emplacement: "about/faq"
-    name: wiki2
+  - path: about/faq/wiki2
     widgetRef: wiki2
-  - name: wiki3
+  - path: wiki3
     widgetRef: wiki3
-  - name: blog
+  - path: blog
     widgetRef: blog
-  - name: forum
+  - path: forum
     widgetRef: forum
-  - name: gallery
+  - path: gallery
     widgetRef: gallery

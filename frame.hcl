@@ -16,9 +16,10 @@ permission "forumGroup" {
   groupId = 5
 }
 
-pageGroup {
-  groupId = 0
-  pages   = ["about/", "about/faq"]
+# page location ending with / denote a folder (will use the index template)
+staticPages {
+  groupId   = 0
+  locations = ["about/", "about/faq"]
 }
 
 widget "wiki1" {
@@ -53,20 +54,17 @@ widget "forum" {
 }
 
 widget "gallery" {
-  kind        = "remote"
-  serviceAddr = "localhost:51351"
-  widgetName  = "gallery"
+  kind        = "remote/gallery"
+  serviceAddr = env("GALLERY_SERVICE_ADDR")
   objectId    = 6
   groupId     = 0
 }
 
-widgetPage "wiki" {
-  emplacement = "about"
+widgetPage "about/wiki" {
   widgetRef   = "wiki1"
 }
 
-widgetPage "wiki2" {
-  emplacement = "about/faq"
+widgetPage "about/faq/wiki2" {
   widgetRef   = "wiki2"
 }
 
