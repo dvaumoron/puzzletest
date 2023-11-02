@@ -44,6 +44,7 @@ forumServer:
     cpu: 50m
     memory: 64Mi
 galleryServer:
+  pageSize: ""
   replicas: 1
   imageVersion: latest
   resourcesLimits:

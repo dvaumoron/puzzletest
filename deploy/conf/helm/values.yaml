@@ -6,5 +6,7 @@ externalService:
   mongoAddr: ""
   postgresqlAddr: ""
   redisAddr: ""
+galleryServer:
+  pageSize: "3"
 passstrengthserver:
   defaultPassword: "Password@1234"
