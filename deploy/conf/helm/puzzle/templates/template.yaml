@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - env:
-        - name: AVAILABLE_LOCALES
-          value: "fr-FR, en-US"
+        - name: DATE_FORMAT
+          value: "{{ .Values.appServer.internalDateFormat }}"
         - name: EXEC_ENV
           value: {{ .Values.telemetry.envName }}
         - name: HOST_IP

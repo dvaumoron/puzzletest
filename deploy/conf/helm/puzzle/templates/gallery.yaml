@@ -22,7 +22,7 @@ spec:
         - name: MONGODB_SERVER_DB
           value: "galleriesDB"
         - name: PAGE_SIZE
-          value: "{{ .Values.galleryServer.pageSize }}"
+          value: "{{ .Values.appServer.pageSize }}"
         - name: EXEC_ENV
           value: {{ .Values.telemetry.envName }}
         - name: HOST_IP

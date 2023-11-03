@@ -20,6 +20,8 @@ externalService:
   redisAddr: "exemplehost:6379"
 kubernetesClusterDomain: cluster.local
 appServer:
+  pageSize: ""
+  internalDateFormat: "2/1/2006 15:04:05"
   replicas: 1
   imageVersion: latest
   resourcesLimits:
@@ -44,7 +46,6 @@ forumServer:
     cpu: 50m
     memory: 64Mi
 galleryServer:
-  pageSize: ""
   replicas: 1
   imageVersion: latest
   resourcesLimits:

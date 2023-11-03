@@ -1,9 +1,10 @@
 # this file is used to configure permission groups and pages with their widget
 
-port = "9080"
+port = env("SITE_PORT")
 
 availableLocales = ["fr-FR", "en-US"]
-pageSize         = 3
+dateFormat       = env("DATE_FORMAT")
+pageSize         = env("PAGE_SIZE")
 extractSize      = 1000
 
 page404Url = "/notFound"
