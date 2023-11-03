@@ -4,8 +4,8 @@ port = env("SITE_PORT")
 
 availableLocales = ["fr-FR", "en-US"]
 dateFormat       = env("DATE_FORMAT")
-pageSize         = env("PAGE_SIZE")
-extractSize      = 1000
+pageSize         = envAsNumber("PAGE_SIZE")
+extractSize      = envAsNumber("EXTRACT_SIZE")
 
 page404Url = "/notFound"
 
