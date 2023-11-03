@@ -1,12 +1,18 @@
 # this file is used to configure permission groups and pages with their widget
 
-availableLocales = ["fr-FR", "en-US"]
-pageSize         = 3
-feedFormat       = "rss"
+pageSize   = 3
+feedFormat = "rss"
 
 page404Url = "/notFound"
 
-localePicturePaths = ["images/Flag_of_France.webp", "images/Flag_of_the_United_Kingdom.png"]
+# the first locale item is used as default
+locale "fr-FR" {
+  picturePath = "images/Flag_of_France.webp"
+}
+
+locale "en-US" {
+  picturePath = "images/Flag_of_the_United_Kingdom.png"
+}
 
 sessionServiceAddr          = "localhost:50051"
 templateServiceAddr         = "localhost:51251"
@@ -21,6 +27,7 @@ markdownServiceAddr         = "localhost:50851"
 blogServiceAddr             = "localhost:51051"
 wikiServiceAddr             = "localhost:50751"
 
+# groups with groupId 0 and 1 already exist for public and admin part respectively
 permission "wikiGroup1" {
   groupId = 2
 }
@@ -35,6 +42,12 @@ permission "blogGroup" {
 
 permission "forumGroup" {
   groupId = 5
+}
+
+staticPages {
+  groupId   = 0
+  hidden    = true
+  locations = ["notFound"]
 }
 
 # page location ending with / denote a folder (will use the index template)
