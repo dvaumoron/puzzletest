@@ -55,14 +55,16 @@
                     </ul>
                 </nav>
             {{end}}
-            <nav class="container-fluid" aria-label="breadcrumb">
-                <ul>
-                    <li><a href="/"><span class="material-symbols-outlined">home</span></a></li>
-                    {{range .Ariane}}
-                        <li><a href="{{.Url}}">{{index $messages .Name}}</a></li>
-                    {{end}}
-                </ul>
-            </nav>
+            {{if .Ariane}}
+                <nav class="container-fluid" aria-label="breadcrumb">
+                    <ul>
+                        <li><a href="/"><span class="material-symbols-outlined">home</span></a></li>
+                        {{range .Ariane}}
+                            <li><a href="{{.Url}}">{{index $messages .Name}}</a></li>
+                        {{end}}
+                    </ul>
+                </nav>
+            {{end}}
             <div class="container-fluid">
                 {{with .ErrorMsg}}
                     <h6 class="error">{{index $messages .}}</h6>
