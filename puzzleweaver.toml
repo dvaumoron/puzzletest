@@ -11,7 +11,6 @@ listeners.web = { address = "localhost:8080" }
 ["github.com/ServiceWeaver/weaver/Main"]
 domain             = "localhost"
 port               = "8080"
-defaultlang        = "fr-FR"
 sessiontimeout     = 1200
 servicetimeout     = "5s"
 maxmultipartmemory = 0
@@ -21,23 +20,37 @@ extractsize        = 200
 feedformat         = "rss"
 feedsize           = 100
 
-fsconf           = { kind = "local" }
-staticpath       = "static"
-faviconpath      = "favicon.ico"
-page404url       = "/notFound"
-langpicturepaths = { "fr-FR" = "images/Flag_of_France.webp", "en-US" = "images/Flag_of_the_United_Kingdom.png" }
+fsconf      = { kind = "local" }
+staticpath  = "static"
+faviconpath = "favicon.ico"
+page404url  = "/notFound"
 
 profilegroupid            = 0
 profiledefaultpicturepath = "static/images/unknownuser.png"
 
-pagegroups = [{ id = 0, pages = ["about/", "about/faq"] }]
+# the first locale item is used as default
+locales = [
+    { lang = "fr-FR", picturepath = "images/Flag_of_France.webp" },
+    { lang = "en-US", picturepath = "images/Flag_of_the_United_Kingdom.png" },
+]
+
+staticpages = [
+    { groupId = 0, hidden = true, locations = [
+        "notFound",
+    ] },
+    { groupId = 0, locations = [
+        "about/",
+        "about/faq",
+    ] },
+]
+
 widgetpages = [
-    { emplacement = "about", name = "wiki", widgetref = "wiki1" },
-    { emplacement = "about/faq", name = "wiki2", widgetref = "wiki2" },
-    { name = "wiki3", widgetref = "wiki3" },
-    { name = "blog", widgetref = "blog" },
-    { name = "forum", widgetref = "forum" },
-    { name = "gallery", widgetref = "gallery" },
+    { path = "about/wiki", widgetref = "wiki1" },
+    { path = "about/faq/wiki2", widgetref = "wiki2" },
+    { path = "wiki3", widgetref = "wiki3" },
+    { path = "blog", widgetref = "blog" },
+    { path = "forum", widgetref = "forum" },
+    { path = "gallery", widgetref = "gallery" },
 ]
 
 ginreleasemode = true
@@ -64,8 +77,7 @@ kind     = "forum"
 objectid = 5
 groupid  = 5
 ["github.com/ServiceWeaver/weaver/Main".widgets.gallery]
-kind       = "remote"
-widgetname = "gallery"
+kind       = "custom/gallery"
 objectid   = 6
 groupid    = 0
 
