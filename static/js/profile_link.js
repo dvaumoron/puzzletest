@@ -5,11 +5,11 @@ class ProfileLink extends HTMLElement {
         var login = this.getAttribute("login");
 
         var shadow = this.attachShadow({ mode: 'open' });
-        var loadBloc = document.createElement('div');
-        loadBloc.setAttribute('hx-get', '/profile/link/'+login+'?pagePart=profileLink')
-        loadBloc.setAttribute('hx-trigger', 'load delay:100ms')
-        loadBloc.setAttribute('hx-swap', 'outerHTML')
-        shadow.appendChild(link);
+        var loadBloc = document.createElement('span');
+        fetch('/profile/link/' + login + '?pagePart=body')
+            .then(reponse => reponse.text())
+            .then(data => loadBloc.innerHTML = data)
+        shadow.appendChild(loadBloc);
     }
 }
 
