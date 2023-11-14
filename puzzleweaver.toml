@@ -151,7 +151,9 @@ mongodatabasename = "blogsDB"
 mongoaddress      = "mongodb://localhost:27017"
 mongodatabasename = "wikisDB"
 
-["github.com/dvaumoron/puzzleweaver/serviceimpl/remotewidget/RemoteWidgetService"]
+["github.com/dvaumoron/puzzleweaver/serviceimpl/customwidget/CustomWidgetService"]
 gallerymongoaddress      = "mongodb://localhost:27017"
 gallerymongodatabasename = "galleriesDB"
 defaultpagesize          = 2
+
+keytovalues.test = "toto"
