@@ -106,7 +106,7 @@ mongodatabasename = "settingsDB"
 defaultpassword = "Password@1234"
 alllang         = ["fr-FR", "en-US"]
 fsconf          = { kind = "local" }
-rulefilepath    = "../puzzlepassstrengthserver/rules/rules_{{lang}}.txt"
+rulefilepath    = "static/rules/rules_{{lang}}.txt"
 
 ["github.com/dvaumoron/puzzleweaver/serviceimpl/salt/SaltService"]
 redisaddress  = "localhost:6379"
@@ -123,7 +123,7 @@ databaseaddress = "host=localhost user=postgres dbname=logindb port=5432 sslmode
 databasekind    = "postgres"
 databaseaddress = "host=localhost user=postgres dbname=rightdb port=5432 sslmode=disable"
 fsconf          = { kind = "local" }
-opamodulepath   = "../puzzlerightserver/auth_rule.rego"
+opamodulepath   = "static/auth_rule.rego"
 
 permissiongroups = [
     { id = 2, name = "wikiGroup1" },
