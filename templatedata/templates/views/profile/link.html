@@ -2,8 +2,8 @@
     
 {{end}}
 {{define "body"}}
-    {{if .Login}}
-        {{template "profileLink" .}}
+    {{if .ViewedUser}}
+        {{template "profileLink" .ViewedUser}}
     {{else}}
         <a href="/notFound">{{index .Messages "ErrorUnknownUser"}}</a>
     {{end}}
