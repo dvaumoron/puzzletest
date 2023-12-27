@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-./build/build.sh
-
 buildah from --name puzzleweb-working-container scratch
 buildah copy puzzleweb-working-container ./static /static
 # this version of frame.hcl refer to environment variables
